@@ -10,7 +10,7 @@ gem 'pg'
 gem 'pry-rails', :group => :development                                         
 
 # Using Devise for login
-gem 'devise'
+gem 'devise', github: 'plataformatec/devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
