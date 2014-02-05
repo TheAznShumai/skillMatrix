@@ -1,5 +1,6 @@
 SkillMatrix::Application.routes.draw do
   devise_for :users
+  resources :skills
 
   root 'static_pages#home'
 

@@ -1,10 +1,10 @@
 class SkillsController < ApplicationController
     def new
-        @skill = Skill.new
+        @skill = current_user.skills.build
     end
     
     def create
-        @skill = skill(skill_params)
+        @skill = current_user.skills.build(skill_params)
         if @skill.save then
             redirect_to root_url
         else
@@ -13,20 +13,19 @@ class SkillsController < ApplicationController
     end
 
     def show
-        @skill = Skill.find(params[:id])
+        @skill = current_user.skills.find(params[:id])
     end
 
     def index
-        @skill = Skill.all
+        @skills = current_user.skills.all 
         respond_to do |format|
             format.html
-            format.xml {render xml: @skill}
             format.json {render json: @skill}
         end
     end
 
     def edit
-        @skill = Skill.find(params[:id])
+        @skill = current_user.skills.find(params[:id])
     end
 
     private
