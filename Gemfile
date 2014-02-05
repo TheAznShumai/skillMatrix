@@ -8,6 +8,7 @@ gem 'pg'
 
 # Use Pry
 gem 'pry-rails', :group => :development                                         
+gem 'pry-debugger', :group => :development                                         
 
 # Using Devise for login
 gem 'devise', github: 'plataformatec/devise'
