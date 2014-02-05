@@ -1,4 +1,5 @@
 SkillMatrix::Application.routes.draw do
+  get "ratings/update"
   devise_for :users
   resources :skills
   resources :rating, only: :update
