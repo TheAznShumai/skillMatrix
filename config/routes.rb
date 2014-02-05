@@ -1,6 +1,7 @@
 SkillMatrix::Application.routes.draw do
   devise_for :users
   resources :skills
+  resources :rating, only: :update
 
   root 'static_pages#home'
 
