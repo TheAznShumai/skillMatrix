@@ -1,0 +1,20 @@
+<h1>Survey#new</h1>
+
+<%= form_for @survey do |f| %>
+    <%-# add errors here -%>
+    <div class="field">
+        <%= f.label :name %> <br />
+        <%= f.text_field :name %>
+    </div> 
+
+    <%= link_to_add_fields "Add Skills", f, :rateable_skills %>
+        <%-#= render 'rateable_skill_fields', f: builder %> 
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+
+<% end %> 
+
+<%-# link_to "New Rateable Skill", new_rateable_skill_path, id:"new_rateable_skill_link", remote: true %>
+
+
