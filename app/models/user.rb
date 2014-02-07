@@ -12,4 +12,13 @@ class User < ActiveRecord::Base
       build_role
       true
   end
+
+  def has_role?(*role_names)
+      self.roles.where(:description => role_names).present?
+  end
+
+  def is_admin?
+      self.has_role?('admin')
+  end
+
 end
