@@ -1,19 +1,7 @@
 <h1>Survey#index</h1>
 <p>Find me in app/views/survey/index.html.erb</p>
 
-<%= form_for @survey do |f| %>
-    <%-# add errors here -%>
-    <div class="field">
-        <%= f.label = :name %> <br />
-        <%= f.text_field :name %>
-    </div> 
-
-    <%= f.fields_for rateable_skills do |builder| %>
-        <%= builder.label :desc, "skillName" %> <br />
-        <%= builder.text_field :desc %>
-    <% end %>
-
+<%= @surveys.each do |survey| %>
+    <%= link_to survey.name, survey %>
 <% end %> 
 
-<%= link_to "New Rateable Skill", new_rateable_skill_path, 
-    id:"new_rateable_skill_link", remote: true %>

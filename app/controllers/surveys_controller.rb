@@ -11,6 +11,10 @@ class SurveysController < ApplicationController
         end
     end
 
+    def index
+        @surveys = Survey.all
+    end
+
     private
 
     def new_survey_params
