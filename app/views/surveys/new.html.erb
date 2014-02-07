@@ -9,9 +9,6 @@
 
     <%= f.fields_for :rateable_skills do |builder| %>
         <%= link_to_add_fields "Add Skills", f, :rateable_skills %>
-        <%= render 'rateable_skill_fields', f: builder %> 
-
-<%= link_to "New Rateable Skill", new_rateable_skill_path, id:"new_rateable_skill_link", remote: true %>
     <% end %>
     <div class="actions">
         <%= f.submit %>
