@@ -1,14 +1,13 @@
 SkillMatrix::Application.routes.draw do
   devise_for :users
   resources :skills
-  resources :rating, only: :update
+  resources :ratings, only: :update
   resources :surveys
   resources :rateable_skills
 
   root 'static_pages#home'
 
   get "static_pages/home"
-  get "ratings/update"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
