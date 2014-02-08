@@ -1,4 +1,6 @@
 class SurveysController < ApplicationController
+    include SkillsHelper
+    
     def new
         @survey = Survey.new
         @survey.rateable_skills.build
@@ -15,10 +17,15 @@ class SurveysController < ApplicationController
         @surveys = Survey.all
     end
 
+    def show
+        @survey = Survey.find(params[:id])
+        @skills = find_skill_by_name('test skill here')
+    end
+
     private
 
     def new_survey_params
-        params.require(:survey).permit(:id, :name, rateable_skills_attributes: [:id, :desc, :_destroy]) 
+        params.require(:survey).permit(:id, :name, rateable_skills_attributes: [:id, :name, :_destroy]) 
     end
 
 end

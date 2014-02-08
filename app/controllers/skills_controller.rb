@@ -18,10 +18,6 @@ class SkillsController < ApplicationController
 
     def index
         @skills = current_user.skills.all 
-        respond_to do |format|
-            format.html
-            format.json {render json: @skill}
-        end
     end
 
     def edit

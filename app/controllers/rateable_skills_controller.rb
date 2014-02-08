@@ -4,7 +4,7 @@ class RateableSkillsController < ApplicationController
     end
 
     def create
-        @rateable_skill = RateableSkill.new(params[:desc])
+        @rateable_skill = RateableSkill.new(params[:name])
         if @rateable_skill.save
             redirect_to root_url
         end
