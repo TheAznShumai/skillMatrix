@@ -4,7 +4,10 @@
 <p>
 <%= @survey.name %>
 </p>
-test
 
-<%= @skills.name %> 
+
+<% @skills.each do |f| %> 
+    <%= f.name %>
+    <br />
+<% end %>
 

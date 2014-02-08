@@ -1,6 +1,8 @@
 module SkillsHelper
-    def find_skill_by_name(name)
-        #@skill = current_user.skills.find_or_initialize_by_name(id: params[:id], name: name)
-        @skill = current_user.skills.find(params[:id])
+    def add_to_skills(skill_names)
+        skill_names.each do |f|
+        @skills = current_user.skills.where(:name => f.name).first_or_create(
+            :name => f.name)
+        end
     end
 end
