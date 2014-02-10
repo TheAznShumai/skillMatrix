@@ -3,41 +3,41 @@
 /* universal */
 
 html {
-      overflow-y: scroll;
-  }
+    overflow-y: scroll;
+}
 
-  body {
-        padding-top: 60px;
-    }
+body {
+    padding-top: 60px;
+}
 
-    section {
-          overflow: auto;
-      }
+section {
+    overflow: auto;
+}
 
-      textarea {
-            resize: vertical;
-        }
+textarea {
+    resize: vertical;
+}
 
-        .center {
-              text-align: center;
-          }
+.center {
+    text-align: center;
+}
 
-          .center h1 {
-                margin-bottom: 10px;
-            }
+.center h1 {
+    margin-bottom: 10px;
+}
 
-    /* Rating Stars */
+/* Rating Stars */
 
-            li.rating_star {
-              float:left;
-                list-style: none;
-                  margin: 0;
-                    padding: 0; 
-                      width: 25px;
-                        height: 25px;
-                          background: image-url("star.png") top left;
-                      } 
+li.rating_star {
+    float:left;
+    list-style: none;
+    margin: 0;
+    padding: 0; 
+    width: 25px;
+    height: 25px;
+    background: image-url("star.png") top left;
+} 
 
-                          li.rating_star.on {
-                                background: image-url("star.png") 0 -25px;
-                            } 
+li.rating_star.on {
+    background: image-url("star.png") 0 -25px;
+} 
