@@ -21,7 +21,6 @@ class SurveysController < ApplicationController
         @survey = Survey.find(params[:id])
         rateable_skills = @survey.rateable_skills.where(true)
         @skills = add_to_skills(rateable_skills)
-        @rating = @skills.Rating.where(true)
     end
 
     private

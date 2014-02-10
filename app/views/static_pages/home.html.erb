@@ -10,4 +10,6 @@
 <%= link_to "Make Survey", new_survey_path %> <br />
 <%= link_to "Survey Index", surveys_path %>
 <% end %>
+<% else %>
+<%= link_to "Sign Up Now", new_user_path %>
 <% end %>
