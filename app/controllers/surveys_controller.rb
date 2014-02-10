@@ -14,7 +14,7 @@ class SurveysController < ApplicationController
     end
 
     def index
-        @surveys = Survey.all
+        @surveys = Survey.where(true)
     end
 
     def show

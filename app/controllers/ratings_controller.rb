@@ -13,19 +13,19 @@ class RatingsController < ApplicationController
 
     def update
         @rating = Rating.find(params[:id])
-        #binding.pry
         @skill = Skill.find(params[:rating][:skill_id])
         @rating.update_attributes(new_rating_params)
                               
+        #binding.pry
+        
         respond_to do |format|
             if @rating.save
-                format.json { render :json => { :avg_rating => @skill.rating } }
+                format.json { render :json => { :avg_rating => @skill.rating.score } }
             else
                 format.json { render :json => @rating.errors, :status => :unprocessable_entity }
             end
         end
     end
-
 
     private 
 

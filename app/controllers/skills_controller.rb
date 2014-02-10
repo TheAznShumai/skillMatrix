@@ -17,7 +17,7 @@ class SkillsController < ApplicationController
     end
 
     def index
-        @skills = current_user.skills.all 
+        @skills = current_user.skills.where(true)
     end
 
     def edit
