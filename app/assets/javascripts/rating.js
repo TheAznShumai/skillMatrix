@@ -37,3 +37,7 @@ function set_stars(form_id, stars) {
   }
 }
 
+$(document).on('ready page:load', function() {
+    update_stars();
+})
+

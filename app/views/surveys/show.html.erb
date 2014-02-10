@@ -8,24 +8,25 @@
 
 <% @skills.each do |skill| %> 
     <%= skill.name %> 
+
+    <% user_id = current_user.id %> 
+    <%# currently designed so that only current_user should be editing their own rating %>
+    <% @rating = get_rating_by_id(skill.id) %>  
+    <%# get_rating works on skill_id that is linked to current_user  - returns only first%>
+
+    <% form_id = "skill_#{skill.id}_rating" %>
+
+    <%= form_for @rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
+        <%= f.hidden_field :skill_id, :value => skill.id %>
+        <%= f.hidden_field :score, :id => form_id + "_stars" %>
+    <% end %>
+
+    <% (1..5).each do |i| %>
+
+        <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="
+        <%= i %>" data-form-id="<%= form_id %>"></li>
+
+    <% end %>
     <br />
-
-<% user_id = current_user.id %> 
-<%# currently designed so that only current_user should be editing their own rating %>
-<% @rating = get_rating_by_id(skill.id) %>  
-<%# get_rating works on skill_id that is linked to current_user  - returns only first%>
-
-<% form_id = "skill_#{skill.id}_rating" %>
-
-<%= form_for @rating, 
-    :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
-    <%= f.hidden_field :skill_id, :value => skill.id %>
-    <%= f.hidden_field :score, :id => form_id + "_stars" %>
-<% end %>
-
-<% (1..5).each do |i| %>
-
-<li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
-<% end %>
 <% end %>
 
