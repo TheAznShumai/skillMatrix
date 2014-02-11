@@ -24,6 +24,11 @@ class RatingsController < ApplicationController
         end
     end
 
+    def index
+        @users = User.includes(:skills, :ratings)
+        #Reminder to add admin rules for this
+    end
+
     private 
 
     def new_rating_params
