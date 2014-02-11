@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :skills, dependent: :destroy
+  has_many :ratings, :through => :skills
 
 end

@@ -1,7 +1,8 @@
 SkillMatrix::Application.routes.draw do
   devise_for :users
+  resources :users, only: [:index, :show]
   resources :skills
-  resources :ratings, only: [:update, :create]
+  resources :ratings, only: [:update, :create, :index]
   resources :surveys
   resources :rateable_skills
 
