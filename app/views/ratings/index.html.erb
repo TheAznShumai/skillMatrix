@@ -1,9 +1,22 @@
 <h1> Ratings Index </h1>
 
-<% @users.each do |user| %>
-    <%= user.email %>
-    <% Skill.find_each(user) do |skill| %>
-        <%= skill.name %>
-        <br />
-    <% end %>
-<% end %>
+<table id="ratings">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Skill Name</th>
+            <th>Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <% user.skills.each do |skill| %>
+                <tr>
+                    <td><%= user.email %></td>
+                    <td><%= skill.name %></td>
+                    <td><%= skill.rating.score %></td>    
+                </tr>
+            <% end %>
+        <% end %>
+    </tbody>
+</table>

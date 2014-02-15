@@ -1,3 +1,7 @@
+jQuery(function() {
+    $('#ratings').dataTable();
+});
+
 $(function() {
   $('.rating_star').click(function() {
     var star = $(this);
