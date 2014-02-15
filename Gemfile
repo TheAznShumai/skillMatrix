@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use PSql
+# Using PSql
 gem 'pg'
 
-# Use Pry
+# Using Pry
 gem 'pry-rails', :group => :development                                         
 gem 'pry-debugger', :group => :development                                         
 
@@ -16,8 +16,14 @@ gem 'devise', github: 'plataformatec/devise'
 # Using Formtastic
 gem 'formtastic'
 
+# Using DataTables
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+
 # Using Bootstrap
 gem 'bootstrap-sass', '2.3.2.0' 
+
+# Using Paginate
+gem 'will_paginate'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

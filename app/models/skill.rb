@@ -6,6 +6,7 @@ class Skill < ActiveRecord::Base
     validates :name, :user_id, presence: true
 
     private
+
     def build_default_rating
         build_rating
         true

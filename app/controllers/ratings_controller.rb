@@ -25,8 +25,9 @@ class RatingsController < ApplicationController
     end
 
     def index
-        @users = User.includes(:skills, :ratings)
+        @users = User.joins(:skills, :ratings)
         #Reminder to add admin rules for this
+        binding.pry
     end
 
     private 

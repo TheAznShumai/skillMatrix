@@ -11,7 +11,7 @@
 
     <% user_id = current_user.id %> 
     <%# currently designed so that only current_user should be editing their own rating %>
-    <% @rating = get_rating_by_id(skill.id) %>  
+    <% @rating = Rating.find(skill.id) %>  
     <%# get_rating works on skill_id that is linked to current_user  - returns only first%>
 
     <% form_id = "skill_#{skill.id}_rating" %>
