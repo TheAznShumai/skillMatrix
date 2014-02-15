@@ -1,6 +1,7 @@
 jQuery(function() {
     $('#ratings').dataTable({
-        "sPaginationType": "full_numbers"});
+        "sPaginationType": "bootstrap"
+    });
 });
 
 $(function() {

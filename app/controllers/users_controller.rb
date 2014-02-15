@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = User.where(user_id: new_user_params)
+      @user = (User.where(id: params[:id]).includes(:skills, :ratings)).first
   end
 
   def new_user_params

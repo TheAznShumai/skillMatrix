@@ -1,2 +1,17 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<table>
+    <tr>
+        <th>User ID</th>
+        <th>Skill Name</th>
+        <th>Score</th>
+    </tr>
+    <% @user.skills.each do |skill| %>
+        <tr>
+            <td><%= @user.email %></td>
+            <td><%= skill.name %></td>
+            <td><%= skill.rating.score %></td>    
+        </tr>
+    <% end %>
+</table>
+
