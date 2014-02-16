@@ -8,9 +8,11 @@
     </tr>
     <% @user.skills.each do |skill| %>
         <tr>
+            <% if skill.rating.score != 0 then %>
             <td><%= @user.email %></td>
             <td><%= skill.name %></td>
             <td><%= skill.rating.score %></td>    
+        <% end %>
         </tr>
     <% end %>
 </table>
