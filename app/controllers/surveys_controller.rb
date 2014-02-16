@@ -1,5 +1,4 @@
 class SurveysController < ApplicationController
-    include SkillsHelper
     
     def new
         @survey = Survey.new
@@ -20,7 +19,7 @@ class SurveysController < ApplicationController
     def show
         @survey = Survey.find(params[:id])
         rateable_skills = @survey.rateable_skills.where(true)
-        @skills = add_to_skills(rateable_skills)
+        @skills = Skill.add_to_skills(current_user, rateable_skills)
     end
 
     private
