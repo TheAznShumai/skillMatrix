@@ -8,7 +8,7 @@ class SurveysController < ApplicationController
     def create
         @survey = Survey.new(new_survey_params)
         if @survey.save
-                redirect_to root_url
+          redirect_to root_url
         end
     end
 
