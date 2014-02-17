@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
     end
 
     def index
-        @users = User.includes(:skills, :ratings)
+      @users = User.includes(:skills, :ratings)
         #Reminder to add admin rules for this
     end
 
