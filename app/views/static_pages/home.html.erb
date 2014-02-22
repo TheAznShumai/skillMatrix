@@ -2,17 +2,7 @@
 <p>Find me in app/views/static_pages/home.html.erb</p>
 
 <% if user_signed_in? %>
-    <%= link_to "add skill", new_skill_path %>
-    <br />
-    <%= link_to "list skills", skills_path %>
-    <% if current_user.admin? %>
-        <br />
-        <%= link_to "Make Survey", new_survey_path %> <br />
-        <%= link_to "Survey Index", surveys_path %> <br />
-        <%= link_to "Users with skills Index", users_path %> <br />
-        <%= link_to "Ratings Index", ratings_path %>
-    <% end %>
+       <%= render 'welcome' %>
 <% else %>
-    <%= link_to "Sign In", new_user_session_path %>
-    <%= link_to "Sign Up Now", new_user_registration_path %>
+  <%= render 'new_user' %>
 <% end %>
