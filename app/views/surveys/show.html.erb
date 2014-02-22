@@ -1,13 +1,8 @@
-<h1>Survey#show</h1>
+<h1><%= @survey.name %></h1>
 <p>Find me in app/views/survey/show.html.erb</p>
 
-<p>
-<%= @survey.name %>
-</p>
-
-
 <% @skills.each do |skill| %> 
-    <%= skill.name %> 
+  <p class='text-left'><%= skill.name %></p>
 
     <% user_id = current_user.id %> 
     <%# currently designed so that only current_user should be editing their own rating %>
@@ -21,12 +16,11 @@
         <%= f.hidden_field :score, :id => form_id + "_stars" %>
     <% end %>
 
-    <% (1..5).each do |i| %>
+<% (1..5).each do |i| %>
 
         <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="
         <%= i %>" data-form-id="<%= form_id %>"></li>
 
     <% end %>
-    <br />
 <% end %>
 
