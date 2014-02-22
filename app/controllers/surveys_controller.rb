@@ -9,6 +9,9 @@ class SurveysController < ApplicationController
         @survey = Survey.new(new_survey_params)
         if @survey.save
           redirect_to root_url
+        else
+          flash.now[:error] = 'Errors on the submission'
+          render 'new'
         end
     end
 
