@@ -16,6 +16,9 @@ gem 'devise', github: 'plataformatec/devise'
 # Using Formtastic
 gem 'formtastic'
 
+# Using Client_Side_Validation
+gem 'html5_validators'
+
 # Using DataTables
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 

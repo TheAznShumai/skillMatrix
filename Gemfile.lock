@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 2aedb1bf795947f189183fbd1e479719463f6395
+  revision: 4d7473634e0007d4e04de8ca923d58862f352df2
   specs:
-    devise (3.2.2)
-      bcrypt-ruby (~> 3.0)
+    devise (3.2.3)
+      bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
@@ -46,7 +46,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.2)
     atomic (1.1.14)
-    bcrypt-ruby (3.1.2)
+    bcrypt (3.1.6)
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -70,6 +70,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     hike (1.2.3)
+    html5_validators (1.1.2)
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -87,7 +88,7 @@ GEM
     multi_json (1.8.4)
     orm_adapter (0.5.0)
     pg (0.17.1)
-    polyglot (0.3.3)
+    polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -125,7 +126,7 @@ GEM
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
     slop (3.4.7)
-    sprockets (2.10.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -157,6 +158,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise!
   formtastic
+  html5_validators
   jbuilder (~> 1.2)
   jquery-datatables-rails!
   jquery-rails
