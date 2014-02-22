@@ -2,7 +2,7 @@
 
 <%= form_for @survey do |f| %>
   <div class="field">
-  <%= f.label :name %> <br />
+  <%= f.label "Survey Name" %> 
   <%= f.text_field :name %>
 </div> 
 <%= link_to_add_fields "Add Skills", f, :rateable_skills %>
