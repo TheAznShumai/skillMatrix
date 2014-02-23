@@ -2,8 +2,13 @@
   <h1 class="text-left">Skill Matrix</h1>
   <p>Welcome Tagline Here</p>
   <p>
-  <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary btn-large" %>
+  <%# <%= link_to "Sign In", "#signUpModal", class: "btn btn-primary btn-large", 
+    <%# "data-toggle" => "modal" %>
+    <%= link_to "Sign In", new_user_session_path, {:remote => true, 'data-target' => '#modal-window',
+                                                   'data-controls-modal' =>  "modal-window", 
+                                                   'data-backdrop' => true, 'data-keyboard' => true} %>
   </p>
   <%= link_to "Sign Up Now", new_user_registration_path %>
 </div>
+<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
