@@ -10,13 +10,19 @@
 <%= render "static_pages/login_modal" %>
 <%= render "static_pages/sign_up_modal" %>
 <div id="wrap">
-<%= render 'layouts/header' %>
-<div class="container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
-</div>
-<%= yield %>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  </div>
+  <% if user_signed_in? %>
+    <div class="container" id="content">
+      <%= yield %>
+    </div>
+  <% else %>
+      <%= yield %>
+  <% end %>
 </div>
 <%= render 'layouts/footer' %>
 </body>
