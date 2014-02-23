@@ -4,17 +4,14 @@
       <div class="hero-unit">
         <h1>Welcome to the Skill Matrix</h1>
         <br>
-        <p class="lead">(Insert some message that looks good and doesn't take too much space.)</p>
+        <p class="lead">(Insert some message that looks good and doesn't take too much space)</p>
         <br>
         <p>
-        <%# <%= link_to "Sign In", "#signUpModal", class: "btn btn-primary btn-large", 
-        <%# "data-toggle" => "modal" %>
-        <%= link_to "Sign In", new_user_session_path, {:remote => true, 'data-target' => '#modal-window',
-                                                       'data-controls-modal' =>  "modal-window", 
-                                                       'data-backdrop' => true, 'data-keyboard' => true,
-                                                       :class => 'btn btn-primary btn-lg'} %>
+        <%= link_to "Login", "#login", class: "btn btn-primary btn-large", 
+        "data-toggle" => "modal" %>
         </p>
-        <%= link_to "Sign Up Now", new_user_registration_path %>
+        <%= link_to "Sign Up", "#sign_up",
+        "data-toggle" => "modal" %>
       </div>
     </div>
   </div>
