@@ -23,7 +23,7 @@ gem 'html5_validators'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 # Using Bootstrap
-gem 'bootstrap-sass', '2.3.2.0' 
+gem 'bootstrap-sass'
 
 # Using Paginate
 gem 'will_paginate'
