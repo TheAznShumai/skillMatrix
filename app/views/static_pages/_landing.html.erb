@@ -1,14 +1,25 @@
-<div class="hero-unit">
-  <h1 class="text-left">Skill Matrix</h1>
-  <p>Welcome Tagline Here</p>
-  <p>
-  <%# <%= link_to "Sign In", "#signUpModal", class: "btn btn-primary btn-large", 
-    <%# "data-toggle" => "modal" %>
-    <%= link_to "Sign In", new_user_session_path, {:remote => true, 'data-target' => '#modal-window',
-                                                   'data-controls-modal' =>  "modal-window", 
-                                                   'data-backdrop' => true, 'data-keyboard' => true} %>
-  </p>
-  <%= link_to "Sign Up Now", new_user_registration_path %>
+<div class="container-full">
+
+  <div class="row">
+
+    <div class="col-lg-12 text-center v-center">
+      <div class="hero-unit">
+        <h1>Welcome to the Skill Matrix</h1>
+        <br>
+        <p class="lead">(Insert some message that looks good and doesn't take too much space.)</p>
+        <br><br>
+        <p>
+        <%# <%= link_to "Sign In", "#signUpModal", class: "btn btn-primary btn-large", 
+        <%# "data-toggle" => "modal" %>
+        <%= link_to "Sign In", new_user_session_path, {:remote => true, 'data-target' => '#modal-window',
+                                                       'data-controls-modal' =>  "modal-window", 
+                                                       'data-backdrop' => true, 'data-keyboard' => true,
+                                                       :class => 'btn btn-primary btn-lg'} %>
+        </p>
+        <%= link_to "Sign Up Now", new_user_registration_path %>
+      </div>
+    </div>
+  </div>
 </div>
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+      <%# <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
 
