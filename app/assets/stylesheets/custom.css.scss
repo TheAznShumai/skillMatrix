@@ -16,7 +16,17 @@ h1 {
   font-size:14px;
 }
 
+.vertical-offset-100{
+  padding-top:100px;
+}
+
 /* Override Modal size */
+#login-head {
+  width: 50%;
+  height: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .modal-content{
   background-color: #66FFFF; 
 }
