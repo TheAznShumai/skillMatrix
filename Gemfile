@@ -19,6 +19,9 @@ gem 'formtastic'
 # Using Client_Side_Validation
 gem 'html5_validators'
 
+# Using Font-Awesome
+gem 'font-awesome-rails'
+
 # Using DataTables
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
