@@ -6,13 +6,13 @@ class Skill < ActiveRecord::Base
     validates :name, :user_id, presence: true
 
     def self.add_to_skills(user, skill_names)
-        @skills = []
+        skills = []
         user_id = user.id
         skill_names.each do |f|
-            @skills << Skill.where(user_id: user_id, name: f.name).first_or_create(
+            skills << Skill.where(user_id: user_id, name: f.name).first_or_create(
                 :name => f.name)
         end
-        return @skills
+        return skills
     end
 
     private
