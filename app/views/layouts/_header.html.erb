@@ -1,23 +1,31 @@
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-  <div class="navbar-inner">
-    <%= link_to "Skill Matrix", root_path, id: "logo", class:"navbar-brand" %>
-    <ul class="nav navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <% if current_user.admin? %>
-        <li><%= link_to "Users", users_path %></li>
-    <% end %>
-      <li id="fat-menu" class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "Profile", '#' %></li>
-        <li class="divider"></li>
-        <li><%= link_to "Sign out", destroy_user_session_path , method: "delete" %></li>
-      </ul>
-      </li>
-    <% else %>
-        <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
-    <% end %>
-    </ul>
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <%= link_to 'Skill Matrix', root_url, class: 'navbar-brand' %>
   </div>
+  <!-- /.navbar-header -->
+  <ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+    </a>
+    <ul class="dropdown-menu dropdown-user">
+      <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+      </li>
+      <li class="divider"></li>
+      <li><%= link_to '<i class="fa fa-sign-out fa-fw"></i>Sign out'.html_safe, destroy_user_session_path , method: "delete" %>
+      </li>
+    </ul>
+    <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+  </ul>
+  <!-- /.navbar-top-links -->
 </nav>
+<!-- /.navbar-static-top -->
 

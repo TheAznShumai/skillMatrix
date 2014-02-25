@@ -22,12 +22,20 @@ h1 {
 }
 
 /* Override Modal size */
-#login-head {
+.login-content{
   width: 50%;
   height: 50%;
   margin-left: auto;
   margin-right: auto;
 }
+
+.sign-up-content{
+  width: 75%;
+  height: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .modal-content{
   background-color: #66FFFF; 
 }
@@ -44,10 +52,6 @@ h1 {
   margin: 0 auto -50px;
   /* Pad bottom by footer height */
   padding: 0 0 50px;
-}
-
-#content {
-  padding: 75px;
 }
 
 /* Set the fixed height of the footer here */

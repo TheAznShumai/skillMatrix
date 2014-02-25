@@ -9,13 +9,21 @@
 <body>
 <%= render "static_pages/login_modal" %>
 <%= render "static_pages/sign_up_modal" %>
-<div id="wrapper">
-  <%= render 'layouts/test' %>
-  <%= render 'layouts/test_side' %>
-  <div class="col-xs-12 col-sm-9">
+<div id="wrap">
+  <%= render 'layouts/header' %>
+  <% if user_signed_in? %>
+    <% if current_user.admin? %>
+    <%= render 'layouts/nav_side_admin' %>
+<% else %>
+    <%= render 'layouts/nav_side_default' %>
+<% end %>
+  <div class="col-xs-12 col-sm-8">
     <%= yield %>
   </div>
+<% else %>
+    <%= yield %>
+<% end %>
 </div>
-</div>
+<%= render 'layouts/footer' %>
 </body>
 </html>
