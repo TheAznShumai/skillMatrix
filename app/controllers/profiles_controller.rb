@@ -1,8 +1,7 @@
 class ProfilesController < ApplicationController
-  def new
-    Profile.create(profile_params)
+  def edit
+    @profile = Profile.find(params[:id]) 
   end
-
 
   private
 

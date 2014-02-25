@@ -7,5 +7,14 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :skills, dependent: :destroy
   has_many :ratings, through: :skills
+
+  before_create :build_default_profile
+
+  private
+    
+  def build_default_profile
+    build_profile
+    true
+  end
   
 end
