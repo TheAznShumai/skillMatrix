@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
 
-  validates :telephone, 
+  validates :office_phone, :cell_phone, 
             allow_blank: true,
             presence: {format: { with: /\d{3}-\d{3}-\d{4}/, 
                                  message: "Incorrect Phone Format" }}

@@ -16,8 +16,11 @@ gem 'devise', github: 'plataformatec/devise'
 # Using Formtastic
 gem 'formtastic'
 
-# Using Client_Side_Validation
+# Using html5 validator for Client_Side_Validation
 gem 'html5_validators'
+
+# Using Rest in Place to edit forms show forms with ajax
+gem 'rest_in_place'
 
 # Using Font-Awesome
 gem 'font-awesome-rails'
