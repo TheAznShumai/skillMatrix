@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :skills, dependent: :destroy
   has_many :ratings, through: :skills
 
-  before_create :build_default_profile
+  accepts_nested_attributes_for :profile
 
   validates :username,
     :uniqueness => {
@@ -36,11 +36,6 @@ class User < ActiveRecord::Base
       else
         where(conditions).first
       end
-    end
-
-    def build_default_profile
-      build_profile
-      true
     end
 
 end

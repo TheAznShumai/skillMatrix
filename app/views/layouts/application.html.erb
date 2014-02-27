@@ -6,6 +6,8 @@
 <%= javascript_include_tag "application", "rest_in_place" %>
 <%= csrf_meta_tags %>
 </head>
+<%= render "static_pages/login_modal" %>
+<%= render "static_pages/sign_up_modal" %>
 <body>
 <div id="wrap">
   <%= render 'layouts/header' %>
@@ -19,8 +21,6 @@
     <%= yield %>
   </div>
 <% else %>
-<%= render "static_pages/login_modal" %>
-<%= render "static_pages/sign_up_modal" %>
     <%= yield %>
 <% end %>
 </div>
