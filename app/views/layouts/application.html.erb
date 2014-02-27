@@ -7,8 +7,6 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "static_pages/login_modal" %>
-<%= render "static_pages/sign_up_modal" %>
 <div id="wrap">
   <%= render 'layouts/header' %>
   <% if user_signed_in? %>
@@ -21,6 +19,8 @@
     <%= yield %>
   </div>
 <% else %>
+<%= render "static_pages/login_modal" %>
+<%= render "static_pages/sign_up_modal" %>
     <%= yield %>
 <% end %>
 </div>
