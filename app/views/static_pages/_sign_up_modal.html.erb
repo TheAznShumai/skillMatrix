@@ -8,72 +8,69 @@
             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
           </div>  
           <div class="panel-body" >
-            <form id="signupform" class="form-horizontal" role="form">
-
-              <div id="signupalert" style="display:none" class="alert alert-danger">
-                <p>Error:</p>
-                <span></span>
-              </div>
-
-              <div class="form-group">
-                <label for="email" class="col-md-3 control-label">Email</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control" name="email" placeholder="Email Address">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="firstname" class="col-md-3 control-label">First Name</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control" name="firstname" placeholder="First Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="lastname" class="col-md-3 control-label">Last Name</label>
-                <div class="col-md-9">
-                  <input type="text" class="form-control" name="lastname" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="password" class="col-md-3 control-label">Password</label>
-                <div class="col-md-9">
-                  <input type="password" class="form-control" name="passwd" placeholder="Password">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="password_confirm" class="col-md-3 control-label">Password Confirmation</label>
-                <div class="col-md-9">
-                  <input type="password" class="form-control" name="passwdconfirm" placeholder="Password Confirmation">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <!-- Button -->                                        
-                <div class="col-md-offset-3 col-md-9">
-                  <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
-                  <span style="margin-left:8px;"></span>  
-                </div>
-              </div>
-              </form>
-          </div>
-
-        </div> 
-        <%# <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <%# <%= devise_error_messages! %>
-        <%# <div><%= f.label :email %>
-          <%# <%= f.email_field :email, :autofocus => true %>
-          <%# <div><%= f.label :password %>
-            <%# <%= f.password_field :password %>
-            <%# <div><%= f.label :password_confirmation %>
-              <%# <%= f.password_field :password_confirmation %>
-              <%# <div><%= f.submit "Sign up", :class => 'btn btn-small btn-success' %>
-                <%# <% end %>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), 
+                         id: "sigupform", class: "form-horizontal", role: "form") do |f| %>
+                         <div class="form-group">
+                           <label for="email" class="col-md-3 control-label">Email</label>
+                           <div class="col-md-9">
+                             <%= f.email_field :email, type: "text", class: "form-control", 
+                               placeholder: "Email Address", :autofocus => true %>
+                           </div>
+                           </div>
+                           <div class="form-group">
+                             <label for="username" class="col-md-3 control-label">Username</label>
+                             <div class="col-md-9">
+                               <%= f.email_field :username, type: "text", class: "form-control", 
+                                 placeholder: "Username" %>
+                             </div>
+                             </div>
+                             <div class="form-group">
+                               <label for="firstname" class="col-md-3 control-label">First Name</label>
+                               <div class="col-md-9">
+                                 <input type="text" class="form-control" placeholder="First Name">
+                               </div>
+                             </div>
+                             <div class="form-group">
+                               <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                               <div class="col-md-9">
+                                 <input type="text" class="form-control" placeholder="Last Name">
+                               </div>
+                             </div>
+                             <div class="form-group">
+                               <label for="password" class="col-md-3 control-label">Password</label>
+                               <div class="col-md-9">
+                                 <%= f.email_field :password, type: "password", class: "form-control", 
+                                   placeholder: "Password" %>
+                               </div>
+                               </div>
+                               <div class="form-group">
+                                 <label for="password_confirm" class="col-md-3 control-label">Password Confirmation</label>
+                                 <div class="col-md-9">
+                                   <%= f.email_field :password_confirmation, type: "password", class: "form-control", 
+                                     placeholder: "Password Confirmation" %>
+                                 </div>
+                                 </div>
+                                 <div class="form-group">
+                                   <!-- Button -->                                        
+                                   <div class="col-md-offset-3 col-md-9">
+                                     <%= f.submit "Sign up", :class => 'btn btn-small btn-success' %><i class="icon-hand-right"></i> 
+                                     <span style="margin-left:8px;"></span>  
+                                   </div>
+                                 </div>
+                               <% end %>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                       </div> 
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div> 
+       </div>
+     </div>
+   </div>
+ </div>
