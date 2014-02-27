@@ -25,8 +25,13 @@ class RatingsController < ApplicationController
     end
 
     def index
-      @users = User.includes(:skills, :ratings)
-        #Reminder to add admin rules for this
+      # Only show users who have a skill level. 1 is technically rated as no skill
+      @table_data = User.joins(skills: :rating
+                              ).select("users.id as user_id,
+                                        users.email as user_email, 
+                                        skills.name as skill_name, 
+                                        ratings.score as rating_score"
+                                      ).where('ratings.score > 1')
     end
 
     private 

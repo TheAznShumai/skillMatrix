@@ -18,7 +18,7 @@ class Skill < ActiveRecord::Base
     private
 
     def build_default_rating
-        build_rating
+        build_rating(score: 1)
         true
     end
 
