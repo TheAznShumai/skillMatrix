@@ -11,7 +11,12 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  validates :username,
+  # HTML 5 Validates on these values below
+  validates :login, :password, :password_confirmation, 
+    :presence => true
+
+  validates :username, :email,
+    :presence => true,
     :uniqueness => {
     :case_sensitive => false
   }

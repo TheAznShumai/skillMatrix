@@ -14,14 +14,14 @@
                          <div class="form-group">
                            <label for="email" class="col-md-3 control-label">Email</label>
                            <div class="col-md-9">
-                             <%= f.email_field :email, type: "text", class: "form-control", 
-                               placeholder: "Email Address", :autofocus => true %>
+                             <%= f.email_field :email, class: "form-control", placeholder: "Email Address", 
+                               :autofocus => true %>
                            </div>
                            </div>
                            <div class="form-group">
                              <label for="username" class="col-md-3 control-label">Username</label>
                              <div class="col-md-9">
-                               <%= f.text_field :username, type: "text", class: "form-control", 
+                               <%= f.text_field :username, class: "form-control", 
                                  placeholder: "Username" %>
                              </div>
                              </div>
@@ -29,14 +29,14 @@
                                <div class="form-group">
                                <label for="firstname" class="col-md-3 control-label">First Name</label>
                                <div class="col-md-9">
-                                 <%= profile_form.text_field :first_name, type: "text", class: "form-control", 
+                                 <%= profile_form.text_field :first_name, class: "form-control", 
                                    placeholder: "First Name" %>
                                </div>
                                </div>
                                <div class="form-group">
                                  <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                  <div class="col-md-9">
-                                   <%= profile_form.text_field :last_name, type: "text", class: "form-control", 
+                                   <%= profile_form.text_field :last_name, class: "form-control", 
                                      placeholder: "Last Name" %>
                                  </div>
                                  </div>
@@ -44,14 +44,14 @@
                                  <div class="form-group">
                                    <label for="password" class="col-md-3 control-label">Password</label>
                                    <div class="col-md-9">
-                                     <%= f.password_field :password, type: "password", class: "form-control", 
+                                     <%= f.password_field :password, class: "form-control", 
                                        placeholder: "Password" %>
                                    </div>
                                    </div>
                                    <div class="form-group">
                                      <label for="password_confirm" class="col-md-3 control-label">Password Confirmation</label>
                                      <div class="col-md-9">
-                                       <%= f.password_field :password_confirmation, type: "password", class: "form-control", 
+                                       <%= f.password_field :password_confirmation, class: "form-control", 
                                          placeholder: "Password Confirmation" %>
                                      </div>
                                      </div>
