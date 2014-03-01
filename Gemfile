@@ -22,6 +22,9 @@ gem 'html5_validators'
 # Using Rest in Place to edit forms show forms with ajax
 gem 'rest_in_place'
 
+# Using Paperclip for attachments
+gem 'paperclip'
+
 # Using Font-Awesome
 gem 'font-awesome-rails'
 
