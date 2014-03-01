@@ -7,6 +7,7 @@ class Profile < ActiveRecord::Base
 
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/]
 
   validates :first_name, :last_name,
             presence: true
@@ -16,7 +17,7 @@ class Profile < ActiveRecord::Base
             presence: {format: { with: /\d{3}-\d{3}-\d{4}/, 
                                  message: "Incorrect Phone Format" }}
 
-  def fullname
+  def full_name
     "#{first_name} #{last_name}"
   end
 end

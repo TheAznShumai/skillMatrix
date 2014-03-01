@@ -1,15 +1,27 @@
 <h1>Profile Show</h1>
+<div class="panel">
+  <div class="row well">
+  <%= image_tag @profile.avatar(:small), class: "img-circle"%><br />
+  <div class="name"><small><%= @profile.full_name %></small></div>
+  <a href="#" class="btn btn-xs btn-primary pull-right" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Change cover</a>
+</div>
+</div>
+
 <div class="panel panel-default">
-    <div class="panel-heading">Panel heading</div>
-    <div class="panel-body">
-      <table class="table">
-<div id="<%= dom_id @profile %>">
-  First Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="first_name"><%= @profile.first_name %></span><br/><br/>
-  Last Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="last_name"><%= @profile.last_name %></span><br/><br/>
-  Office Phone: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="office_phone"><%= @profile.office_phone %></span><br/><br/>
-  Cell Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="cell_phone"><%= @profile.cell_phone %></span><br/><br/>
+  <div class="panel-heading">Panel heading</div>
+  <div class="panel-body">
+    <table class="table">
+      <div id="<%= dom_id @profile %>">
+        First Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="first_name"><%= @profile.first_name %></span><br/><br/>
+        Last Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="last_name"><%= @profile.last_name %></span><br/><br/>
+        Office Phone: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="office_phone"><%= @profile.office_phone %></span><br/><br/>
+        Cell Name: <span class="rest-in-place btn btn-default" data-formtype="input" data-attribute="cell_phone"><%= @profile.cell_phone %></span><br/><br/>
+        <%= form_for @profile, :url => profile_path, :html => { :multipart => true } do |form| %>
+          <%= form.file_field :avatar %>
+        <%= form.submit %>
+      <% end %>
+      </div>
+    </table>
+  </div>
 </div>
-</div>
-</table>
-</div>
-</div>
+
