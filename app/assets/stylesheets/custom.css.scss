@@ -9,7 +9,11 @@ html,body {
 h1 {
   font-family: 'Antic Slab', serif;
   font-size:65px;
-  color:#DDCCEE;
+}
+
+.background-transparent {
+  background-color:transparent;
+  border:transparent;
 }
 
 .lead {
@@ -19,6 +23,10 @@ h1 {
 
 .vertical-offset-100{
   padding-top:100px;
+}
+
+.table-nonfluid {
+  width: auto;
 }
 
 /* Wrapper for page content to push down footer */
