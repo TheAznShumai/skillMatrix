@@ -10,10 +10,10 @@
     <div class="col-md-6 col-md-offset-1">
     <table class="table table-condensed table-compact table-striped">
       <tbody>
-      <tr><td>First Name: </td> <td class="rest-in-place" data-formtype="input" data-attribute="first_name"><%= @profile.first_name %></td></tr>
-      <tr><td>Last Name: </td> <td class="rest-in-place" data-formtype="input" data-attribute="last_name"><%= @profile.last_name %></td></tr>
-      <tr><td>Office Phone: </td> <td class="rest-in-place" data-formtype="input" data-attribute="office_phone"><%= @profile.office_phone %></td></tr>
-      <tr><td>Cell Name: </td> <td class="rest-in-place" data-formtype="input" data-attribute="cell_phone"><%= @profile.cell_phone %></td></tr>
+      <tr><td>First Name: </td> <td><%= @profile.first_name %></td></tr>
+      <tr><td>Last Name: </td> <td><%= @profile.last_name %></td></tr>
+      <tr><td>Office Phone: </td> <td><%= @profile.office_phone %></td></tr>
+      <tr><td>Cell Name: </td> <td><%= @profile.cell_phone %></td></tr>
       </tbody>
     </table>
         <%= form_for @profile, :url => profile_path, :html => { :multipart => true } do |form| %>
