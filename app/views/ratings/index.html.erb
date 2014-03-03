@@ -13,7 +13,7 @@
             <% user.skills.each do |skill| %>
               <% if skill.rating.score != 0 then %>
                 <tr>
-                    <td><%= link_to user.email, user_path(user) %></td>
+                    <td><%= link_to user.email, profile_path(user) %></td>
                     <td><%= skill.name %></td>
                     <td><%= skill.rating.score %></td>    
                 </tr>

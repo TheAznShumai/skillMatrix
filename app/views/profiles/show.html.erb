@@ -1,25 +1,22 @@
 <div class="row well background-transparent">
   <div class="panel profile-back">
     <%= image_tag @profile.avatar(:small), class: "profile-pic img-circle", alt: "..." %><br />
-    <div class="name"><small><%= @profile.full_name %></small></div>
-    <a href="#" class="btn btn-xs btn-primary pull-right" style="margin:10px;"><span class="glyphicon glyphicon-picture"></span> Change cover</a>
+    <div id="name"><small><%= @profile.full_name %><br/><div id="title"><%= @profile.title %></div></small></div>
+    <%= link_to '<span class="glyphicon glyphicon-glyphicon-user"></span> Edit Profile'.html_safe, edit_profile_path(@profile),
+        :class => "btn btn-xs btn-primary pull-right", :style => "margin:10px;" %>
   </div>
 </div>
 <div class="row well background-transparent">
-  <div id="<%= dom_id @profile %>">
     <div class="col-md-6 col-md-offset-1">
     <table class="table table-condensed table-compact table-striped">
       <tbody>
       <tr><td>First Name: </td> <td><%= @profile.first_name %></td></tr>
       <tr><td>Last Name: </td> <td><%= @profile.last_name %></td></tr>
+      <tr><td>Email: </td> <td><%= @user.email %></td></tr>
       <tr><td>Office Phone: </td> <td><%= @profile.office_phone %></td></tr>
       <tr><td>Cell Name: </td> <td><%= @profile.cell_phone %></td></tr>
+      <tr><td>Department: </td> <td><%= @profile.department %></td></tr>
       </tbody>
     </table>
-        <%= form_for @profile, :url => profile_path, :html => { :multipart => true } do |form| %>
-          <%= form.file_field :avatar %>
-        <%= form.submit %>
-      <% end %>
-    </div>
   </div>
 </div>

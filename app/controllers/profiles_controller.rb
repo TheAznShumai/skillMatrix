@@ -1,6 +1,11 @@
 class ProfilesController < ApplicationController
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
   def show
-    @profile = Profile.find params[:id]
+    @profile = Profile.find(params[:id])
+    @user = User.find(@profile.user_id)
     respond_to do |format|
       format.html
       format.json {render :json => @profile}
@@ -8,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find params[:id]
+    @profile = Profile.find(params[:id])
     if @profile.update_attributes!(profile_params)
       respond_to do |format|
         format.html { redirect_to( @profile)}
@@ -25,7 +30,8 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :office_phone, :cell_phone, :avatar)
+    params.require(:profile).permit(:first_name, :last_name, :title, :office_phone, :cell_phone, 
+                                    :depatrtmant, :avatar)
   end
 
 end
