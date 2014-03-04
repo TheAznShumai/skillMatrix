@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :small => "160x160>", 
                                           :thumb => "100x100>" }, 
-                                          :default_url => "/images/:style/missing.png"
+                                          :default_url => "missing-avatar.png"
 
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
@@ -21,3 +21,4 @@ class Profile < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 end
+

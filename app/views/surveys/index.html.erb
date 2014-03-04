@@ -1,8 +1,15 @@
 <h1>Survey</h1>
 
+<%= will_paginate @surveys, class:"text-right" %>
 <% @surveys.each do |survey| %>
   <div class="row well">
-    <%= link_to image_tag(survey.icon(:ipad)), survey %> <br />
+    <div class="col-md-2">
+      <%= link_to image_tag(survey.icon(:small)), survey %>
+    </div>
+    <div class="col-md-10">
+      <h2><%= link_to survey.name, survey %></h2>
+      <p>Here should be some description of the survey for people to take.</p>
+    </div>
   </div>
 <% end %> 
 
