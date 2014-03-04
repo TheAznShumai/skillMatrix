@@ -3,6 +3,16 @@ jQuery(function() {
         "sPaginationType": "bootstrap"
     });
 });
+$(function() {
+    $('.rating_star').hover(function() {
+      var stars = $(this).attr("data-stars");
+      var form_id = $(this).attr("data-form-id");
+      set_stars(form_id, stars);
+    },
+    function() {
+      update_stars();
+    });
+});
 
 $(function() {
     $('.rating_star').click(function() {
