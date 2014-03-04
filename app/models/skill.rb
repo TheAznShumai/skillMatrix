@@ -9,8 +9,9 @@ class Skill < ActiveRecord::Base
         skills = []
         user_id = user.id
         skill_names.each do |f|
-            skills << Skill.where(user_id: user_id, name: f.name).first_or_create(
-                :name => f.name)
+          name = (f.name).downcase
+          skills << Skill.where(user_id: user_id, name: name).first_or_create(
+                                :name => name)
         end
         return skills
     end

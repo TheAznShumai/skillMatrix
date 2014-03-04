@@ -3,10 +3,10 @@
 <small>Note that this page does not need to be submitted</small></p>
 <div class="container">
 <% @skills.each do |skill| %> 
-  <div class="row">
+  <div class="row background-transparent">
   <div class="col-md-6">
-  <div class="row well">
-    <p class="text-left col-md-8 skill_name"><%= skill.name %><br/><small>Hey more text here</small></p>
+  <div class="col-md-12">
+    <p class="text-left col-md-8 skill_name"><%= (skill.name).titleize %><br/><small>Hey more text here</small></p>
     <div class="col md-4">
     <% user_id = current_user.id %> 
     <%# currently designed so that only current_user should be editing their own rating %>
