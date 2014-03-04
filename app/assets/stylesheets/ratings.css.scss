@@ -9,12 +9,12 @@ li.rating_star {
     float: left;
     margin: 0;
     padding: 0; 
-    width: 25px;
-    height: 25px;
+    width: 32px;
+    height: 32px;
     background: image-url("star.png") top left;
 } 
 
 li.rating_star.on {
-    background: image-url("star.png") 0 -25px;
+    background: image-url("star.png") 0 -32px;
 } 
 
