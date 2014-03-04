@@ -1,7 +1,8 @@
-<h1>Survey#index</h1>
-<p>Find me in app/views/survey/index.html.erb</p>
+<h1>Survey</h1>
 
 <% @surveys.each do |survey| %>
-    <%= link_to survey.name, survey %> <br />
+  <div class="row well">
+    <%= link_to image_tag(survey.icon(:ipad)), survey %> <br />
+  </div>
 <% end %> 
 
