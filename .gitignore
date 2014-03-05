@@ -15,6 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore uploaded pictures
-/public/system/**/*
+# Ignore all public files 
+/public/
 
