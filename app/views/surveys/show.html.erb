@@ -1,34 +1,33 @@
 <h1 class=""><%= @survey.name %></h1>
 <p>Please rate yourself on the following skill fields.<br/>
 <small>Note that this page does not need to be submitted</small></p>
-<div class="container">
+
 <% @skills.each do |skill| %> 
   <div class="row background-transparent">
-  <div class="col-md-6">
-  <div class="col-md-12">
-    <p class="text-left col-md-8 skill_name"><%= (skill.name).titleize %><br/><small>Hey more text here</small></p>
-    <div class="col md-4">
-    <% user_id = current_user.id %> 
-    <%# currently designed so that only current_user should be editing their own rating %>
-    <% @rating = Rating.find_by skill_id: skill.id %>  
-    <%# get_rating works on skill_id that is linked to current_user  - returns only first%>
+  <div class="col-md-9">
+    <div class="row well">
+      <p class="text-left col-md-9 skill_name"><%= (skill.name).titleize %><br/><small>How do you rate yourself in the following?</small></p>
+      <div class="col md-4">
+        <% user_id = current_user.id %> 
+        <%# currently designed so that only current_user should be editing their own rating %>
+        <% @rating = Rating.find_by skill_id: skill.id %>  
+        <%# get_rating works on skill_id that is linked to current_user  - returns only first%>
 
-    <% form_id = "skill_#{skill.id}_rating" %>
+        <% form_id = "skill_#{skill.id}_rating" %>
 
-    <%= form_for @rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
-        <%= f.hidden_field :skill_id, :value => skill.id %>
+        <%= form_for @rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
+          <%= f.hidden_field :skill_id, :value => skill.id %>
         <%= f.hidden_field :score, :id => form_id + "_stars" %>
-    <% end %>
+      <% end %>
 
-    <% (1..5).each do |i| %>
+        <% (1..5).each do |i| %>
 
-        <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="
+          <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="
         <%= i %>" data-form-id="<%= form_id %>"></li>
 
-    <% end %>
-  </div>
-  </div>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>
-</div>

@@ -1,5 +1,4 @@
 class SurveysController < ApplicationController
-    
     def new
         @survey = Survey.new
         @survey.rateable_skills.build
