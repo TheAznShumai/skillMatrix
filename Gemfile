@@ -75,5 +75,6 @@ group :development, :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'coffee-rails-source-maps'
 end
 
