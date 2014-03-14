@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable,
     :authentication_keys => [:login]
 
-  has_one :profile, dependent: :destroy
-  has_many :skills, dependent: :destroy
-  has_many :ratings, through: :skills
+  has_one :profile, :dependent => :destroy
+  has_many :skills, :dependent => :destroy
+  has_many :ratings, :through => :user_skills
 
   accepts_nested_attributes_for :profile
 
