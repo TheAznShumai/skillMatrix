@@ -1,8 +1,8 @@
 class Skill < ActiveRecord::Base
-    has_one :rating, dependent: :destroy
+    has_one :rating, :dependent => :destroy
     # before_create :build_default_rating
 
-    belongs_to :user
+    has_many :users, :through => :user_skills
     validates :name, presence: true
 
     def self.add_to_skills(user, skill_names)
