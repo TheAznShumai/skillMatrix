@@ -3,10 +3,12 @@ class Skill < ActiveRecord::Base
     has_many :users, :through => :user_skills
     validates :name, presence: true
 
-    def self.add_to_skills(user, rateable_skills)
-        rateable_skills.each do |rateable_skill|
-          name = (rateable_skill.name).downcase
-          user.skills.find_or_create_by(:name => name) 
+    def self.add_to_skills(user, skill_names)
+        skills = []
+        skill_names.each do |skill_name|
+          skills << user.skills.find_or_create_by(
+                      :name => skill_name.downcase)
         end
+        skills.collect{ |skill| skill.id }
     end
 end

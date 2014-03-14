@@ -11,7 +11,7 @@
     <tbody>
         <% @users.each do |user| %>
             <% user.ratings.each do |rating| %>
-              <% if rating.score != 0 then %>
+              <% if rating.score != 1 then %>
                 <tr>
                     <td><%= link_to user.email, profile_path(user) %></td>
                     <td><%= rating.user_skill.skill.name %></td>
