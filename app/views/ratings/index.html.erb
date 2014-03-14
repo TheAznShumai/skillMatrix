@@ -10,12 +10,12 @@
     </thead>
     <tbody>
         <% @users.each do |user| %>
-            <% user.skills.each do |skill| %>
-              <% if skill.rating.score != 0 then %>
+            <% user.ratings.each do |rating| %>
+              <% if rating.score != 0 then %>
                 <tr>
                     <td><%= link_to user.email, profile_path(user) %></td>
-                    <td><%= skill.name %></td>
-                    <td><%= skill.rating.score %></td>    
+                    <td><%= rating.user_skill.skill.name %></td>
+                    <td><%= rating.score %></td>    
                 </tr>
               <% end %>
             <% end %>

@@ -3,7 +3,7 @@ class RatingsController < ApplicationController
         @rating = Rating.new(params[:rating])
             respond_to do |format|
                 if @rating.save
-                    format.json { render :json => { :avg_rating => @skill.avg_rating } }
+                    format.json
                 else
                     format.json { render :json => @rating.errors, :status => :unprocessable_entity }
                 end
@@ -12,12 +12,11 @@ class RatingsController < ApplicationController
 
     def update
         @rating = Rating.find(params[:id])
-        @skill = Skill.find(params[:rating][:skill_id])
         @rating.update_attributes(new_rating_params)
         
         respond_to do |format|
             if @rating.save
-                format.json { render :json => { :avg_rating => @skill.rating.score } }
+                format.json { render :json => { :avg_rating => @rating.score } }
             else
                 format.json { render :json => @rating.errors, :status => :unprocessable_entity }
             end
@@ -25,14 +24,13 @@ class RatingsController < ApplicationController
     end
 
     def index
-      # Only show users who have a skill level. 1 is technically rated as no skill
-      @users = User.includes(skills: :rating).references(:rating).where('ratings.score > ?', 1)
+      @users = User.all
     end
 
     private 
 
     def new_rating_params
-        params.require(:rating).permit(:skill_id, :score)
+        params.require(:rating).permit(:user_skill_id, :score)
     end
 
     def avg_rating
