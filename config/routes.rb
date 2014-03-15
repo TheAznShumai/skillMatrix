@@ -1,4 +1,8 @@
 SkillMatrix::Application.routes.draw do
+  get "questions/new"
+  get "questions/create"
+  get "questions/update"
+  get "questions/delete"
   devise_for :users
   resources :users, only: [:index, :show]
   resources :profiles, only: [:show, :edit, :update]
