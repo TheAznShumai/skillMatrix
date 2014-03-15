@@ -5,27 +5,8 @@
 <% @ratings.each do |rating| %> 
   <div class="row background-transparent">
   <div class="col-md-9">
-    <div class="row well">
-      <p class="text-left col-md-9 skill_name">
-      <%= rating.user_skill.skill.name.titleize %><br/>
-      <small>How do you rate yourself in the following?</small></p>
-      <div class="col md-4">
-
-        <% form_id = "skill_#{rating.user_skill_id}_rating" %>
-
-        <%= form_for rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
-          <%= f.hidden_field :user_skill_id, :value => rating.user_skill_id %>
-        <%= f.hidden_field :score, :id => form_id + "_stars" %>
-      <% end %>
-
-        <% (1..5).each do |i| %>
-
-          <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="
-        <%= i %>" data-form-id="<%= form_id %>"></li>
-
-      <% end %>
-      </div>
-    </div>
+    <%= render 'skill_rating_form', :rating => rating %>
   </div>
 </div>
 <% end %>
+
