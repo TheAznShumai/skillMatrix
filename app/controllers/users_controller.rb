@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = (User.where(id: params[:id]).includes(:skills, :ratings)).first
+      @user = User.where(id: params[:id]).includes(:skills, :ratings)
   end
 
   def new_user_params
-      params.require.(:user).permit(:id)
+      params.require.(:user).permit(:login)
   end
 end

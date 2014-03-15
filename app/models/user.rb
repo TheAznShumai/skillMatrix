@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :authentication_keys => [:login]
 
   has_one :profile, :dependent => :destroy
   has_many :user_skills, :dependent => :destroy
@@ -14,34 +14,25 @@ class User < ActiveRecord::Base
 
   # HTML 5 Validates on these values below
   validates :login, :password, :password_confirmation, 
-    :presence => true
+            :presence => true
 
   validates :username, :email,
-    :presence => true,
-    :uniqueness => {
-    :case_sensitive => false
-  }
+            :presence => true,
+            :uniqueness => { :case_sensitive => false }
 
-    attr_accessor :login
+  # Login accessor for the user to pick username/email for login
+  attr_accessor :login
 
-    private
+  private
 
-    def login=(login)
-      @login = login
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = lower(:value) OR lower(email) = lower(:value)", 
+                               { :value => login.downcase }]).first
+    else
+      where(conditions).first
     end
-
-    def login
-      @login || self.username || self.email
-    end
-
-    def self.find_first_by_auth_conditions(warden_conditions)
-      conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions).where(["lower(username) = lower(:value) OR lower(email) = lower(:value)", 
-                                 { :value => login.downcase }]).first
-      else
-        where(conditions).first
-      end
-    end
-
+  end
 end
+
