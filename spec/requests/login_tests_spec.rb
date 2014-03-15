@@ -25,7 +25,8 @@ describe "LoginTests" do
      fill_in "username or email", :with => @user.username 
      fill_in "password", :with => "bad_password" 
      click_button('Login')
-   end 
+   end
+   sould have_content('Error')
+  end 
 
-  end
 end
