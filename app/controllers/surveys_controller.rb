@@ -18,16 +18,6 @@ class SurveysController < ApplicationController
       @surveys = Survey.where(true).paginate(:page => params[:page], :per_page => 3)
     end
 
-    def show
-        @survey = Survey.find(params[:id])
-        rateable_skills = @survey.rateable_skills.where(true).pluck(:name)
-        skill_ids = Skill.add_to_skills(current_user, rateable_skills)
-        @ratings = current_user.ratings.joins(:user_skill).find(
-                                              :all, :conditions => 
-                                            { :user_skills => 
-                                            { :skill_id =>  skill_ids }}) 
-    end
-
     private
 
     def new_survey_params
