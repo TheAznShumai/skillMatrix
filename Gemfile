@@ -6,10 +6,6 @@ gem 'rails', '4.0.2'
 # Using PSql
 gem 'pg'
 
-# Using Pry
-gem 'pry-rails', :group => :development                                         
-gem 'pry-debugger', :group => :development                                         
-
 # Using Devise for login
 gem 'devise', github: 'plataformatec/devise'
 
@@ -76,5 +72,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'launchy'
   gem 'coffee-rails-source-maps'
+  gem 'jazz_hands'
 end
 
