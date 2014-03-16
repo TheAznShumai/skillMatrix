@@ -1,6 +1,18 @@
 <h1 class=""><%= @survey.name %></h1>
 <p>Please rate yourself on the following skill fields.<br/>
 <small>Note that this page does not need to be submitted</small></p>
+<%= form_for @attempt, :url => survey_attempt_path(:id => @survey.id) do |f| %>
+<% @questions.each do |question| %>
+  <div class="row background-transparent">
+    <%= render 'question_form', :question => question %>
+    <%= f.fields_for :answers do |builder| %>
+      <small>Enter a Answer</small>
+      <%= builder.text_area :text %>
+      <% builder.hidden_field :question_id, :value => question.id %>
+    <% end %>
+    <% end %>
+  </div>
+<% end %>
 
 <% @ratings.each do |rating| %> 
   <div class="row background-transparent">
@@ -9,4 +21,4 @@
   </div>
 </div>
 <% end %>
-
+</div>
