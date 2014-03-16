@@ -1,14 +1,14 @@
 SkillMatrix::Application.routes.draw do
-  get "questions/new"
-  get "questions/create"
-  get "questions/update"
-  get "questions/delete"
   devise_for :users
   resources :users, only: [:index, :show]
   resources :profiles, only: [:show, :edit, :update]
   resources :skills
   resources :ratings, only: [:update, :create, :index]
-  resources :surveys
+
+  resources :surveys do
+    resources :attempts
+  end
+
   resources :rateable_skills
 
   root 'static_pages#home'
