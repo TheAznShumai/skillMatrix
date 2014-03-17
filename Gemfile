@@ -66,12 +66,17 @@ end
 # gem 'capistrano', group: :development
 
 group :development, :test do
+  # TTD gems
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'guard-rspec'
   gem 'launchy'
+
+  # debug gems
   gem 'coffee-rails-source-maps'
   gem 'jazz_hands'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
