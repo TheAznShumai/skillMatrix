@@ -18,13 +18,16 @@ class AttemptsController < ApplicationController
 
   def create
     @attempt = Attempt.new(new_attempt_params)
+    if @attempt.save
+      redirect_to root_url
+    end
   end
 
   private
 
   def new_attempt_params
     params.require(:attempt).permit(:user_id, :survey_id,
-                                    :answers_attributes => [:text])
+                   :answers_attributes => [:question_id, :text])
   end
 
 end
