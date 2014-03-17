@@ -5,10 +5,10 @@
 <% @questions.each do |question| %>
   <div class="row background-transparent">
     <%= render 'question_form', :question => question %>
-    <%= f.fields_for :answers do |builder| %>
+    <%= f.fields_for :answers do |answer| %>
       <small>Enter a Answer</small>
-      <%= builder.text_area :text %>
-      <% builder.hidden_field :question_id, :value => question.id %>
+      <%= answer.text_area :text %>
+      <% answer.hidden_field :question_id, :value => question.id %>
     <% end %>
     <% end %>
   </div>
