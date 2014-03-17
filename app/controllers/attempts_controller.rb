@@ -23,6 +23,9 @@ class AttemptsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   private
 
   def new_attempt_params

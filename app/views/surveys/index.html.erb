@@ -7,9 +7,9 @@
       <%= link_to image_tag(survey.icon(:small)), survey %>
     </div>
     <div class="col-md-10">
-      <h2><%= link_to survey.name, new_survey_attempt_path(:survey_id => survey.id) %></h2>
+      <h2><%= link_to survey.name, new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %></h2>
       <p>Here should be some description of the survey for people to take.</p>
     </div>
   </div>
-<% end %> 
+<% end %>
 
