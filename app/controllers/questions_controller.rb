@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:text])
+    @question = Question.new(new_question_params)
     if @question.save
       redirect_to root_url
     end
@@ -14,6 +14,12 @@ class QuestionsController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+
+  def new_question_params
+    params.require(:question).permit(:text)
   end
 end
 
