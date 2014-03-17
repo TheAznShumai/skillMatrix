@@ -12,9 +12,8 @@
     <% end %>
     <% end %>
   </div>
-<% end %>
 
-<% @ratings.each do |rating| %> 
+<% @ratings.each do |rating| %>
   <div class="row background-transparent">
   <div class="col-md-9">
     <%= render 'skill_rating_form', :rating => rating %>
@@ -22,3 +21,6 @@
 </div>
 <% end %>
 </div>
+    <%= f.submit %>
+<% end %>
+
