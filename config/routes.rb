@@ -1,5 +1,5 @@
 SkillMatrix::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:sessions => "sessions"}
   resources :users, only: [:index, :show]
   resources :profiles, only: [:show, :edit, :update]
   resources :skills
@@ -11,7 +11,7 @@ SkillMatrix::Application.routes.draw do
 
   resources :rateable_skills
 
-  root 'static_pages#home'
+  root "static_pages#home"
 
   get "static_pages/home"
   get "users/sign_in" => 'user#sign_in', as: :sign_in
