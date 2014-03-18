@@ -78,5 +78,6 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
