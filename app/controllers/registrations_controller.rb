@@ -1,44 +1,29 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
+    #sign_up_params have been sanitized in application controller
     build_resource(sign_up_params)
-
-    binding.pry
     if resource.save
-      respond_to do |format|
-        format.html {
-          yield resource if block_given?
-          if resource.active_for_authentication?
-            set_flash_message :notice, :signed_up if is_flashing_format?
-            sign_up(resource_name, resource)
-            respond_with resource, :location => after_sign_up_path_for(resource)
-          else
-            set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
-            expire_data_after_sign_in!
-            respond_with resource, :location => after_inactive_sign_up_path_for(resource)
-          end
-        }
-        format.json {
-          flash[:notice] = "Created account, signed in."
-          render :template => "remote_content/devise_success_sign_up.js.erb"
-          flash.discard
-          sign_up(resource_name, resource)
-        }
-      end
-    else
-      respond_to do |format|
-        format.html {
-          clean_up_passwords resource
-          respond_with resource
-        }
-        format.json {
-      binding.pry
-          flash[:alert] = @user.errors.full_messages.to_sentence
-          # render :template => "remote_content/devise_errors.js.erb"
-          flash.discard
-        }
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_up(resource_name, resource)
+        render_format("success")
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        render_format("confirmation")
       end
     end
+      clean_up_passwords resource
+      render_format("failure")
   end
+
+  def render_format(action="failure")
+    respond_to do |format|
+      format.html { super }
+      format.js { render :action => action }
+    end
+  end
+
 end
 
