@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
 
   has_many :user_skills, :dependent => :destroy
-  has_many :skills, :through => :user_skills 
+  has_many :skills, :through => :user_skills
   has_many :ratings, :through => :user_skills
 
   has_many :attempts, :dependent => :destroy
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   # HTML 5 Validates on these values below
-  validates :login, :password, :password_confirmation, 
+  validates :password, :password_confirmation,
             :presence => true
 
   validates :username, :email,
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = lower(:value) OR lower(email) = lower(:value)", 
+      where(conditions).where(["lower(username) = lower(:value) OR lower(email) = lower(:value)",
                                { :value => login.downcase }]).first
     else
       where(conditions).first
