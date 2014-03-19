@@ -1,0 +1,4 @@
+$ ->
+  alert 'success'
+  location.reload
+
