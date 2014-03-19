@@ -8,4 +8,10 @@ jQuery ->
       location.reload()
     else
       alert('failure!')
-
+ 
+  $('signupform').bind 'ajax:success', (e, data, status, xhr) ->
+    if data.success
+      $('#signupform').modal('hide')
+      location.reload()
+    else
+      alert('failure!')
