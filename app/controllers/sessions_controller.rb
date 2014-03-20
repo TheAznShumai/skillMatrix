@@ -19,7 +19,6 @@ class SessionsController < Devise::SessionsController
   end
 
   def failure
-    flash[:notice] = 'failed'
     respond_to do |format|
       format.js {render :action => "failure"}
     end
