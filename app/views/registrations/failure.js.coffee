@@ -1,2 +1,2 @@
-$ ->
-  alert 'Yay failed'
+$('#signup-flash-errors').html('<%= j render "shared/flash_messages" %>')
+

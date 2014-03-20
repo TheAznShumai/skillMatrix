@@ -13,6 +13,7 @@
                          :html => {:id => "signupform"},
                          :remote => true) do |f| %>
                          <% resource.build_profile %>
+                         <div id="signup-flash-errors"></div>
                          <div class="form-group">
                            <label for="email" class="col-md-3 control-label">Email</label>
                            <div class="col-md-9">
