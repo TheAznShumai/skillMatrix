@@ -19,6 +19,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def failure
+    flash.clear
     respond_to do |format|
       format.js {render :action => "failure"}
     end
