@@ -14,9 +14,9 @@ class RegistrationsController < Devise::RegistrationsController
         render_format("confirmation")
       end
     end
-      flash[:error] = resource.errors.full_messages.join("\n")
-      clean_up_passwords resource
-      render_format("failure")
+    flash[:error] = resource.errors.full_messages.uniq.join("\n")
+    clean_up_passwords resource
+    render_format("failure")
   end
 
   def render_format(action="failure")
