@@ -23,5 +23,9 @@ $(document).on 'ready page:load', ->
         $('#survey-builder-yield').find('#' + navClickedLinkId).show()
 
     $(document).on 'keyup', '.survey-name', (event) ->
-      $('.active').find('a').text($(this).find('input').val())
+      newTabVal = $(this).find('input').val()
+      if newTabVal != ''
+        $('.active').find('a').text(newTabVal)
+      else
+        $('.active').find('a').text('...')
 
