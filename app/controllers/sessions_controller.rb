@@ -2,6 +2,7 @@ class SessionsController < Devise::SessionsController
 
   def create
     if request.xhr?
+      flash.clear
       resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#failure")
       sign_in_and_redirect(resource_name, resource)
     else
@@ -19,7 +20,6 @@ class SessionsController < Devise::SessionsController
   end
 
   def failure
-    flash.clear
     respond_to do |format|
       format.js {render :action => "failure"}
     end
