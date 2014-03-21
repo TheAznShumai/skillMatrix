@@ -10,7 +10,7 @@ class SurveysController < ApplicationController
         @survey = Survey.new(new_survey_params)
         flash.clear
         if @survey.save
-          flash[:success] = "#{@suvey.name} has been saved"
+          flash[:success] = "Survey \"#{@survey.name}\" has been saved"
           format_response
         else
           flash[:error] = @survey.errors.full_messages.uniq.join("\n")
