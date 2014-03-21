@@ -1,7 +1,18 @@
-<fieldset>
-    <%= f.label :Skill %> 
-    <%= f.text_field :name %>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to "remove", '#', class: "remove_fields" =%>
-</fieldset>
 
+<fieldset>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Please rate yourself on the following.
+  </div>
+</div>
+    <div class="panel-body horizontal-form">
+      <%= f.text_field :name, :class => "form-control", :placeholder => "Enter a SkillName" %>
+    </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-right">
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "remove", '#', :class => "btn btn-danger remove_fields" %>
+      </div>
+  </div>
+</div>
+</fieldset>
