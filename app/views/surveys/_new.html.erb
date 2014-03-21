@@ -1,12 +1,5 @@
-<h3>Survey Builder</h3>
 
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Messages</a></li>
-  </ul>
-
-<%= form_for @survey do |f| %>
+<%= form_for @survey, :remote => true do |f| %>
   <div class="field">
   <%= f.label "Survey Name" %>
   <%= f.text_field :name %>
