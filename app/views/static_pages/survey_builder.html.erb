@@ -1,9 +1,8 @@
 <h3>Survey Builder</h3>
 
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#">Home</a></li>
-    <li><a href="#">Profile</a></li>
-    <li><a href="#">Messages</a></li>
-  </ul>
+    <li id="survey-builder" class="active"><a href="#">Home</a></li>
+</ul>
+<br/>
 
-
+<%= link_to "Add a new Survey", new_survey_path, :class => "btn btn-primary", :remote => true %>
