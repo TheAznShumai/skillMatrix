@@ -15,6 +15,7 @@ SkillMatrix::Application.routes.draw do
   root "static_pages#home"
 
   get "static_pages/home"
+  get "static_pages/survey_builder"
   get "users/sign_in" => 'user#sign_in', as: :sign_in
 
   # The priority is based upon order of creation: first created -> highest priority.
