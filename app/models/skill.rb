@@ -3,6 +3,8 @@ class Skill < ActiveRecord::Base
     has_many :users, :through => :user_skills
     validates :name, presence: true
 
+    private
+
     def self.add_to_skills(user, skill_names)
         skills = []
         skill_names.each do |skill_name|
