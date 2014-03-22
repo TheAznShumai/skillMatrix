@@ -9,8 +9,8 @@ gem 'pg'
 # Using Devise for login
 gem 'devise', github: 'plataformatec/devise'
 
-# Using Formtastic
-gem 'formtastic'
+# Using tags
+gem 'acts-as-taggable-on'
 
 # Using html5 validator for Client_Side_Validation
 gem 'html5_validators'

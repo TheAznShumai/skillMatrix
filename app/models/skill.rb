@@ -3,6 +3,8 @@ class Skill < ActiveRecord::Base
     has_many :users, :through => :user_skills
     validates :name, presence: true
 
+    acts_as_taggable
+
     private
 
     def self.add_to_skills(user, skill_names)

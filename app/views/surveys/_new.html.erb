@@ -1,12 +1,20 @@
 
 <%= form_for @survey, :remote => true do |f| %>
-  <div class="survey-name">
+  <div class="survey-name form-group">
     <%= f.text_field :name, :class => "form-control", :placeholder => "Enter a Survey Name" %>
   </div>
+  <div class="row">
+  <div class="col-md-9">
+    <%= f.text_field :tag_list, :class => "form-control", :placeholder => "Enter Tags (separated by commas)" %>
+  </div>
+</div>
+
 <br/>
 
+<div class="form-group">
 <%= link_to_add_fields "Add Question", f, :questions %><br/>
 <%= link_to_add_fields "Add Skill", f, :rateable_skills %>
+</div>
 
 <div class="actions">
   <%= f.submit "Submit Survey", :class => "btn btn-primary" %>

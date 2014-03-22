@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActsAsTaggableOn::TagsHelper
 
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
