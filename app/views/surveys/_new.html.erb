@@ -4,8 +4,11 @@
     <%= f.text_field :name, :class => "form-control", :placeholder => "Enter a Survey Name" %>
   </div>
   <div class="row">
-  <div class="col-md-9">
-    <%= f.text_field :tag_list, :class => "form-control", :placeholder => "Enter Tags for this Survey(separated by commas)" %>
+  <div class="col-md-8">
+    <%= f.text_field :tag_list, :class => "form-control", :placeholder => "Enter Tags for this Survey (separated by commas)" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.file_field :icon, :class => "btn btn-default" %>
   </div>
 </div>
 
