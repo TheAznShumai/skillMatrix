@@ -18,7 +18,7 @@ class SurveysController < ApplicationController
     end
 
     def index
-      @surveys = Survey.where(true).paginate(:page => params[:page], :per_page => 3)
+      @surveys = Survey.where(true)
     end
 
     private
