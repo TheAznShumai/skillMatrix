@@ -1,8 +1,18 @@
 <h1>Survey</h1>
+<ul id="filterOptions">
+  <li class="active"><a href="#" class="all">All</a></li>
+  <li><a href="#" class="prem">Premier League</a></li>
+  <li><a href="#" class="champ">Championship</a></li>
+  <li><a href="#" class="league1">League 1</a></li>
+  <li><a href="#" class="league2">League 2</a></li>
+</ul>
 
-<% @surveys.each do |survey| %>
+<ul class="holder">
+  <% @surveys.each do |survey| %>
+    <li class="item" data-id=<%= "#{survey.id}" %> data-type="add a tag from survey">
       <%= link_to image_tag(survey.icon(:small)), survey %>
-      <%= link_to survey.name, new_or_edit_attempt_path(survey,
-                               current_user.attempts.where(:survey_id => survey.id)) %>
-<% end %>
+      <%= link_to survey.name, new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
+    </li>
+  <% end %>
+</ul>
 
