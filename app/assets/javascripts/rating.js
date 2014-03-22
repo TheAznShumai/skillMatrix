@@ -1,7 +1,7 @@
-jQuery(function() {
-    $('#ratings').dataTable({
-        "sPaginationType": "bootstrap"
-    });
+$(function() {
+  $('#ratings').dataTable({
+    "sPaginationType": "bootstrap"
+  });
 });
 
 $(function() {
