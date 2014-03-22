@@ -5,8 +5,10 @@
       Please rate yourself on the following.
     </div>
     <div class="panel-body inline">
-      <div class="form-group">
-        <%= f.text_field :name, :class => "form-inline col-md-7", :placeholder => "Enter a Skill to Rate" %>
+      <div class="row">
+        <div class="col-md-7">
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Enter a Skill to Rate" %>
+      </div>
         <div class="col-md-5">
           <ul class="list-inline pull-right">
             <% (1..5).each do |i| %>
@@ -14,8 +16,8 @@
             <% end %>
           </ul>
         </div>
-      </div>
-      <%= f.text_field :tag_list, :class => "form col-md-5", :placeholder => "Enter Tags (separated by commas)" %>
+    </div>
+      <%= f.text_field :tag_list, :class => "form-control", :placeholder => "Enter Tags for this Skill(separated by commas)" %>
     </div>
     <div class="panel-footer clearfix">
       <div class="pull-right">
