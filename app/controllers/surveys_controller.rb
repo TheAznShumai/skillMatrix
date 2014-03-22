@@ -18,7 +18,8 @@ class SurveysController < ApplicationController
     end
 
     def index
-      @surveys = Survey.where(true)
+      @surveys = Survey.where(true).includes(:tags)
+      @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck(:name)
     end
 
     private
