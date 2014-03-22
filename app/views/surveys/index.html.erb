@@ -7,11 +7,12 @@
   <li><a href="#" class="league2">League 2</a></li>
 </ul>
 
-<ul class="holder">
-  <% @surveys.each do |survey| %>
-    <li class="item" data-id=<%= "#{survey.id}" %> data-type="add a tag from survey">
-      <%= link_to image_tag(survey.icon(:small)), survey %>
-      <%= link_to survey.name, new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
+<ul class="holder list-inline">
+  <% @surveys.each_with_index do |survey, index| %>
+        <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-type="league1">
+        <%= link_to image_tag(survey.icon(:small)), survey%><br/>
+        <%= link_to survey.name,
+            new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
     </li>
   <% end %>
 </ul>

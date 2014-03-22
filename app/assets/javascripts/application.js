@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require quicksand
 //= require quicksand-holder
 //= require bootstrap
