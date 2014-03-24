@@ -2,7 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.extra-bottom-padding{
+  margin-bottom: 40px;
+}
+
 #filter{
-  margin-top: 20px;
   margin-bottom: 20px;
 }

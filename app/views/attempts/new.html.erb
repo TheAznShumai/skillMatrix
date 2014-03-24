@@ -1,28 +1,43 @@
-<h1 class=""><%= @survey.name %></h1>
-<p>Please rate yourself on the following skill fields.<br/>
-<small>Note that this page does not need to be submitted</small></p>
+<div id="attempts-flash-messages"></div>
+<h3 class="extra-bottom-padding"><%= @survey.name %></h3>
 <%= form_for [@survey, @attempt] do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :survey_id, :value => @survey.id %>
-    <% @questions.each do |question| %>
-      <div class="row background-transparent">
-        <%= render 'question_form', :question => question %>
-        <small>Enter a Answer</small>
-        <%= f.fields_for :answers do |answer| %>
-          <%= answer.text_area :text %>
-          <%= answer.hidden_field :question_id, :value => question.id %>
+  <% @questions.each do |question| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><b><%= question.text %></b></div>
+      <div class="panel-body horizontal-form">
+          <%= f.fields_for :answers do |answer| %>
+            <%= answer.text_area :text, :class => "form-control", :rows => "3" %>
+            <%= answer.hidden_field :question_id, :value => question.id %>
+          <% end %>
         <% end %>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Please rate yourself on the following.</div>
+        <div class="panel-body inline">
+      <% @ratings.each do |rating| %>
+          <div class="row">
+            <div class="col-md-7">
+              <h5><%= rating.user_skill.skill.name.titleize %></h5>
+              <% form_id = "skill_#{rating.user_skill_id}_rating" %>
+              <%= form_for rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
+                <%= f.hidden_field :user_skill_id, :value => rating.user_skill_id %>
+              <%= f.hidden_field :score, :id => form_id + "_stars" %>
+            <% end %>
+            </div>
+            <div class="col-md-5">
+              <ul class="list-inline pull-right">
+                <% (1..5).each do |i| %>
+                  <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      <%= f.submit "Submit Survey", :class => "btn btn-primary" %>
     <% end %>
-    <%= f.submit %>
-<% end %>
-  </div>
-
-<% @ratings.each do |rating| %>
-  <div class="row background-transparent">
-  <div class="col-md-9">
-    <%= render 'skill_rating_form', :rating => rating %>
-  </div>
-</div>
-<% end %>
-</div>
 
