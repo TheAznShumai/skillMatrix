@@ -4,5 +4,5 @@
 
 $(document).ready ->
   $('#attempt-submit-button').click ->
-    $('#new_attempt').submit()
+    $('.new_attempt, .edit_attempt').submit()
 
