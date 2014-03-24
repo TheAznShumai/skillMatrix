@@ -8,20 +8,20 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
-        render_format("success")
+        format_response("success")
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
         expire_session_data_after_sign_in!
-        render_format("confirmation")
+        format_response("confirmation")
       end
     else
       flash[:error] = resource.errors.full_messages.uniq.join("\n")
       clean_up_passwords resource
-      render_format("failure")
+      format_response("failure")
     end
   end
 
-  def render_format(action="failure")
+  def format_response(action="failure")
     respond_to do |format|
       format.html { super }
       format.js { render :action => action }
