@@ -7,6 +7,7 @@ SkillMatrix::Application.routes.draw do
   resources :ratings, only: [:update, :create, :index]
 
   resources :surveys do
+    get 'admin', :to => 'survey#admin'
     resources :attempts
   end
 

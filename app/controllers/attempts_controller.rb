@@ -4,7 +4,7 @@ class AttemptsController < ApplicationController
   def new
     @attempt = Attempt.new
     @attempt.answers.build
- end
+  end
 
   def create
     @attempt = Attempt.new(new_attempt_params)
