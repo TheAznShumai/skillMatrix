@@ -1,0 +1,5 @@
+<%= f.fields_for :answers do |answer| %>
+  <%= answer.text_area :text, :class => "form-control", :rows => "3" %>
+  <%= answer.hidden_field :question_id, :value => question.id %>
+<% end %>
+
