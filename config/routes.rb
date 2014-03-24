@@ -1,23 +1,24 @@
 SkillMatrix::Application.routes.draw do
+  # TODO - Add more restrictions and Clean Me
   devise_for :users, :controllers => {:sessions => "sessions",
                                       :registrations => "registrations"}
-  resources :users, only: [:index, :show]
-  resources :profiles, only: [:show, :edit, :update]
+  resources :users, :only => [:index, :show]
+  resources :profiles, :only => [:show, :edit, :update]
+  resources :rateable_skills
   resources :skills
-  resources :ratings, only: [:update, :create, :index]
+  resources :ratings, :only => [:update, :create, :index]
 
   resources :surveys do
-    get 'admin', :to => 'survey#admin'
     resources :attempts
   end
 
-  resources :rateable_skills
-
-  root "static_pages#home"
+  get 'admin_surveys', :to => 'surveys#admin'
 
   get "static_pages/home"
   get "static_pages/survey_builder"
-  get "users/sign_in" => 'user#sign_in', as: :sign_in
+  get "users/sign_in", :to => 'user#sign_in', :as => :sign_in
+
+  root "static_pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
