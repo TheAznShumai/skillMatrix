@@ -23,6 +23,13 @@ $(document).ready ->
             $('#survey-builder-yield').find('#' + prevId).hide()
         $('#survey-builder-yield').find('#' + navClickedLinkId).show()
 
+    $(document).on 'click', '#survey-builder-close', (event) ->
+        curActiveForm = $('#survey-builder-nav').find('.active')
+        $('#survey-builder-yield').find('#' + curActiveForm.attr('id')).remove()
+        curActiveForm.remove()
+        $('#survey-builder-nav').find('#survey-builder-home').addClass('active')
+        $('#survey-builder-yield').find('#survey-builder-home').show()
+
     $(document).on 'keyup', '.survey-name', (event) ->
       newTabVal = $(this).find('input').val()
       if newTabVal != ''
