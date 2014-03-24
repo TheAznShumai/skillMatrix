@@ -1,7 +1,8 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-$(document).on 'ready page:load', ->
+$(document).ready ->
+
     $(document).on 'click', '.remove_fields', (event) ->
         $(this).closest('fieldset').remove()
         event.preventDefault()
@@ -28,4 +29,17 @@ $(document).on 'ready page:load', ->
         $('.active').find('a').text(newTabVal)
       else
         $('.active').find('a').text('...')
+
+    $ ->
+      $grid = $("#grid")
+      $grid.shuffle itemSelector: ".item"
+      $grid.on 'done.shuffle', ->
+          $grid.shuffle("shuffle", "all")
+
+      $("#filter a").click (e) ->
+          e.preventDefault()
+          $("#filter li").removeClass("active")
+          $(this).parent().addClass("active")
+          groupName = $(this).attr("data-group")
+          $grid.shuffle("shuffle", groupName)
 

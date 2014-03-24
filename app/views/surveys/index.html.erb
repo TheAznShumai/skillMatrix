@@ -1,15 +1,15 @@
 <h3>Survey</h3>
-<ul id="filterOptions" class="nav nav-pills">
-  <li class="active"><a href="#" class="all">All</a></li>
+<ul id="filter" class="nav nav-pills">
+  <li class="active"><a href="#" data-group="all">All</a></li>
     <% @survey_tags.each do |tag| %>
-  <li><a href="#" class="<%= tag %>"><%= tag.titleize %></a></li>
+  <li><a href="#" data-group="<%= tag %>"><%= tag.titleize %></a></li>
 <% end %>
 </ul>
 
 <div class="container">
-  <ul class="holder list-inline">
+  <ul id="grid" class="list-inline">
     <% @surveys.each do |survey| %>
-      <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-type="<%= survey.tag_list.join(' ') %>">
+      <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
         <%= link_to image_tag(survey.icon(:small)), survey%><br/>
         <%= link_to survey.name,
             new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
