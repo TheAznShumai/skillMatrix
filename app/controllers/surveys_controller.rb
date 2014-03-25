@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :load_index_data, :only => [:index, :admin]
+  #TODO - Use Respond_to/respond_with instead
 
   def new
    @survey = Survey.new
@@ -21,6 +22,7 @@ class SurveysController < ApplicationController
 
   def edit
     @survey = Survey.find(params[:id])
+    format_response
   end
 
   def update
@@ -48,6 +50,7 @@ class SurveysController < ApplicationController
   end
 
   def load_index_data
+    #TODO - optimize me please
     @surveys = Survey.where(true).includes(:tags)
     @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck(:name)
   end
