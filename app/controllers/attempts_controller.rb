@@ -21,7 +21,6 @@ class AttemptsController < ApplicationController
 
   def update
     @attempt = Attempt.find(params[:id])
-    binding.pry
     if @attempt.update_attributes(new_attempt_params)
       redirect_to surveys_path
     else

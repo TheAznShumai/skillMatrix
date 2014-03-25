@@ -1,6 +1,22 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
+loadGrid = ->
+    $grid = $("#grid")
+    $grid.shuffle itemSelector: ".item"
+    $grid.on 'done.shuffle', ->
+      setTimeout (->
+        # TODO - Fix me properly with a way to catch the event
+        $grid.shuffle("shuffle", "all")), 10
+
+    $("#filter a").click (event) ->
+      event.preventDefault()
+      $("#filter li").removeClass("active")
+      $(this).parent().addClass("active")
+      groupName = $(this).attr("data-group")
+      $grid.shuffle("shuffle", groupName)
+
 $(document).ready ->
 
     $(document).on 'click', '.remove_fields', (event) ->
@@ -38,15 +54,5 @@ $(document).ready ->
         $('.active').find('a').text('...')
 
     $ ->
-      $grid = $("#grid")
-      $grid.shuffle itemSelector: ".item"
-      $grid.on 'done.shuffle', ->
-          $grid.shuffle("shuffle", "all")
-
-      $("#filter a").click (e) ->
-          e.preventDefault()
-          $("#filter li").removeClass("active")
-          $(this).parent().addClass("active")
-          groupName = $(this).attr("data-group")
-          $grid.shuffle("shuffle", groupName)
+      loadGrid()
 

@@ -36,8 +36,6 @@ class SurveysController < ApplicationController
   end
 
   def admin
-    binding.pry
-    format_response
   end
 
   private
@@ -50,7 +48,6 @@ class SurveysController < ApplicationController
   end
 
   def load_index_data
-    binding.pry
     @surveys = Survey.where(true).includes(:tags)
     @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck(:name)
   end

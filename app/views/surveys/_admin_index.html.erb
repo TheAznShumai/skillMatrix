@@ -1,0 +1,18 @@
+<ul id="filter" class="nav nav-pills">
+  <li class="active"><a href="#" data-group="all">All</a></li>
+    <% @survey_tags.each do |tag| %>
+  <li><a href="#" data-group="<%= tag %>"><%= tag.titleize %></a></li>
+<% end %>
+</ul>
+
+<div class="container">
+  <ul id="grid" class="list-inline">
+    <% @surveys.each do |survey| %>
+      <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
+      <%= link_to "#{image_tag(survey.icon(:small))}<br/>#{survey.name}".html_safe,
+            new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
