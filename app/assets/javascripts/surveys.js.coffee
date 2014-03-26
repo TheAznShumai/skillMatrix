@@ -8,7 +8,7 @@ loadGrid = ->
     $grid.on 'done.shuffle', ->
       setTimeout (->
         # TODO - Fix me properly with a way to catch the event
-        $grid.shuffle("shuffle", "all")), 10
+        $grid.shuffle("shuffle", "all")), 20
 
     $("#filter a").click (event) ->
       event.preventDefault()
@@ -21,6 +21,12 @@ $(document).ready ->
 
     $(document).on 'click', '.remove_fields', (event) ->
         $(this).closest('fieldset').remove()
+        event.preventDefault()
+
+    $(document).on 'click', '.destroy_fields', (event) ->
+        # The parent of $(this) has the input for destroy
+        $(this).parent().find('input').val("true")
+        $(this).closest('fieldset').hide()
         event.preventDefault()
 
     $(document).on 'click', '.add_fields', (event) ->

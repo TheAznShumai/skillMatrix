@@ -13,9 +13,22 @@
 </div>
 </div>
 
+<%= f.fields_for :questions do |question_form| %>
+  <div class="form-group">
+    <%= render :partial => "surveys/question_fields", :locals => {:destroy => true, :f => question_form} %>
+  </div>
+<% end %>
+
 <div class="form-group">
 <%= link_to_add_fields "Add Question", f, :questions %>
 </div>
+
+<%= f.fields_for :rateable_skills do |rateable_skill_form| %>
+  <div class="form-group">
+    <%= render :partial => "surveys/rateable_skill_fields", :locals => {:destroy => true, :f => rateable_skill_form} %>
+  </div>
+<% end %>
+
 <div class="form-group">
 <%= link_to_add_fields "Add Skill", f, :rateable_skills %>
 </div>

@@ -27,7 +27,7 @@ class SurveysController < ApplicationController
 
   def update
     @survey = Survey.find(params[:id])
-    if @survey.update_attribute(new_survey_params)
+    if @survey.update_attributes(new_survey_params)
       format_response
     else
       flash[:error] = @survey.errors.full_messages.uniq.join("\n")
@@ -45,13 +45,13 @@ class SurveysController < ApplicationController
   def new_survey_params
     params.require(:survey).permit(
                      :name, :tag_list, :icon,
-                     :rateable_skills_attributes => [:name, :tag_list, :_destroy],
-                     :questions_attributes => [:text, :_destroy])
+                     :rateable_skills_attributes => [:id, :name, :tag_list, :_destroy],
+                     :questions_attributes => [:id, :text, :_destroy])
   end
 
   def load_index_data
     #TODO - optimize me please
-    @surveys = Survey.where(true).includes(:tags)
+    @surveys = Survey.where(true)
     @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck(:name)
   end
 
