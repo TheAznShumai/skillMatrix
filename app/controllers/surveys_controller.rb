@@ -34,6 +34,13 @@ class SurveysController < ApplicationController
     end
   end
 
+  def destroy
+    survey = Survey.find(params[:id])
+    surveyTitle = survey.name
+    survey.destroy
+    flash[:success] = "#{surveyTitle} was deleted"
+  end
+
   def index
   end
 
