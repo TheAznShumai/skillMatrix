@@ -37,8 +37,13 @@ class SurveysController < ApplicationController
   def destroy
     survey = Survey.find(params[:id])
     surveyTitle = survey.name
+    surveyId = survey.id
     survey.destroy
     flash[:success] = "#{surveyTitle} was deleted"
+    respond_to do |format|
+      format.html
+      format.js {render "destroy", :locals => {:deletedId => surveyId}}
+    end
   end
 
   def index
