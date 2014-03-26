@@ -1,8 +1,8 @@
 class Survey < ActiveRecord::Base
-  has_many :questions
-  has_many :rateable_skills
+  has_many :questions, :dependent => :destroy
+  has_many :rateable_skills, :dependent => :destroy
 
-  has_many :attempts
+  has_many :attempts, :dependent => :destroy
 
   has_attached_file :icon, :styles => { :small => "120x120>"},
                            :default_url => "document.png"
