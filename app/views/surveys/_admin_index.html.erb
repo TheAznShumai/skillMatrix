@@ -17,7 +17,7 @@
 
       <%= link_to '<button class="btn btn-danger btn-xs">delete</button>'.html_safe, survey,
            :method => :delete, :data => {:confirm => "Are you sure you want to remove \"#{survey.name}\"?",
-                                         :title => "Delete Survey Confirmation" } %>
+                                         :title => "Delete Survey Confirmation" }, :remote => true %>
       </li>
     <% end %>
   </ul>
