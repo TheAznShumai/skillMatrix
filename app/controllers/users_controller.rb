@@ -1,10 +1,18 @@
 class UsersController < ApplicationController
   def index
-      @users = User.where(true) 
+    @users = User.where(true)
   end
 
   def show
-      @user = User.where(id: params[:id]).includes(:skills, :ratings)
+    @user = User.where(:id => params[:id]).includes(:skills, :ratings)
+  end
+
+  def destroy
+    @user = User.where(:id => params[:id]).first
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to users_path }
+    end
   end
 
   def new_user_params
