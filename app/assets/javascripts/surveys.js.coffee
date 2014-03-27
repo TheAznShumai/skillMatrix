@@ -55,9 +55,9 @@ $(document).ready ->
     $(document).on 'keyup', '.survey-name', (event) ->
       newTabVal = $(this).find('input').val()
       if newTabVal != ''
-        $('.active').find('a').text(newTabVal)
+        $('#survey-builder-nav').find('.active').find('a').text(newTabVal)
       else
-        $('.active').find('a').text('...')
+        $('#survey-builder-nav').find('.active').find('a').text('...')
 
     $ ->
       loadGrid()
