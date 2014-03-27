@@ -1,4 +1,5 @@
 class SurveysController < ApplicationController
+  authorize_resource
   before_action :load_index_data, :only => [:index, :admin]
   #TODO - Use Respond_to/respond_with instead
 
