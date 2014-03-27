@@ -3,38 +3,29 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Using PSql
+# Database Gems
 gem 'pg'
 
-# Using Devise for login
+# User control gems
 gem 'devise', github: 'plataformatec/devise'
+gem 'cancancan'
 
 # Using tags
 gem 'acts-as-taggable-on'
 
-# Using html5 validator for Client_Side_Validation
-gem 'html5_validators'
-
-# Using Rest in Place to edit forms show forms with ajax
-gem 'rest_in_place'
-
 # Using Paperclip for attachments
 gem 'paperclip'
 
-# Using Font-Awesome
-gem 'font-awesome-rails'
-
-# Using DataTables
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
-
-# Using Bootstrap
+# FrontEnd Gems
 gem 'bootstrap-sass'
-
-# Using Paginate
+gem 'font-awesome-rails'
+gem 'html5_validators'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'sass-rails', '~> 4.0.0'
 gem 'will_paginate'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+# Using Rest in Place to edit forms show forms with ajax
+gem 'rest_in_place'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
