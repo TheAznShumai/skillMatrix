@@ -58,6 +58,9 @@ end
 # gem 'capistrano', group: :development
 
 group :development, :test do
+  # optimization gems
+  gem 'bullet'
+
   # TTD gems
   gem 'rspec-rails'
   gem 'factory_girl_rails'
