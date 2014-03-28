@@ -33,5 +33,6 @@ SkillMatrix::Application.configure do
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true
+    Bullet.unused_eager_loading_enable = false
   end
 end
