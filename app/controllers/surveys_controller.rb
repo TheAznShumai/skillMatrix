@@ -65,7 +65,7 @@ class SurveysController < ApplicationController
   def load_index_data
     #TODO - optimize me please
     @surveys = Survey.where(true)
-    @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck(:name)
+    @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck("DISTINCT name")
   end
 
   def format_response
