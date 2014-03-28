@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  authorize_resource
   def edit
     @profile = Profile.find(params[:id])
   end
@@ -30,7 +31,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :title, :office_phone, :cell_phone, 
+    params.require(:profile).permit(:first_name, :last_name, :title, :office_phone, :cell_phone,
                                     :department, :avatar)
   end
 
