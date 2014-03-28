@@ -11,6 +11,9 @@ class Ability
       can :manage, Profile, :user_id => user.id
       can :read, Survey
       can :manage, Attempt, :user_id => user.id
+      can [:create, :update], Rating do |rating|
+        rating.user_skills.where(:user_id => user.id)
+      end
     end
   end
 end
