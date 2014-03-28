@@ -1,4 +1,5 @@
 class AttemptsController < ApplicationController
+  authorize_resource
   before_action :load_survey_data, :only => [:new, :edit]
 
   def new
