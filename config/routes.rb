@@ -9,10 +9,11 @@ SkillMatrix::Application.routes.draw do
   resources :ratings, :only => [:update, :create, :index]
 
   resources :surveys do
-    resources :attempts
+    resources :attempts, :except => [:index]
   end
 
-  get 'admin_surveys', :to => 'surveys#admin'
+  get "admin_surveys", :to => 'surveys#admin'
+  get "attempts", :to => 'attempts#index'
 
   get "static_pages/home"
   get "static_pages/survey_builder"

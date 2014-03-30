@@ -16,6 +16,10 @@ class AttemptsController < ApplicationController
     end
   end
 
+  def index
+    @attempts = Attempt.where(true).includes(:users, :surveys)
+  end
+
   def edit
     @attempt = Attempt.find(params[:id])
   end
