@@ -22,7 +22,7 @@ class AttemptsController < ApplicationController
   end
 
   def edit
-    @attempt = Attempt.find(params[:id])
+    @attempt = Attempt.where(:id => params[:id]).first
   end
 
   def update
@@ -48,10 +48,7 @@ class AttemptsController < ApplicationController
     rateable_skills = @survey.rateable_skills.where(true).pluck(:name)
     skill_ids = Skill.add_to_skills(current_user, rateable_skills)
 
-    @ratings = current_user.ratings.joins(:user_skill).find(
-                                          :all, :conditions =>
-                                        { :user_skills =>
-                                        { :skill_id =>  skill_ids }})
+    @ratings = current_user.ratings.joins(:user_skill).where("user_skills.skill_id in (?)", skill_ids).references(:user_skills).includes(:user_skill => :skill)
 
     @questions = @survey.questions.where(true)
   end
