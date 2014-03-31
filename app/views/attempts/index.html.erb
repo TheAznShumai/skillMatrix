@@ -1,1 +1,23 @@
-this is the attempts per survey
+<h3>Survey Submissions for "<%= @survey_name %>"</h3>
+<div class="table-responsive">
+<table class="table" id="submissions">
+    <thead>
+        <tr>
+            <th colspan="1"></th>
+            <th>User Name</th>
+            <th>User Email</th>
+            <th>Attempt Made on</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @attempts.each do |attempt| %>
+          <tr>
+            <td colspan="1"><%= image_tag(attempt.user.profile.avatar(:xsmall)) %>
+            <td><%= attempt.user.profile.first_name << ' ' << attempt.user.profile.last_name %></td>
+            <td><%= attempt.user.email %></td>
+            <td><%= attempt.created_at %></td>
+          </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

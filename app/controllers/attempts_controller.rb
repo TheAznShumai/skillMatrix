@@ -17,7 +17,8 @@ class AttemptsController < ApplicationController
   end
 
   def index
-    @attempts = Attempt.where(true).includes(:users, :surveys)
+    @attempts = Attempt.where(:survey_id => params[:survey_id]).joins(:user).includes(:user => :profile)
+    @survey_name = Survey.where(:id => params[:survey_id]).first.name
   end
 
   def edit
