@@ -54,7 +54,7 @@ class SurveysController < ApplicationController
   end
 
   def submissions
-    @surveys = Survey.joins(:attempts)
+    @surveys = Survey.joins(:attempts).distinct
     @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck("DISTINCT name")
   end
 
