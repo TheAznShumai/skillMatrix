@@ -25,7 +25,7 @@ class RatingsController < ApplicationController
     end
 
     def index
-      @users = User.where(true).includes(:user_skills).includes(:ratings => :user_skill).includes(:skills, :profile)
+      @users = User.where(true).includes(:profile).includes(:ratings => :user_skill, :user_skills => :skill)
     end
 
     private
