@@ -13,6 +13,7 @@ $(document).ready ->
       $('#attempts').dataTable(
           "sDom": 'ftrip',
           "bLengthChange": false,
+          "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 2 ] }],
           "sPaginationType": "bootstrap")
 
   $ ->

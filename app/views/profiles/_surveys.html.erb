@@ -1,0 +1,24 @@
+<div class="panel panel-info">
+  <div class="panel-heading">Surveys Taken</div>
+  <div class="panel-body">
+    <table class="table table-condensed table-curved table-striped table-hover" id="attempts">
+      <thead>
+        <tr>
+          <th>Survey Name</th>
+          <th>Attempted on</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user.attempts.each do |attempt| %>
+        <tr>
+        <td><%= attempt.survey.name %></td>
+        <td><%= attempt.created_at %></td>
+        <td><%= link_to '<button class="btn btn-success">View Survey</button>'.html_safe, survey_attempt_path(:survey_id => attempt.survey_id, :id => attempt.id) %></td>
+      </tr>
+    <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
