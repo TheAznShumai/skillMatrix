@@ -21,6 +21,10 @@ class AttemptsController < ApplicationController
     @survey_name = Survey.where(:id => params[:survey_id]).first.name
   end
 
+  def show
+    @attempt = Attempt.where(:survey_id => params[:survey_id], :id => params[:attempt_id])
+  end
+
   def edit
     @attempt = Attempt.where(:id => params[:id]).first
   end

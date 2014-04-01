@@ -10,6 +10,7 @@
             <th>Title</th>
             <th>Department</th>
             <th>Attempt Made on</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,7 @@
             <td><%= attempt.user.profile.title %></td>
             <td><%= attempt.user.profile.department %></td>
             <td><%= attempt.created_at %></td>
+            <td><%= link_to '<button type="button" class="btn btn-success">View Survey</button>'.html_safe, survey_attempt_path(:survey_id => attempt.survey_id, :id => attempt.id) %>
           </tr>
         <% end %>
     </tbody>
