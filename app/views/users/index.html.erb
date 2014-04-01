@@ -4,6 +4,7 @@
       <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Title</th>
         <th>Created at</th>
         <th></th>
       </tr>
@@ -13,6 +14,7 @@
           <tr>
           <td><%= link_to user.profile.full_name, profile_path(user) %></td>
           <td><%= link_to user.email, profile_path(user) %></td>
+          <td><%= user.profile.title %>
           <td><%= user.created_at %></td>
           <td>
             <%= link_to 'Edit', edit_profile_path(user), :class => 'btn btn-primary' %>

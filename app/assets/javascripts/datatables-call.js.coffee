@@ -11,11 +11,14 @@ $(document).ready ->
 
   $ ->
       $('#attempts').dataTable(
+          "sDom": 'ftrip',
           "bLengthChange": false,
           "sPaginationType": "bootstrap")
 
   $ ->
       $('#users').dataTable(
+          "sDom": 'ftrip',
           "bLengthChange": false,
+          "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 4 ] }],
           "sPaginationType": "bootstrap")
 

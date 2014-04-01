@@ -143,6 +143,27 @@ div.dataTables_filter input {
   @extend .form-control;
 }
 
+/* Custom Datatables */
+
+div#users_filter,
+div#users_filter input,
+div#attempts_filter,
+div#attempts_filter input{
+  display: block;
+  float: none;
+  width: 65%;
+}
+
+div#users_filter label,
+div#attempts_filter label{
+  margin-bottom: 15px;
+  float: none;
+  text-align: left;
+  display: block;
+  width: auto;
+  font-weight: bold;
+}
+
 /* Landing page */
 .landing-icon {
   position: relative;
