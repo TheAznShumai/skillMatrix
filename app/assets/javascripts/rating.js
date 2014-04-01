@@ -1,10 +1,4 @@
 $(function() {
-  $('#ratings').dataTable({
-    "sPaginationType": "bootstrap"
-  });
-});
-
-$(function() {
     $(".rating_star").hover(function() {
       var stars = $(this).attr("data-stars");
       var form_id = $(this).attr("data-form-id");

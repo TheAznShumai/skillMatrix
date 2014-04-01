@@ -6,7 +6,3 @@ $(document).ready ->
   $('#attempt-submit-button').click ->
     $('.new_attempt, .edit_attempt').submit()
 
-  $ ->
-    $('#submissions').dataTable(
-        "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 0 ] }],
-        "sPaginationType": "bootstrap")
