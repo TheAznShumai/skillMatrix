@@ -7,5 +7,6 @@ $(document).ready ->
     $('.new_attempt, .edit_attempt').submit()
 
   $ ->
-    $('#submissions').dataTable("sPaginationType": "bootstrap")
-
+    $('#submissions').dataTable(
+        "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 0 ] }],
+        "sPaginationType": "bootstrap")

@@ -1,20 +1,27 @@
 <h3>Survey Submissions for "<%= @survey_name %>"</h3>
-<div class="table-responsive">
-<table class="table" id="submissions">
+<h5 class="voffset">Please Click on the User to view their submission</h5>
+<div class="table-responsive voffset4">
+<table class="table table-curved table-striped table-condensed table-hover" id="submissions">
     <thead>
         <tr>
-            <th colspan="1"></th>
-            <th>User Name</th>
-            <th>User Email</th>
+            <th class="table-xsmall-image"></th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Department</th>
             <th>Attempt Made on</th>
         </tr>
     </thead>
     <tbody>
         <% @attempts.each do |attempt| %>
           <tr>
-            <td colspan="1"><%= image_tag(attempt.user.profile.avatar(:xsmall)) %>
-            <td><%= attempt.user.profile.first_name << ' ' << attempt.user.profile.last_name %></td>
+            <td class="table-xsmall-image"><%= link_to image_tag(
+                attempt.user.profile.avatar(:xsmall), :border => 0, :class => "img-responsive"),
+                profile_path(attempt.user) %></td>
+            <td><%= link_to attempt.user.profile.full_name, profile_path(attempt.user) %></td>
             <td><%= attempt.user.email %></td>
+            <td><%= attempt.user.profile.title %></td>
+            <td><%= attempt.user.profile.department %></td>
             <td><%= attempt.created_at %></td>
           </tr>
         <% end %>

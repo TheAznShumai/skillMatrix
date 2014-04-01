@@ -1,9 +1,13 @@
-<h1> Ratings Index </h1>
+<h3> Ratings Index </h3>
 
-<table id="ratings">
+<div class="table-responsive voffset4">
+<table class="table table-curved table-striped table-condensed table-hover" id="ratings">
     <thead>
         <tr>
-            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Department</th>
             <th>Skill Name</th>
             <th>Score</th>
         </tr>
@@ -13,12 +17,17 @@
             <% user.ratings.each do |rating| %>
               <% if rating.score != 1 then %>
                 <tr>
+                    <td><%= link_to user.profile.full_name, profile_path(user) %></td>
                     <td><%= link_to user.email, profile_path(user) %></td>
+                    <td><%= user.profile.title %></td>
+                    <td><%= user.profile.department %></td>
                     <td><%= rating.user_skill.skill.name %></td>
-                    <td><%= rating.score %></td>    
+                    <td><%= rating.score %></td>
                 </tr>
               <% end %>
             <% end %>
         <% end %>
     </tbody>
 </table>
+</div>
+
