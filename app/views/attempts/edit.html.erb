@@ -13,14 +13,16 @@
   <% end %>
 <% end %>
 
+<% unless @ratings.empty? %>
 <div class="panel panel-primary">
   <div class="panel-heading">Please rate yourself on the following.</div>
   <div class="panel-body inline">
     <% @ratings.each do |rating| %>
       <%= render "skill_rating_form", :rating => rating %>
-  <% end %>
+    <% end %>
   </div>
 </div>
+<% end %>
 
 <%= submit_tag "Submit Survey", :id => "attempt-submit-button", :class => "btn btn-primary" %>
 
