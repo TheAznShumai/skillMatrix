@@ -23,3 +23,9 @@ $(document).ready ->
           "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 4 ] }],
           "sPaginationType": "bootstrap")
 
+  $ ->
+      $('#profile-skills').dataTable(
+          "sDom": 'ftrip',
+          "bLengthChange": false,
+          "sPaginationType": "bootstrap")
+
