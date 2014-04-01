@@ -1,18 +1,18 @@
 <h3>Users</h3>
-<table class="table table-striped">
+<table class="table table-striped table-curved" id="users">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
+        <th>Email</th>
         <th>Created at</th>
-        <th>Actions</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
           <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.email, user_path(user) %></td>
+          <td><%= link_to user.profile.full_name, profile_path(user) %></td>
+          <td><%= link_to user.email, profile_path(user) %></td>
           <td><%= user.created_at %></td>
           <td>
             <%= link_to 'Edit', edit_profile_path(user), :class => 'btn btn-primary' %>

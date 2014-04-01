@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
   authorize_resource
   def index
-    @users = User.where(true)
-  end
-
-  def show
-    @user = User.where(:id => params[:id]).includes(:skills, :ratings)
+    @users = User.where(true).includes(:profile)
   end
 
   def destroy
