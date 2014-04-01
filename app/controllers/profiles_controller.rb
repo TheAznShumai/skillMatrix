@@ -1,12 +1,12 @@
 class ProfilesController < ApplicationController
   authorize_resource
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:id => params[:id]).first
   end
 
   def show
-    @profile = Profile.find(params[:id])
-    @user = User.find(@profile.user_id)
+    @profile = Profile.where(:id => params[:id]).first
+    @user = User.joins(:profile).where(:profiles => {:id => params[:id]}).includes(:attempts => :survey).first
     respond_to do |format|
       format.html
       format.json {render :json => @profile}
@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(:id => params[:id]).first
     if @profile.update_attributes!(profile_params)
       respond_to do |format|
         format.html { redirect_to( @profile)}
