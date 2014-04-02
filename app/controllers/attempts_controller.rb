@@ -22,7 +22,10 @@ class AttemptsController < ApplicationController
   end
 
   def show
-    @attempt = Attempt.where(:survey_id => params[:survey_id], :id => params[:attempt_id])
+    @attempt = Attempt.where(:id => params[:id]).includes(:survey).first
+    @questions = Question.from_survey_attempt(params[:survey_id], params[:id]).includes(:answers)
+    @ratings = Rating.from_survey_attempt(params[:survey_id], params[:id])
+    binding.pry
   end
 
   def edit

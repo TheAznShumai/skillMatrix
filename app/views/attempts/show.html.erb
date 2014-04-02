@@ -1,1 +1,34 @@
-hi from attempt show
+<h3 class="extra-bottom-padding"><%= @attempt.survey.name %></h3>
+  <% @questions.each do |question| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading"><b><%= question.text %></b></div>
+      <div class="panel-body horizontal-form">
+        <%= question.answers.where(:attempt_id => @attempt.id).pluck(:text)[0] || "No Answer Given" %>
+     </div>
+    </div>
+<% end %>
+
+<% unless @ratings.empty? %>
+<div class="panel panel-primary">
+  <div class="panel-heading">Please rate yourself on the following.</div>
+  <div class="panel-body inline">
+    <% @ratings.each do |rating| %>
+ <div class="row">
+  <div class="col-md-7">
+    <h5><%= rating.user_skill.skill.name.titleize %></h5>
+    <% form_id = "skill_#{rating.user_skill_id}_rating" %>
+  </div>
+  <div class="col-md-5">
+    <ul class="list-inline pull-right">
+      <% (1..5).each do |i| %>
+        <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+   <% end %>
+  </div>
+</div>
+<% end %>
+
+
