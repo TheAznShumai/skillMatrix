@@ -5,13 +5,13 @@ class SurveysController < ApplicationController
 
   def new
    @survey = Survey.new
-   @survey.rateable_skills.build
 
    format_response
   end
 
   def create
    @survey = Survey.new(new_survey_params)
+   binding.pry
    flash.clear
    if @survey.save
      flash[:success] = "Survey \"#{@survey.name}\" has been saved"
@@ -63,7 +63,7 @@ class SurveysController < ApplicationController
   def new_survey_params
     params.require(:survey).permit(
                      :name, :tag_list, :icon,
-                     :rateable_skills_attributes => [:id, :name, :tag_list, :_destroy],
+                     :survey_skills_attributes => [:id, :_destroy, :skill_attributes => [:id, :name, :tag_list, :_destroy]],
                      :questions_attributes => [:id, :text, :_destroy])
   end
 
