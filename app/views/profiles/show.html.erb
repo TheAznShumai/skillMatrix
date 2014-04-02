@@ -1,7 +1,7 @@
 <div class="row well background-transparent">
   <div class="panel profile-back">
     <%= image_tag @profile.avatar(:small), class: "profile-pic img-circle" %><br />
-    <div id="name"><small><%= @profile.full_name.titleize %><br/><div id="title"><%= @profile.title.titleize %></div></small></div>
+    <div id="name"><small><%= @profile.full_name.titleize %><br/><div id="title"><%= @profile.title.titleize if @profile.title %></div></small></div>
     <%= link_to '<i class="fa fa-wrench fa-fw"></i> Edit Profile'.html_safe, edit_profile_path(@profile),
       :class => "btn btn-xs btn-primary pull-right", :id => "edit-profile-button" %>
   </div>

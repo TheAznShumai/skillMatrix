@@ -5,7 +5,7 @@
     <table class="table table-condensed table-curved table-striped table-hover voffset3">
       <tbody>
         <tr><td>Name: </td> <td><%= @user.profile.full_name.titleize %></td></tr>
-        <tr><td>Title: </td> <td><%= @user.profile.title.titleize %></td></tr>
+        <tr><td>Title: </td> <td><%= @user.profile.title.titleize if @user.profile.title %></td></tr>
         <tr><td>Email: </td> <td><%= @user.email %></td></tr>
         <tr><td>Office Phone: </td> <td><%= @profile.office_phone %></td></tr>
         <tr><td>Cell Name: </td> <td><%= @profile.cell_phone %></td></tr>
