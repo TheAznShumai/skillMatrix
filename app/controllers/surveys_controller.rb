@@ -5,13 +5,11 @@ class SurveysController < ApplicationController
 
   def new
    @survey = Survey.new
-
    format_response
   end
 
   def create
    @survey = Survey.new(new_survey_params)
-   binding.pry
    flash.clear
    if @survey.save
      flash[:success] = "Survey \"#{@survey.name}\" has been saved"

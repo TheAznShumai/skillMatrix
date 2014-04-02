@@ -15,7 +15,7 @@ class Survey < ActiveRecord::Base
   validates_attachment_file_name :icon, :matches => [/png\Z/, /jpe?g\Z/]
 
   accepts_nested_attributes_for :questions, allow_destroy: true
-  accepts_nested_attributes_for :rateable_skills, allow_destroy: true
+  accepts_nested_attributes_for :survey_skills
 
   validates :name, presence: true
 
