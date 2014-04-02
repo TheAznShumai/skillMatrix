@@ -4,19 +4,19 @@ class SurveysController < ApplicationController
   #TODO - Use Respond_to/respond_with instead
 
   def new
-   @survey = Survey.new
-   format_response
+    @survey = Survey.new
+    format_response
   end
 
   def create
-   @survey = Survey.new(new_survey_params)
-   flash.clear
-   if @survey.save
-     flash[:success] = "Survey \"#{@survey.name}\" has been saved"
-     format_response
-   else
-     flash[:error] = @survey.errors.full_messages.uniq.join("\n")
-   end
+    @survey = Survey.new(new_survey_params)
+    flash.clear
+    if @survey.save
+      flash[:success] = "Survey \"#{@survey.name}\" has been saved"
+      format_response
+    else
+      flash[:error] = @survey.errors.full_messages.uniq.join("\n")
+    end
   end
 
   def edit
@@ -60,9 +60,9 @@ class SurveysController < ApplicationController
 
   def new_survey_params
     params.require(:survey).permit(
-                     :name, :tag_list, :icon,
-                     :survey_skills_attributes => [:id, :_destroy, :skill_attributes => [:id, :name, :tag_list, :_destroy]],
-                     :questions_attributes => [:id, :text, :_destroy])
+      :name, :tag_list, :icon,
+      :survey_skills_attributes => [:id, :_destroy, :skill_attributes => [:id, :name, :tag_list, :_destroy]],
+      :questions_attributes => [:id, :text, :_destroy])
   end
 
   def load_index_data
