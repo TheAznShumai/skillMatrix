@@ -1,6 +1,7 @@
 class Survey < ActiveRecord::Base
   has_many :questions, :dependent => :destroy
-  has_many :rateable_skills, :dependent => :destroy
+  has_many :survey_skills
+  has_many :skills, :through => :survey_skills
 
   has_many :attempts, :dependent => :destroy
 
