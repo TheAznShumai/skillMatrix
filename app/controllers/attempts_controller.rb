@@ -50,14 +50,9 @@ class AttemptsController < ApplicationController
 
   def load_survey_data
     # TODO - MOVE TO MODEL
-    @survey = Survey.find(params[:survey_id])
-
-    rateable_skills = @survey.rateable_skills.where(true).pluck(:name)
-    skill_ids = Skill.add_to_skills(current_user, rateable_skills)
-
-    @ratings = current_user.ratings.joins(:user_skill).where("user_skills.skill_id in (?)", skill_ids).references(:user_skills).includes(:user_skill => :skill)
-
-    @questions = @survey.questions.where(true)
+    @survey = Survey.where(:id => params[:survey_id]).first
+    @questions = @survey.questions
+    @skills = Skill.joins(:survey_skills => :survey).where(:surveys => {:id => params[:survey_id]})
   end
 
 end
