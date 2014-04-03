@@ -21,7 +21,7 @@
     <div class="panel-footer clearfix">
       <div class="pull-right">
         <%= f.hidden_field :_destroy %>
-        <%= link_to "remove", '#', :class => "btn btn-danger #{(destroy ||= false) ? "destroy_fields" : "remove_fields"}" %>
+        <%= link_to "remove", '#', :class => "btn btn-danger #{(enable_destroy ||= false) ? "destroy_fields" : "remove_fields"}" %>
       </div>
     </div>
   </div>
