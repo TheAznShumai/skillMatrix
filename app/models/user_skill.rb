@@ -3,12 +3,5 @@ class UserSkill < ActiveRecord::Base
   belongs_to :skill
   has_one :rating
 
-  before_create :build_default_rating
-
-  private
-
-  def build_default_rating
-    build_rating(score: 1)
-    true
-  end
+  scope :rated, ->(user_id) { joins(:user, :skill, :rating).where(:users => {:id => user_id}) }
 end

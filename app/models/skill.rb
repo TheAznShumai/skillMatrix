@@ -7,4 +7,6 @@ class Skill < ActiveRecord::Base
 
     acts_as_taggable
 
+    scope :from_survey, ->(survey_id) { joins(:survey_skills => :survey).where(:surveys => {:id => survey_id}) }
+
 end
