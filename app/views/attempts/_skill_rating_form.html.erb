@@ -10,7 +10,8 @@
         <div class="row pull-right">
           <% user_skill_rating = user_skill_ratings[skill] %>
           <%= rating_field.hidden_field :skill, :value => skill %>
-          <%= rating_field.number_field :score, :class => "rating", :min => 0, :max => 5, :value => user_skill_rating %>
+          <%= rating_field.number_field :score, :class => "rating", :min => 0, :max => 5,
+                                        :value => user_skill_rating, "data-readonly" => (readonly ? "true" : "false") %>
         </div>
       <% end %>
     <% end %>

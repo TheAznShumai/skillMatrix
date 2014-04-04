@@ -19,13 +19,12 @@ class AttemptsController < ApplicationController
 
   def index
     @attempts = Attempt.where(:survey_id => params[:survey_id]).joins(:user).includes(:user => :profile)
-    @survey_name = Survey.where(:id => params[:survey_id]).first.name
+    @survey_name = Survey.where(:id => params[:survey_id]).pluck(:name).first
   end
 
   def show
     @attempt = Attempt.where(:id => params[:id]).includes(:survey).first
-    @questions = Question.from_survey_attempt(params[:survey_id], params[:id]).includes(:answers)
-    @ratings = Rating.from_survey_attempt(params[:survey_id], params[:id])
+    load_survey_data(@attempt.user_id, @attempt.survey_id)
   end
 
   def edit
@@ -54,10 +53,10 @@ class AttemptsController < ApplicationController
                    :answers_attributes => [:id, :question_id, :text])
   end
 
-  def load_survey_data(user_id = current_user.id)
-    @survey = Survey.where(:id => params[:survey_id]).first
+  def load_survey_data(user_id = current_user.id, survey_id = params[:survey_id])
+    @survey = Survey.where(:id => survey_id).first
     @survey_questions = @survey.questions
-    @survey_skills = Skill.from_survey(params[:survey_id]).pluck(:name)
+    @survey_skills = Skill.from_survey(survey_id).pluck(:name)
     @user_skill_ratings = UserSkill.rated(user_id).pluck("skills.name", "ratings.score").reduce(Hash.new(0)) { |hash, x| hash.merge(x[0] => x[1]) }
   end
 
