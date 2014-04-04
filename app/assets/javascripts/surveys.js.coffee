@@ -33,6 +33,7 @@ $(document).ready ->
         time = new Date().getTime()
         regexp = new RegExp($(this).data('id'), 'g')
         $(this).before($(this).data('fields').replace(regexp, time))
+        $('.mock-rating').rating()
         event.preventDefault()
 
     $(document).on 'click', '#survey-builder-nav', (event) ->
