@@ -13,6 +13,7 @@
   <%= render 'layouts/header' %>
   <% if user_signed_in? %>
     <% if current_user.admin? %>
+    <%= render 'layouts/nav_mailer_side_panel' %>
     <%= render 'layouts/nav_side_admin' %>
 <% else %>
     <%= render 'layouts/nav_side_default' %>
