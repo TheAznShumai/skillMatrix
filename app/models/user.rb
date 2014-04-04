@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
 
   has_many :user_skills, :dependent => :destroy
-  has_many :skills,  :through => :user_skills, :dependent => :destroy
+  has_many :skills,  :through => :user_skills
   has_many :ratings, :through => :user_skills, :dependent => :destroy
 
   has_many :attempts, :dependent => :destroy
-  has_many :surveys, :through => :attempts, :dependent => :destroy
+  has_many :surveys, :through => :attempts
 
   accepts_nested_attributes_for :profile
 

@@ -1,7 +1,14 @@
-<%= f.fields_for :answers, (f.object.answers.where(:question_id => question.id).empty? ?
-                            f.object.answers.build(:question_id => question.id) :
-                            f.object.answers.where(:question_id => question.id))  do |answer| %>
-  <%= answer.text_area :text, :class => "form-control", :rows => "3" %>
-  <%= answer.hidden_field :question_id, :value => question.id %>
-<% end %>
+<div class="panel panel-primary">
+  <div class="panel-heading"><b><%= question.text %></b></div>
+  <div class="panel-body horizontal-form">
+
+    <%= f.fields_for :answers, (f.object.answers.where(:question_id => question.id).empty? ?
+                                f.object.answers.build(:question_id => question.id) :
+                                f.object.answers.where(:question_id => question.id))  do |answer| %>
+      <%= answer.text_area :text, :class => "form-control", :rows => "3" %>
+      <%= answer.hidden_field :question_id, :value => question.id %>
+    <% end %>
+
+  </div>
+</div>
 

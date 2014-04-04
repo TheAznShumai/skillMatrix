@@ -1,18 +1,20 @@
-<div class="row">
-  <div class="col-md-7">
-    <h5><%= rating.user_skill.skill.name.titleize %></h5>
-    <% form_id = "skill_#{rating.user_skill_id}_rating" %>
-    <%= form_for rating, :html => {:id => form_id, :class => "star_rating_form"} do |f| %>
-    <%= f.hidden_field :user_skill_id, :value => rating.user_skill_id %>
-    <%= f.hidden_field :score, :id => form_id + "_stars" %>
-  <% end %>
-  </div>
-  <div class="col-md-5">
-    <ul class="list-inline pull-right">
-      <% (1..5).each do |i| %>
-        <li class="rating_star" id="<%= form_id %>_<%= i %>" data-stars="<%= i %>" data-form-id="<%= form_id %>"></li>
+<div class="panel panel-primary">
+  <div class="panel-heading">Please rate yourself on the following.</div>
+  <div class="panel-body inline">
+
+    <% @survey_skills.each_with_index do |skill, index| %>
+      <%= f.fields_for :user_skill_ratings, :index => index do |rating_field| %>
+        <div class="row col-md-12">
+          <h5><%= skill %></h5>
+        </div>
+        <div class="row pull-right">
+          <% user_skill_rating = user_skill_ratings[skill] %>
+          <%= rating_field.hidden_field :skill, :value => skill %>
+          <%= rating_field.number_field :score, :class => "rating", :min => 0, :max => 5, :value => user_skill_rating %>
+        </div>
+      <% end %>
     <% end %>
-    </ul>
+
   </div>
 </div>
 

@@ -3,24 +3,19 @@
 <%= form_for [@survey, @attempt] do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :survey_id, :value => @survey.id %>
-  <% @questions.each do |question| %>
-    <div class="panel panel-primary">
-      <div class="panel-heading"><b><%= question.text %></b></div>
-      <div class="panel-body horizontal-form">
-        <%= render "question_form", :f => f, :question => question %>
-     </div>
+  <% @survey_questions.each do |question| %>
+    <%= render "question_form", :f => f, :question => question %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-10">
+      <%= render "skill_rating_form", :f => f,
+                                      :survey_skills => @survey_skills,
+                                      :user_skill_ratings => @user_skill_ratings %>
     </div>
-  <% end %>
-<% end %>
-
-<div class="panel panel-primary">
-  <div class="panel-heading">Please rate yourself on the following.</div>
-  <div class="panel-body inline">
-    <% @skills.each do |skill| %>
-      <%# <%= render "skill_rating_form", :rating => rating %>
-  <% end %>
   </div>
-</div>
 
-<%= submit_tag "Submit Survey", :id => "attempt-submit-button", :class => "btn btn-primary" %>
+  <%= f.submit "Submit Survey", :class => "btn btn-primary" %>
+
+<% end %>
 

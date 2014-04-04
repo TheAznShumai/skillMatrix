@@ -9,6 +9,7 @@ class AttemptsController < ApplicationController
 
   def create
     @attempt = Attempt.new(new_attempt_params)
+    Rating.update_user_skill_ratings!(current_user.id, all_params[:user_skill_ratings])
     if @attempt.save
       redirect_to root_url
     else
@@ -25,7 +26,6 @@ class AttemptsController < ApplicationController
     @attempt = Attempt.where(:id => params[:id]).includes(:survey).first
     @questions = Question.from_survey_attempt(params[:survey_id], params[:id]).includes(:answers)
     @ratings = Rating.from_survey_attempt(params[:survey_id], params[:id])
-    binding.pry
   end
 
   def edit
@@ -33,8 +33,9 @@ class AttemptsController < ApplicationController
   end
 
   def update
-    @attempt = Attempt.find(params[:id])
+    @attempt = Attempt.where(params[:id]).first
     if @attempt.update_attributes(new_attempt_params)
+      Rating.update_user_skill_ratings!(current_user.id, all_params[:attempt][:user_skill_ratings])
       redirect_to surveys_path
     else
       flash[:error] = @attempt.errors.full_messages
@@ -44,15 +45,20 @@ class AttemptsController < ApplicationController
   private
 
   def new_attempt_params
+    all_params.except(:user_skill_ratings)
+  end
+
+  def all_params
     params.require(:attempt).permit(:user_id, :survey_id,
+                   :user_skill_ratings => [:skill, :score],
                    :answers_attributes => [:id, :question_id, :text])
   end
 
-  def load_survey_data
-    # TODO - MOVE TO MODEL
+  def load_survey_data(user_id = current_user.id)
     @survey = Survey.where(:id => params[:survey_id]).first
-    @questions = @survey.questions
-    @skills = Skill.joins(:survey_skills => :survey).where(:surveys => {:id => params[:survey_id]})
+    @survey_questions = @survey.questions
+    @survey_skills = Skill.from_survey(params[:survey_id]).pluck(:name)
+    @user_skill_ratings = UserSkill.rated(user_id).pluck("skills.name", "ratings.score").reduce(Hash.new(0)) { |hash, x| hash.merge(x[0] => x[1]) }
   end
 
 end
