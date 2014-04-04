@@ -32,9 +32,9 @@ class AttemptsController < ApplicationController
   end
 
   def update
-    @attempt = Attempt.where(params[:id]).first
+    @attempt = Attempt.where(:id => params[:id]).first
     if @attempt.update_attributes(new_attempt_params)
-      Rating.update_user_skill_ratings!(current_user.id, all_params[:attempt][:user_skill_ratings])
+      Rating.update_user_skill_ratings!(current_user.id, all_params[:user_skill_ratings])
       redirect_to surveys_path
     else
       flash[:error] = @attempt.errors.full_messages
