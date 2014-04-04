@@ -15,7 +15,6 @@
 //= require jquery.ui.all
 //= require jquery.shuffle.min
 //= require bootstrap
-//= require classie
 //= require star-rating.min
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
