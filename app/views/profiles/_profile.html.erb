@@ -3,7 +3,7 @@
   <div class="panel-body voffset3">
     <table class="table table-condensed table-curved table-striped table-hover">
       <tbody>
-      <tr><td>Email: </td> <td><%= @user.email %></td></tr>
+      <tr><td>Email: </td> <td><%= link_to @user.email, '#', :class => 'mailto', "data-email" => @user.email %></td></tr>
       <tr><td>Office Phone: </td> <td><%= @profile.office_phone %></td></tr>
       <tr><td>Cell Name: </td> <td><%= @profile.cell_phone %></td></tr>
       <tr><td>Department: </td> <td><%= @profile.department %></td></tr>
