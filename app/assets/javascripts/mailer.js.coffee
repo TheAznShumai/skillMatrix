@@ -30,19 +30,18 @@ $(document).ready ->
       else
         mailerAddToList(email, emails, "#{mailToPrefixId}#{index}")
 
-  mailerAddToList = (email, emails, selector) ->
+  mailerAddToList = (email, emails, id) ->
     emails.push(email)
     sessionStorage.setItem(mailListKey, JSON.stringify(emails))
-    mailerList.append("<a href=\"#\" id=\"#{selector}\">#{email}</a>")
-    mailerAlert(email, selector)
+    mailerList.append("<a href=\"#\" id=\"#{id}\">#{email}</a>")
+    mailerAlert(email, id)
 
-  mailerAlert = (email, selector) ->
+  mailerAlert = (email, id) ->
     mailerMenu.addClass("cbp-spmenu-open")
     # anchor animation in the component css select the id !!!!
     debugger
 
   mailerRemoveFromList = (email) ->
-    # TODO TEST ME!!!
     emails = getEmails()
     index = $.inArray(email, emails)
     if index != -1
@@ -56,7 +55,7 @@ $(document).ready ->
     emails = getEmails()
     if emails != null
       for email, index in emails
-        mailerList.append("<a href=\"#\" id=\"#{index}\">#{email}</a>")
+        mailerList.append("<a href=\"#\" id=\"#{mailToPrefixId}#{index}\">#{email}</a>")
       mailerMenu.addClass("cbp-spmenu-open")
 
   getEmails = ->
