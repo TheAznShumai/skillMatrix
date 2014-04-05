@@ -13,7 +13,7 @@
       <% @users.each do |user| %>
           <tr>
           <td><%= link_to user.profile.full_name, profile_path(user) %></td>
-          <td><%= link_to user.email, profile_path(user) %></td>
+          <td><%= link_to user.email, '#', :class => 'mailto', "data-email" => user.email %></td>
           <td><%= user.profile.title %>
           <td><%= user.created_at %></td>
           <td>
