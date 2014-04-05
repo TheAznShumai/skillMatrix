@@ -15,20 +15,20 @@ $(document).ready ->
 
   $(document).mouseup (event) ->
     if not mailerMenu.is(event.target) and mailerMenu.has(event.target).length is 0 and not mailerButton.is(event.target) and not mailToClass.is(event.target)
-      mailerMenu.removeClass("cbp-spmenu-open") # Only slide back when doesn't click on the side bar or the mailto button
+      mailerMenu.removeClass("cbp-spmenu-open") # Only slide back when doesn't click on the side bar or the mailto link/button
 
   $(document).on "click", (".mailto"), (event) ->
     email = $(this).data(mailDataId)
     emails = getEmails()
     if emails is null
       emails= []
-      mailerAddToList(email, emails, "#{mailToPrefixId}0") #Add initalizer in mailerAddToList
+      mailerAddToList(email, emails, "#{mailToPrefixId}0") # TODO - Add initalizer in mailerAddToList
     else
       index = $.inArray(email, emails)
       if index != -1
-        mailerAlert(email, "#{mailToPrefixId}index")
+        mailerAlert(email, "#{mailToPrefixId}#{index}")
       else
-        mailerAddToList(email, emails, "#{mailToPrefixId}index")
+        mailerAddToList(email, emails, "#{mailToPrefixId}#{index}")
 
   mailerAddToList = (email, emails, selector) ->
     emails.push(email)
@@ -42,12 +42,17 @@ $(document).ready ->
     debugger
 
   mailerRemoveFromList = (email) ->
-    index = $.inArray(email, getEmails())
-    # TODO finish me
+    # TODO TEST ME!!!
+    emails = getEmails()
+    index = $.inArray(email, emails)
+    if index != -1
+      emails.splice(index, 1)
+      emailItem = mailerList.find("##{mailToPrefixId}#{index}")
+      # TODO Animate removal - slide right then collaspe then kill
+      emailItem.remove()
+      sessionStorage.setItem(mailListKey, JSON.stringify(emails))
 
-  # TODO init me on load - load the bar with the damn data
   mailerSideBarInit = ->
-    debugger
     emails = getEmails()
     if emails != null
       for email, index in emails
