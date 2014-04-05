@@ -4,8 +4,6 @@ SkillMatrix::Application.routes.draw do
                                       :registrations => "registrations"}
   resources :users, :only => [:index, :destroy]
   resources :profiles, :only => [:show, :edit, :update]
-  resources :rateable_skills
-  resources :skills
   resources :ratings, :only => [:update, :create, :index]
 
   resources :surveys do
