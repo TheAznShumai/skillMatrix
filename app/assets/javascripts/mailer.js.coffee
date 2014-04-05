@@ -3,6 +3,12 @@ $(document).ready ->
   mailerList = $("#mailer-list")
   mailerButton = $("#showRight")
   mailToClass = $("mailto")
+  mailToPrefixId = "mailer-index-"
+  mailListKey = "emailList"
+  mailDataId = "email"
+
+  $ ->
+    mailerSideBarInit()
 
   $(document).on "click", ("#showRight"), (event) ->
     mailerMenu.toggleClass("cbp-spmenu-open")
@@ -12,25 +18,42 @@ $(document).ready ->
       mailerMenu.removeClass("cbp-spmenu-open") # Only slide back when doesn't click on the side bar or the mailto button
 
   $(document).on "click", (".mailto"), (event) ->
-    email = $(this).data("email")
-    emailList = sessionStorage.getItem("emailList")
-    if emailList is null
-      emailList = []
-      mailerAddToList(email, emailList)
+    email = $(this).data(mailDataId)
+    emails = getEmails()
+    if emails is null
+      emails= []
+      mailerAddToList(email, emails, "#{mailToPrefixId}0") #Add initalizer in mailerAddToList
     else
-      emailList = JSON.parse(emailList)
-      if $.inArray(email, emailList) != -1
-        mailerAlert(email)
+      index = $.inArray(email, emails)
+      if index != -1
+        mailerAlert(email, "#{mailToPrefixId}index")
       else
-        mailerAddToList(email, emailList)
+        mailerAddToList(email, emails, "#{mailToPrefixId}index")
 
-  mailerAddToList = (email, emailList) ->
-    emailList.push(email)
-    sessionStorage.setItem("emailList", JSON.stringify(emailList))
-    mailerList.append("<a href=\"#\">#{email}</a>")
-    mailerAlert(email)
+  mailerAddToList = (email, emails, selector) ->
+    emails.push(email)
+    sessionStorage.setItem(mailListKey, JSON.stringify(emails))
+    mailerList.append("<a href=\"#\" id=\"#{selector}\">#{email}</a>")
+    mailerAlert(email, selector)
 
-  mailerAlert = (email) ->
+  mailerAlert = (email, selector) ->
     mailerMenu.addClass("cbp-spmenu-open")
+    # anchor animation in the component css select the id !!!!
     debugger
+
+  mailerRemoveFromList = (email) ->
+    index = $.inArray(email, getEmails())
+    # TODO finish me
+
+  # TODO init me on load - load the bar with the damn data
+  mailerSideBarInit = ->
+    debugger
+    emails = getEmails()
+    if emails != null
+      for email, index in emails
+        mailerList.append("<a href=\"#\" id=\"#{index}\">#{email}</a>")
+      mailerMenu.addClass("cbp-spmenu-open")
+
+  getEmails = ->
+    JSON.parse(sessionStorage.getItem(mailListKey))
 
