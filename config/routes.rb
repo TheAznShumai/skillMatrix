@@ -2,7 +2,7 @@ SkillMatrix::Application.routes.draw do
   # TODO - Add more restrictions and Clean Me
   devise_for :users, :controllers => {:sessions => "sessions",
                                       :registrations => "registrations"}
-  resources :users, :only => [:index, :show, :destroy]
+  resources :users, :only => [:index, :destroy]
   resources :profiles, :only => [:show, :edit, :update]
   resources :rateable_skills
   resources :skills
