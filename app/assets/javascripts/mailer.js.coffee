@@ -1,62 +1,83 @@
 $(document).ready ->
+  # TODO - Clean/Refacotor this script
   mailerMenu = $("#cbp-spmenu")
   mailerList = $("#mailer-list")
-  mailerButton = $("#showRight")
-  mailToClass = $("mailto")
   mailToPrefixId = "mailer-index-"
+
   mailListKey = "emailList"
   mailDataId = "email"
+
+  mailerButton = "#showRight"
+  mailToClass = ".mailto"
+  mailRemove = "mailto-remove"
+  openSideBar = "cbp-spmenu-open"
+
+  removeButtonHtml = "<i class=\"fa fa-times #{mailRemove}\"></i>"
+
+  # Mailer Actions/Events
 
   $ ->
     mailerSideBarInit()
 
-  $(document).on "click", ("#showRight"), (event) ->
-    mailerMenu.toggleClass("cbp-spmenu-open")
+  $(document).on "click", mailerButton, (event) ->
+    mailerMenu.toggleClass("#{openSideBar}")
 
   $(document).mouseup (event) ->
-    if not mailerMenu.is(event.target) and mailerMenu.has(event.target).length is 0 and not mailerButton.is(event.target) and not mailToClass.is(event.target)
-      mailerMenu.removeClass("cbp-spmenu-open") # Only slide back when doesn't click on the side bar or the mailto link/button
+    if not mailerMenu.is(event.target) and mailerMenu.has(event.target).length is 0 and not $(mailerButton).is(event.target) and not $(mailToClass).is(event.target)
+      mailerMenu.removeClass("#{openSideBar}")      # Only slide back when doesn't click on the side bar or the mailto link/button
 
-  $(document).on "click", (".mailto"), (event) ->
+  $(document).on "click", mailToClass, (event) ->
     email = $(this).data(mailDataId)
     emails = getEmails()
-    if emails is null
-      emails= []
-      mailerAddToList(email, emails, "#{mailToPrefixId}0") # TODO - Add initalizer in mailerAddToList
+    if emails is null || emails.length == 0
+      mailerAddToList(email)
     else
       index = $.inArray(email, emails)
       if index != -1
-        mailerAlert(email, "#{mailToPrefixId}#{index}")
+        mailerAlert(email)
       else
-        mailerAddToList(email, emails, "#{mailToPrefixId}#{index}")
+        mailerAddToList(email, emails)
 
-  mailerAddToList = (email, emails, id) ->
+  $(document).on "click", ".#{mailRemove}", (event) ->
+    debugger
+    mailerRemoveFromList($(this).parent().data(mailDataId))
+
+  # Functions for mailer
+
+  mailerAddToList = (email) ->
+    emails = getEmails()
+    emails = [] if emails == null
     emails.push(email)
     sessionStorage.setItem(mailListKey, JSON.stringify(emails))
-    mailerList.append("<a href=\"#\" id=\"#{id}\">#{email}</a>")
-    mailerAlert(email, id)
+    id = email.replace(/[^a-zA-Z0-9]+/g,'') # Make an Id out of the email excluding special chars
+    mailerList.append("<li id=\"#{id}\" data-#{mailDataId}=\"#{email}\">#{email}#{removeButtonHtml}</li>")
+    mailerAlert(email)
 
-  mailerAlert = (email, id) ->
-    mailerMenu.addClass("cbp-spmenu-open")
-    # anchor animation in the component css select the id !!!!
-    debugger
+  mailerAlert = (email) ->
+    mailerMenu.addClass("#{openSideBar}")
+    id = email.replace(/[^a-zA-Z0-9]+/g,'')
+    emailItem = mailerList.find("##{id}")
+    # TODO finish the animation
 
   mailerRemoveFromList = (email) ->
+    debugger
     emails = getEmails()
     index = $.inArray(email, emails)
     if index != -1
       emails.splice(index, 1)
-      emailItem = mailerList.find("##{mailToPrefixId}#{index}")
+      id = email.replace(/[^a-zA-Z0-9]+/g,'')
+      emailItem = mailerList.find("##{id}")
       # TODO Animate removal - slide right then collaspe then kill
       emailItem.remove()
       sessionStorage.setItem(mailListKey, JSON.stringify(emails))
 
   mailerSideBarInit = ->
     emails = getEmails()
-    if emails != null
+    if emails != null and emails.length > 0
       for email, index in emails
-        mailerList.append("<a href=\"#\" id=\"#{mailToPrefixId}#{index}\">#{email}</a>")
-      mailerMenu.addClass("cbp-spmenu-open")
+        id = email.replace(/[^a-zA-Z0-9]+/g,'') #Remove special characters for the ID
+        mailerList.append("<li id=\"#{id}\" data-#{mailDataId}=\"#{email}\">#{email}#{removeButtonHtml}</li>")
+      mailerMenu.addClass("#{openSideBar}")
 
   getEmails = ->
     JSON.parse(sessionStorage.getItem(mailListKey))
