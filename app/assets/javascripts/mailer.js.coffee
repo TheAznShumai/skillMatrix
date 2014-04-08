@@ -1,5 +1,6 @@
 $(document).ready ->
-  # TODO - Clean/Refacotor this script
+  # TODO - Clean/Refactor this script (use a hash and a time for the id instead of the array and email name)
+  # FIX NAMES!!!! AND ADD MORE COMMENTS
   mailerMenu = $("#cbp-spmenu")
   mailerList = $("#mailer-list")
   mailToPrefixId = "mailer-index-"
@@ -10,11 +11,14 @@ $(document).ready ->
   mailerButton = "#showRight"
   mailToClass = ".mailto"
   mailRemove = "mailto-remove"
+  mailComposeButton = "compose-email-link"
+  mailComposeModal = "composeEmailModal"
+  mailComposeForm = "composeEmailForm"
   openSideBar = "cbp-spmenu-open"
 
   removeButtonHtml = "<i class=\"fa fa-times #{mailRemove}\"></i>"
 
-  # Mailer Actions/Events
+  # Mailer Actions/Events for sideBar
 
   $ ->
     mailerSideBarInit()
@@ -39,17 +43,42 @@ $(document).ready ->
         mailerAddToList(email, emails)
 
   $(document).on "click", ".#{mailRemove}", (event) ->
-    debugger
     mailerRemoveFromList($(this).parent().data(mailDataId))
 
-  # Functions for mailer
+  # Email Modal Composition js
+  # TODO - Move to another js file for better organization
+
+  # Init Modal
+  $(document).on "click", "##{mailComposeButton}", (event) ->
+    $("##{mailComposeModal}").modal()
+
+  # On show add the emails from the email list to the to field and handle
+  # Case when user clears all emails in the list and tries to open mail
+  # with pre existing To data.  This function clears the input field.
+  $("##{mailComposeModal}").on 'show.bs.modal', (event) ->
+    emails = getEmails()
+    if emails != null and emails.length
+      $(this).find("#email_to").val(emails)
+    if emails == null || emails.length == 0
+      $(this).find("#email_to").val('')
+
+  # On submit hide modal, clear mail list, remove sessionStore, close sidebar
+  # and clear modal inputs
+  $("##{mailComposeForm}").on 'submit', (event) ->
+    $("##{mailComposeModal}").modal('hide')
+    $(this).trigger("reset")
+    sessionStorage.removeItem(mailListKey)
+    mailerMenu.removeClass("#{openSideBar}")
+    mailerList.empty()
+
+    # Functions for mailer
 
   mailerAddToList = (email) ->
     emails = getEmails()
     emails = [] if emails == null
     emails.push(email)
     sessionStorage.setItem(mailListKey, JSON.stringify(emails))
-    id = email.replace(/[^a-zA-Z0-9]+/g,'') # Make an Id out of the email excluding special chars
+    id = email.replace(/[^a-zA-Z0-9]+/g,'') # Make an ID out of the email excluding special chars
     mailerList.append("<li id=\"#{id}\" data-#{mailDataId}=\"#{email}\">#{email}#{removeButtonHtml}</li>")
     mailerAlert(email)
 
@@ -60,7 +89,6 @@ $(document).ready ->
     # TODO finish the animation
 
   mailerRemoveFromList = (email) ->
-    debugger
     emails = getEmails()
     index = $.inArray(email, emails)
     if index != -1
@@ -75,7 +103,7 @@ $(document).ready ->
     emails = getEmails()
     if emails != null and emails.length > 0
       for email, index in emails
-        id = email.replace(/[^a-zA-Z0-9]+/g,'') #Remove special characters for the ID
+        id = email.replace(/[^a-zA-Z0-9]+/g,'')
         mailerList.append("<li id=\"#{id}\" data-#{mailDataId}=\"#{email}\">#{email}#{removeButtonHtml}</li>")
       mailerMenu.addClass("#{openSideBar}")
 

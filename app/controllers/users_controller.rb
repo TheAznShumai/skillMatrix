@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     # temp mail compose controller for demo purposes
     # TODO - create a mailbox model with validations
     email = new_email_params
+    binding.pry
     respond_to do |format|
       format.html {render nothing: true}
     end
