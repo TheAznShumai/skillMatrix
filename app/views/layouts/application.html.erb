@@ -6,24 +6,25 @@
 <%= javascript_include_tag "application", "rest_in_place" %>
 <%= csrf_meta_tags %>
 </head>
-<%= render "static_pages/login_modal" %>
-<%= render "static_pages/sign_up_modal" %>
 <body>
 <div id="wrap">
   <%= render 'layouts/header' %>
   <% if user_signed_in? %>
     <% if current_user.admin? %>
-    <%= render 'layouts/nav_mailer_side_panel' %>
-    <%= render 'layouts/nav_side_admin' %>
-<% else %>
-    <%= render 'layouts/nav_side_default' %>
-<% end %>
-  <div class="col-xs-12 col-sm-8">
-    <%= yield %>
-  </div>
-<% else %>
-    <%= yield %>
-<% end %>
+      <%= render 'layouts/nav_mailer_side_panel' %>
+      <%= render 'layouts/nav_side_admin' %>
+      <%= render 'static_pages/compose_email_modal' %>
+    <% else %>
+        <%= render 'layouts/nav_side_default' %>
+    <% end %>
+      <div class="col-xs-12 col-sm-8">
+        <%= yield %>
+      </div>
+  <% else %>
+    <%= render "static_pages/login_modal" %>
+    <%= render "static_pages/sign_up_modal" %>
+      <%= yield %>
+  <% end %>
 </div>
 <%= render 'layouts/footer' %>
 </body>
