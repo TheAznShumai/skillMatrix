@@ -12,7 +12,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_user_params
-      params.require.(:user).permit(:login)
+  def compose_email
+    # temp mail compose controller for demo purposes
+    # TODO - create a mailbox model with validations
+    email = new_email_params
+    respond_to do |format|
+      format.html {render nothing: true}
+    end
+  end
+
+  private
+
+  def new_email_params
+    params.require(:email).permit(:to, :cc, :bcc, :subject, :body)
   end
 end

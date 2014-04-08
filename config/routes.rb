@@ -12,6 +12,7 @@ SkillMatrix::Application.routes.draw do
 
   get "admin_surveys", :to => 'surveys#admin'
   get "survey_submissions", :to => 'surveys#submissions'
+  post "compose_email", :to => "users#compose_email"
 
   get "static_pages/home"
   get "static_pages/survey_builder"
