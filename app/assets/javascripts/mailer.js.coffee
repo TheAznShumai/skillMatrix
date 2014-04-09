@@ -50,6 +50,7 @@ $(document).ready ->
 
   # Init Modal - User must click on the x or cancel to close the modal
   $(document).on "click", "##{mailComposeButton}", (event) ->
+    mailerMenu.removeClass("#{openSideBar}")
     $("##{mailComposeModal}").modal(
         backdrop: 'static',
         keyboard: false)
