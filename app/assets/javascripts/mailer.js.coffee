@@ -46,32 +46,33 @@ $(document).ready ->
     mailerRemoveFromList($(this).parent().data(mailDataId))
 
   # Email Modal Composition js
-  # TODO - Move to another js file for better organization
+  # TODO - Move to another js file for better organization + better UI design needed
 
-  # Init Modal
+  # Init Modal - User must click on the x or cancel to close the modal
   $(document).on "click", "##{mailComposeButton}", (event) ->
-    $("##{mailComposeModal}").modal()
+    $("##{mailComposeModal}").modal(
+        backdrop: 'static',
+        keyboard: false)
 
   # On show add the emails from the email list to the to field and handle
-  # Case when user clears all emails in the list and tries to open mail
-  # with pre existing To data.  This function clears the input field.
   $("##{mailComposeModal}").on 'show.bs.modal', (event) ->
     emails = getEmails()
     if emails != null and emails.length
       $(this).find("#email_to").val(emails)
-    if emails == null || emails.length == 0
-      $(this).find("#email_to").val('')
+
+  #delete all input data on close, cancel
+  $("##{mailComposeModal}").on 'hidden.bs.modal', (event) ->
+    $("##{mailComposeForm}").trigger("reset")
 
   # On submit hide modal, clear mail list, remove sessionStore, close sidebar
   # and clear modal inputs
   $("##{mailComposeForm}").on 'submit', (event) ->
-    $("##{mailComposeModal}").modal('hide')
-    $(this).trigger("reset")
     sessionStorage.removeItem(mailListKey)
     mailerMenu.removeClass("#{openSideBar}")
     mailerList.empty()
+    $("##{mailComposeModal}").modal('hide')
 
-    # Functions for mailer
+  # Functions for mailer
 
   mailerAddToList = (email) ->
     emails = getEmails()

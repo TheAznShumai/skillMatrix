@@ -13,10 +13,12 @@ class UsersController < ApplicationController
   end
 
   def compose_email
-    # temp mail compose controller for demo purposes
-    # TODO - create a mailbox model with validations
-    email = new_email_params
-    binding.pry
+    # Temp mail compose controller for demo purposes
+    # TODO - create a mailbox model with proper validations and handlers
+    # ALSO IMPORTANT REMEMBER TO SANATIZE the EMAIL PARAMS
+    email_params = new_email_params
+    email_params[:from] = current_user.email
+    UserMailer.send_email(email_params).deliver
     respond_to do |format|
       format.html {render nothing: true}
     end
