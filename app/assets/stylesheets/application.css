@@ -11,8 +11,9 @@
  *= require_self
  *= require jquery.ui.all
  *= require font-awesome
- *= require star-rating.min
+ *= require chosen
  *= require dataTables/jquery.dataTables
  *= require dataTables/jquery.dataTables.bootstrap3
+ *= require star-rating.min
  *= require_tree .
  */

@@ -23,6 +23,7 @@ gem 'html5_validators'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'sass-rails', '~> 4.0.0'
 gem 'will_paginate'
+gem 'chosen-rails'
 
 # Using Rest in Place to edit forms show forms with ajax
 gem 'rest_in_place'
