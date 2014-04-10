@@ -34,6 +34,10 @@
   <div class="form-group">
     <%= f.fields_for :user do |user_form| %>
       <%= user_form.label :manager %>
+      <%= user_form.collection_select :manager_id, Profile.order(:first_name,
+                                      :last_name), :user_id, :full_name,
+                                      {:include_blank => true}, :class =>
+                                       "profile-chosen-select" %>
     <% end %>
   </div>
 
