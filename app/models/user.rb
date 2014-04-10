@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   # HTML 5 Validates on these values below
-  validates :password, :password_confirmation,
-            :presence => true
+  validates :password, length: { in: 8..128 }, on: :create
+  validates :password, length: { in: 8..128 }, on: :update, allow_blank: true
 
   validates :username, :email,
             :presence => true,
