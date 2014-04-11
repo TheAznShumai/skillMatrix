@@ -69,6 +69,8 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'launchy'
 
+  gem 'faker'
+
   # debug gems
   gem 'coffee-rails-source-maps'
   gem 'jazz_hands'
