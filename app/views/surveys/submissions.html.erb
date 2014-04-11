@@ -6,14 +6,12 @@
 <% end %>
 </ul>
 
-<div class="container">
-  <ul id="grid" class="list-inline">
-    <% @surveys.each do |survey| %>
-      <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
-      <%= link_to "#{image_tag(survey.icon(:small))}<br/>#{survey.name}".html_safe,
-            survey_attempts_path(survey) %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<ul id="grid" class="list-inline">
+  <% @surveys.each do |survey| %>
+    <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
+    <%= link_to "#{image_tag(survey.icon(:small))}<br/>#{survey.name}".html_safe,
+          survey_attempts_path(survey) %>
+    </li>
+  <% end %>
+</ul>
 
