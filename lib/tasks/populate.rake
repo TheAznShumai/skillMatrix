@@ -24,7 +24,7 @@ namespace :db do
     # Create Surveys with some questions and skills
 
     15.times do
-      survey = Survey.create!(:name => Faker::Lorem.word,
+      survey = Survey.create!(:name => Faker::Commerce.product_name,
                               :tag_list => Faker::Lorem.word)
       # TODO - need survey icons
 
@@ -34,7 +34,7 @@ namespace :db do
       end
 
       3.times do
-        skill = Skill.create!(:name => Faker::Lorem.word)
+        skill = Skill.create!(:name => Faker::Company.bs)
         survey_skill = SurveySkill.create!(:survey_id => survey.id,
                                            :skill_id => skill.id)
 
