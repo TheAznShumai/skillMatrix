@@ -7,33 +7,29 @@
   </div>
   </div>
 
-  <div class="container">
-    <div class="col-md-7">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <%= render 'profile' %>
         </div>
-      </div>
 
+    <% if @user.manager %>
+    <div class="col-md-6">
+      <%= render 'manager' %>
+    </div>
+  <% end %>
+
+      </div>
       <% unless @user.skills.empty? %>
         <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
           <%= render 'skills' %>
         </div>
       </div>
     <% end %>
-    </div>
-
-    <% if @user.manager %>
-    <div class="col-md-4">
-      <%= render 'manager' %>
-    </div>
-  <% end %>
-  </div>
 
   <% unless @user.attempts.empty? %>
-    <div class="container">
-    <div class="col-md-8">
+    <div class="row">
+    <div class="col-md-9">
       <%= render 'surveys' %>
     </div>
   </div>
