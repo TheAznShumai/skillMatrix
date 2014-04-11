@@ -26,7 +26,7 @@ namespace :db do
     15.times do
       survey = Survey.create!(:name => Faker::Lorem.word,
                               :tag_list => Faker::Lorem.word)
-      # need survey icons
+      # TODO - need survey icons
 
       3.times do
         question = Question.create!(:text => Faker::Lorem.sentence,
@@ -79,8 +79,10 @@ namespace :db do
       skill_ids = Skill.offset(rand(Skill.count)).limit(Skill.count/2).ids
 
       skill_ids.each do |skill_id|
-        user_skill = UserSkill.create!(:user_id => user.id, :skill_id => skill_id)
-        Rating.create!(:user_skill_id => user_skill.id, :score => rand(1..5))
+        if UserSkill.where(:user_id => user.id, :skill_id => skill_id).first.nil?
+          user_skill = UserSkill.create!(:user_id => user.id, :skill_id => skill_id)
+          Rating.create!(:user_skill_id => user_skill.id, :score => rand(1..5))
+        end
       end
     end
 
