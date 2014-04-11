@@ -72,19 +72,19 @@ namespace :db do
                          :question_id => question_id,
                          :text => Faker::Lorem.sentence)
         end
-      end
+        # Create a user_skill relationship and a rating (skills are independent from survey)
+        # get 2 or less skills randomly
+        # NOTE - RANDOM() is a postgres function Use RAND() for mysql
+        skill_ids = SurveySkill.where(:survey_id => survey_id).limit(2).order("RANDOM()").pluck(:skill_id)
 
-      # Create a user_skill relationship and a rating (skills are independent from survey)
-      # get half or less of the skill ids randomly (Only doing < half of the skills)
-      skill_ids = Skill.offset(rand(Skill.count)).limit(Skill.count/2).ids
-
-      skill_ids.each do |skill_id|
-        if UserSkill.where(:user_id => user.id, :skill_id => skill_id).first.nil?
-          user_skill = UserSkill.create!(:user_id => user.id, :skill_id => skill_id)
-          Rating.create!(:user_skill_id => user_skill.id, :score => rand(1..5))
+        skill_ids.each do |skill_id|
+          if UserSkill.where(:user_id => user.id, :skill_id => skill_id).first.nil?
+            user_skill = UserSkill.create!(:user_id => user.id, :skill_id => skill_id)
+            Rating.create!(:user_skill_id => user_skill.id, :score => rand(1..5))
+          end
         end
       end
-    end
 
+    end
   end
 end
