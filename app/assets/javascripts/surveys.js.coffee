@@ -50,8 +50,12 @@ $(document).ready ->
         curActiveForm = $('#survey-builder-nav').find('.active')
         $('#survey-builder-yield').find('#' + curActiveForm.attr('id')).remove()
         curActiveForm.remove()
-        $('#survey-builder-nav').find('#survey-builder-home').addClass('active')
-        $('#survey-builder-yield').find('#survey-builder-home').show()
+        if $('#survey-builder-admin-index').length
+          $('#survey-builder-nav').find('#survey-builder-admin-index').addClass('active')
+          $('#survey-builder-yield').find('#survey-builder-admin-index').show()
+        else
+          $('#survey-builder-nav').find('#survey-builder-home').addClass('active')
+          $('#survey-builder-yield').find('#survey-builder-home').show()
 
     $(document).on 'keyup', '.survey-name', (event) ->
       newTabVal = $(this).find('input').val()
