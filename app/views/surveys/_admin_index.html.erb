@@ -12,14 +12,16 @@
     <div class="row">
     <%= link_to "#{image_tag(survey.icon(:small), :class => "col-md-6")}".html_safe,
                 edit_survey_path(survey), :remote => true %>
-    <div class="row col-md-6">
+    <div class="row col-md-6 admin-survey-wrap">
       <%= link_to "#{survey.name}".html_safe, edit_survey_path(survey),
         :class => "font-size-small", :remote => true %>
     </div>
+    <div class="row admin-survey-buttons">
     <%= link_to '<button class="btn btn-danger btn-xs">delete</button>'.html_safe, survey,
       :method => :delete, :class => "col-md 6",
       :data => {:confirm => "Are you sure you want to remove \"#{survey.name}\"?",
-                                       :title => "Delete Survey Confirmation" }, :remote => true %>
+      :title => "Delete Survey Confirmation" }, :remote => true %>
+  </div>
   </div>
     </li>
   <% end %>

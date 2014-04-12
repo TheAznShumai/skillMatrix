@@ -8,6 +8,16 @@
 
 .admin-survey-item{
   height: 110px;
+  .admin-survey-wrap{
+    position: absolute;
+    height: 80%;
+    right: 20%;
+  }
+  .admin-survey-buttons{
+    position: absolute;
+    bottom: 20%;
+    right: 25%;
+  }
 }
 
 .survey-item{
