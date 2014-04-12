@@ -1,28 +1,45 @@
-<div class="container-full">
-  <div class="row">
-    <div class="col-lg-12 text-center v-center">
-      <div class="hero-unit">
-        <h1>Welcome to the Skill Matrix</h1>
-        <br>
-        <p class="lead">(Insert some message that looks good and doesn't take too much space)</p>
-        <br>
-        <p>
-        <%= link_to "Login", "#login", class: "btn btn-primary btn-large", 
-          "data-toggle" => "modal" %>
-        </p>
-          <%= link_to "Sign Up", "#sign_up",
+<div id="landing-carousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#landing-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#landing-carousel" data-slide-to="1"></li>
+    <li data-target="#landing-carousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= image_tag "landing_1.jpg", class: "img-responsive" %>
+      <div class="carousel-caption">
+        <h1>Welcome to Skills Matrix</h1>
+        <div id="buttons">
+          <%= link_to "Login", "#login", class: "btn btn-primary btn-lg",
             "data-toggle" => "modal" %>
-        </div>
+          <%= link_to "Sign Up", "#sign_up", class: "btn btn-success btn-lg", "data-toggle" => "modal" %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class = "container">
-      <div class = "row">
-        <%= image_tag "mglass.png", class: "col-md-1 col-md-offset-4 landing-icon shake" %>
-        <%= image_tag "docset.png", class: "col-md-1 landing-icon shake" %>
-        <%= image_tag "badge.png", class: "col-md-1 landing-icon shake" %>
-        <%= image_tag "barchart.png", class: "col-md-1 landing-icon shake" %>
+      <div class="item">
+        <%= image_tag "landing_2.jpg", class: "img-responsive" %>
+      </div>
+      <div class="item">
+        <%= image_tag "landing_3.jpg", class: "img-responsive" %>
       </div>
     </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#landing-carousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#landing-carousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+
+<div class = "container">
+  <div class = "row">
+    <%= image_tag "mglass.png", class: "col-md-1 col-md-offset-4 landing-icon shake" %>
+    <%= image_tag "docset.png", class: "col-md-1 landing-icon shake" %>
+    <%= image_tag "badge.png", class: "col-md-1 landing-icon shake" %>
+    <%= image_tag "barchart.png", class: "col-md-1 landing-icon shake" %>
   </div>
 </div>
