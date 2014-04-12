@@ -10,3 +10,5 @@ else
   $('#survey-builder-nav').append('<li id="<%= @survey.id %>" class="active"><a href="#"><%= @survey.name %></a>')
   $('#survey-builder-yield').append('<div id="<%= @survey.id %>"><%= j render "surveys/edit" %></div>')
 
+$('.mock-rating').rating()
+
