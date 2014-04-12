@@ -8,7 +8,7 @@
 
 <ul id="grid" class="list-inline">
   <% @surveys.each do |survey| %>
-    <li class="item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
+    <li class="item survey-item col-md-2 text-center" data-id=<%= "#{survey.id}" %> data-groups='["<%= survey.tag_list.join('","') %>"]'>
     <%= link_to "#{image_tag(survey.icon(:small))}<br/>#{survey.name}".html_safe,
           new_or_edit_attempt_path(survey, current_user.attempts.where(:survey_id => survey.id)) %>
     </li>
