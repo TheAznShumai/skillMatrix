@@ -46,10 +46,10 @@
 
    <div class="form-group">
      <%= profile_form.label :avatar %>
-     <%= profile_form.file_field :avatar, :class => "form-control" %>
+     <%= profile_form.file_field :avatar %>
    </div>
 
-   <%= f.submit %>
+     <%= submit_tag "Update Profile", :class => "btn btn-primary" %>
  <% end %>
  <% end %>
 
