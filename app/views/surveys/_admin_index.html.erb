@@ -7,7 +7,7 @@
 
 <ul id="grid" class="list-inline">
   <% @surveys.each do |survey| %>
-    <li class="item survey-item col-md-2" data-id=<%= "#{survey.id}" %>
+    <li class="item admin-survey-item col-md-2" data-id=<%= "#{survey.id}" %>
                               data-groups='["<%= survey.tag_list.join('","') %>"]'>
     <div class="row">
     <%= link_to "#{image_tag(survey.icon(:small), :class => "col-md-6")}".html_safe,
