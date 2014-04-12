@@ -14,7 +14,7 @@
         <tr>
         <td><%= attempt.survey.name %></td>
         <td><%= attempt.created_at %></td>
-        <td><%= link_to '<button class="btn btn-success">View Survey</button>'.html_safe, survey_attempt_path(:survey_id => attempt.survey_id, :id => attempt.id) %></td>
+        <td><%= link_to '<button class="btn btn-success pull-right">View Survey</button>'.html_safe, survey_attempt_path(:survey_id => attempt.survey_id, :id => attempt.id) %></td>
       </tr>
     <% end %>
       </tbody>
