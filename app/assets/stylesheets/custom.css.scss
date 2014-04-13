@@ -11,6 +11,16 @@ h1 {
   font-size:45px;
 }
 
+/* Landing page */
+.landing-icon {
+  position: relative;
+  padding-top: 30px;
+}
+
+.navbar-right {
+  padding-right: 15px;
+}
+
 /* bootstrap custom */
 .carousel-inner {
   height: 500px;
@@ -163,12 +173,6 @@ div#attempts_filter label{
   display: block;
   width: auto;
   font-weight: bold;
-}
-
-/* Landing page */
-.landing-icon {
-  position: relative;
-  padding-top: 30px;
 }
 
 /* Fun Stuff for Landing Page */

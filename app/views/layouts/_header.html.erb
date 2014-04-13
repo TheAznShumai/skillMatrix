@@ -1,15 +1,9 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+  <% if user_signed_in? %>
+    <div class="navbar-header">
     <%= link_to 'Skill Matrix', root_url, class: 'navbar-brand' %>
   </div>
-  <% if user_signed_in? %>
-    <!-- /.navbar-header -->
+  <!-- /.navbar-header -->
   <ul class="nav navbar-top-links navbar-right">
     <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -27,6 +21,13 @@
     <!-- /.dropdown -->
   </ul>
   <!-- /.navbar-top-links -->
+<% else %>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "Login", "#login", "data-toggle" => "modal" %></li>
+      <li><%= link_to "Sign Up", "#sign_up", "data-toggle" => "modal" %></li>
+    </ul>
+  </div>
 <% end %>
 </nav>
 <!-- /.navbar-static-top -->
