@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  load_and_authorize_resources
+  load_and_authorize_resource
 
   def new
   end
