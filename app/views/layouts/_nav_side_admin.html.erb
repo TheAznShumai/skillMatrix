@@ -2,7 +2,7 @@
   <div class="sidebar-collapse">
     <ul class="nav" id="side-menu">
       <li>
-      <%= link_to '<i class="fa fa-dashboard fa-fw"></i> Home'.html_safe, root_url %>
+      <%= link_to '<i class="fa fa-home fa-fw"></i> Home'.html_safe, root_url %>
       </li>
       <li>
       <%= link_to '<i class="fa fa-bar-chart-o fa-fw"></i> Skill Proficiency Report'.html_safe, ratings_path %>
@@ -11,13 +11,16 @@
       <%= link_to '<i class="fa fa-archive fa-fw"></i> Survey Submissions'.html_safe, survey_submissions_path %>
       </li>
       <li>
-      <%= link_to '<i class="fa fa-edit fa-fw"></i> Make A Survey'.html_safe, static_pages_survey_builder_path %>
+      <%= link_to '<i class="fa fa-edit fa-fw"></i> Create A New Survey'.html_safe, static_pages_survey_builder_path %>
       </li>
       <li>
       <%= link_to '<i class="fa fa-bolt fa-fw"></i> Register A Project'.html_safe, new_project_path %>
       </li>
       <li>
-      <%= link_to '<i class="fa fa-table fa-fw"></i> Survey Index'.html_safe, surveys_path %>
+      <%= link_to '<i class="fa fa-flask fa-fw"></i> Project Index'.html_safe, projects_path %>
+      </li>
+      <li>
+      <%= link_to '<i class="fa fa-lightbulb-o fa-fw"></i> Survey Index'.html_safe, surveys_path %>
       </li>
       <li>
       <%= link_to '<i class="fa fa-sitemap fa-fw"></i> List All Users'.html_safe, users_path %>
