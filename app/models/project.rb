@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  validates :name, :description, presence: true
+  validates :name, uniqueness: true
 
   # Status Enum for collection_select
   # Open = 0
@@ -9,4 +11,6 @@ class Project < ActiveRecord::Base
   # Closed = 4
 
   STATUS = %w[Open Planning In-Progress Suspended Closed]
+
 end
+
