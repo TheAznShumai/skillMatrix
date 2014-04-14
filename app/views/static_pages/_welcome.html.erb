@@ -1,2 +1,54 @@
-<h1>Welcome Page</h1>
-<p> Need to fill this in with something cool </p>
+<h3>Welcome <%= current_user.profile.full_name %></h3>
+
+<div class="row voffset4">
+  <div class="col-md-10">
+    <div class="panel panel-info">
+      <div class="panel-heading"><h3 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse"
+            data-parent="#accordion" href="#activity-feed">Activity Feed</a></h3></div>
+      <div id="activity-feed" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <ul>
+            <li>Field element placeholders to be filed in with a news type actvity feed</li>
+            <li>More placeholder text</li>
+            <li>Stub text</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row voffset3">
+
+  <div class="col-md-3 text-center">
+    <%= link_to '
+    <span class="text-primary fa-stack fa-4x center">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+    </span>
+    <h5>Update Profile</h5>'.html_safe, profile_path(current_user.profile) %>
+    Your profile needs to show contact information for project managers to reach you.
+  </div>
+
+   <div class="col-md-3 text-center">
+     <%= link_to '
+      <span class="text-success fa-stack fa-4x center">
+        <i class="fa fa-circle fa-stack-2x"></i>
+        <i class="fa fa-pencil-square-o fa-stack-1x fa-inverse"></i>
+      </span>
+      <h5>Take A Survey</h5>'.html_safe, surveys_path %>
+    The Surveys are created by project managers to gauge your abilities.
+  </div>
+
+ <div class="col-md-3 text-center">
+   <%= link_to '
+    <span class="text-danger fa-stack fa-4x center">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-flask fa-stack-1x fa-inverse"></i>
+    </span>
+    <h5>Open Projects</h5>'.html_safe, '#' %>
+    You can check out some of the open project that are still in progress.
+  </div>
+
+</div>
