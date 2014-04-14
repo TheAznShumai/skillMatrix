@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   authorize_resource
   def index
-    @users = User.where(true).includes(:profile)
+    @users = User.where.not(:id => current_user.id).includes(:profile)
   end
 
   def destroy
