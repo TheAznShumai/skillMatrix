@@ -1,0 +1,65 @@
+<div id="survey-builder-home-nav" class="col-md-2">
+<div class="row voffset3 survey-builder-link active" data-desc="#survey-builder-new-survey">
+    <%= link_to '
+    <span class="text-primary fa-stack fa-4x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-plus fa-stack-1x"></i>
+    </span>'.html_safe, new_survey_path, :remote => true %>
+</div>
+
+<div class="row voffset3 survey-builder-link" data-desc="#survey-builder-edit-survey">
+    <%= link_to '
+    <span class="text-primary fa-stack fa-4x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-pencil-square-o fa-stack-1x"></i>
+    </span>'.html_safe, admin_surveys_path, :remote => true %>
+</div>
+
+<div class="row voffset3 survey-builder-link" data-desc="#survey-builder-delete-survey">
+    <%= link_to '
+    <span class="text-primary fa-stack fa-4x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
+    </span>'.html_safe, admin_surveys_path, :remote => true %>
+</div>
+</div>
+
+<div id="survey-builder-home-yield" class="col-md-9 voffset3">
+  <div id="survey-builder-new-survey" class="survey-builder-home-desc">
+    <span class="text-primary fa-stack fa-5x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-plus fa-stack-1x"></i>
+    </span>
+    <h3>Add New Survey</h3>
+    <p class="voffset3">You can add a new survey for the users.  Currently
+    only one form style is allowed and can only hold questions and skill ratings.
+    The questions can also only hold one text box option.  New form types
+    may be avaliable for later user.</p>
+  </div>
+
+  <div id="survey-builder-edit-survey" class="survey-builder-home-desc" style="display: none;">
+    <span class="text-primary fa-stack fa-5x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-pencil-square-o fa-stack-1x"></i>
+    </span>
+    <h3>Edit Survey</h3>
+    <p class="voffset3">Here you can add a new survey for the users.  Currently
+    only one form style is allowed and can only hold questions and skill ratings.
+    The questions can also only hold one text box option.  New form types
+    may be avaliable for later user.</p>
+  </div>
+
+  <div id="survey-builder-delete-survey" class="survey-builder-home-desc" style="display: none;">
+    <span class="text-primary fa-stack fa-5x">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
+    </span>
+    <h3>Delete Survey</h3>
+    <p class="voffset3">Here you can add a new survey for the users.  Currently
+    only one form style is allowed and can only hold questions and skill ratings.
+    The questions can also only hold one text box option.  New form types
+    may be avaliable for later user.</p>
+  </div>
+
+</div>
+
