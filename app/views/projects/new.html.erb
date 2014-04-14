@@ -1,6 +1,5 @@
 <h3>New Project</h3>
 
-
 <%= form_for @project do |f| %>
   <div class="row voffset3">
     <div class="col-md-6">
@@ -27,18 +26,19 @@
     </div>
   </div>
 
-  <div class="row voffset3">
-    <div class="col-md-7">
-      <%= f.label :department %>
-      <%= f.text_field :department , :class => "form-control" %>
+    <div class="row voffset3">
+      <div class="col-md-7">
+        <%= f.label :department %>
+        <%= f.text_field :department , :class => "form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row voffset3">
-    <div class="col-md-12">
-      <%= f.label :description %>
-      <%= f.text_area :description , :class => "form-control", :rows => 10 %>
+    <div class="row voffset3">
+      <div class="col-md-12">
+        <%= f.label :description %>
+        <%= f.text_area :description , :class => "form-control", :rows => 10 %>
+      </div>
     </div>
-  </div>
 
 <% end %>
+
