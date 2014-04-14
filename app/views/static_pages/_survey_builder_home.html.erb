@@ -43,10 +43,14 @@
       <i class="fa fa-pencil-square-o fa-stack-1x"></i>
     </span>
     <h3>Edit Survey</h3>
-    <p class="voffset3">Here you can add a new survey for the users.  Currently
-    only one form style is allowed and can only hold questions and skill ratings.
-    The questions can also only hold one text box option.  New form types
-    may be avaliable for later user.</p>
+    <p class="voffset3">Surveys that have been saved can be edited and given new questions
+    and skills to rate.  Note - Any question(s) that are removed from a survey will also remove
+    any associated user's answer(s) data for that survey.  This will only happen on when the survey is
+    saved with a deleted question. The skills data for users are independent and can
+    be removed from each survey without affecting individual user skill rating data.  This means
+    the skills and the user rating will still appear on the skill proficiency report after
+    the skill is removed from a survey.
+    </p>
   </div>
 
   <div id="survey-builder-delete-survey" class="survey-builder-home-desc" style="display: none;">
@@ -55,10 +59,12 @@
       <i class="fa fa-exclamation-triangle fa-stack-1x"></i>
     </span>
     <h3>Delete Survey</h3>
-    <p class="voffset3">Here you can add a new survey for the users.  Currently
-    only one form style is allowed and can only hold questions and skill ratings.
-    The questions can also only hold one text box option.  New form types
-    may be avaliable for later user.</p>
+    <p class="voffset3">You can remove any survey that was created/saved.  Surveys that are
+    deleted will also remove any user answer data from the system for <b>that</b> associated
+    survey.  <b>All other answer (even for duplicate questions) on other surveys will be unaffected.</b>
+    Note - Skill rating data will not be removed even when the survey has been deleted.
+    That data will stay with the user and can be seen in the skill proficiency report.
+    </p>
   </div>
 
 </div>
