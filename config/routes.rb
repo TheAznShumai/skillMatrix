@@ -9,6 +9,7 @@ SkillMatrix::Application.routes.draw do
   resources :surveys do
     resources :attempts
   end
+  resources :projects
 
   get "admin_surveys", :to => 'surveys#admin'
   get "survey_submissions", :to => 'surveys#submissions'
