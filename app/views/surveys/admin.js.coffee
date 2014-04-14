@@ -1,3 +1,9 @@
+#Remove existing admin-index page to reload
+if $('#survey-builder-admin-index').length
+  $('#survey-builder-nav').find('#survey-builder-admin-index').remove()
+  $('#survey-builder-yield').find('#survey-builder-admin-index').remove()
+
+#Load admin index page and hide the button with class .admin-survey-control
 activeForm = $('#survey-builder-nav').find('.active')
 $('#survey-builder-yield').find('#' + activeForm.attr('id')).hide()
 activeForm.removeClass('active')
