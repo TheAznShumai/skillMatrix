@@ -11,7 +11,7 @@
   <div class="row voffset3">
     <div class="col-md-3">
       <%= f.label "Project Manager" %>
-      <%= f.collection_select :project_id, Profile.where(true).\
+      <%= f.collection_select :project_manager_id, Profile.where(true).\
         order(:first_name, :last_name), :user_id, :full_name,
         { :selected => current_user.id },
         :class => "project-chosen-select" %>
@@ -19,7 +19,7 @@
 
     <div class="col-md-1">
       <%= f.label "Status" %>
-      <%= f.select :status, Project::STATUS.map.each_with_index\
+      <%= f.select :status_id, Project::STATUS.map.each_with_index\
         {|status, index| [status.humanize, index]},
         {},
         {:class => "project-chosen-select"} %>
