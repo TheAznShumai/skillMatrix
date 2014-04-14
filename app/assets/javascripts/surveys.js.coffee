@@ -19,6 +19,8 @@ loadGrid = ->
 
 $(document).ready ->
 
+    #For the each indiviual survey
+    #dynamic links to remove destroy and add fields
     $(document).on 'click', '.remove_fields', (event) ->
         $(this).closest('fieldset').remove()
         event.preventDefault()
@@ -36,6 +38,7 @@ $(document).ready ->
         $('.mock-rating').rating()
         event.preventDefault()
 
+    #For survey-builder-navigation to hide and open tabs
     $(document).on 'click', '#survey-builder-nav', (event) ->
         navClickedLinkId = event.target.parentElement.id
         prevActiveForm = $('#survey-builder-nav').find('.active')
@@ -57,12 +60,21 @@ $(document).ready ->
           $('#survey-builder-nav').find('#survey-builder-home').addClass('active')
           $('#survey-builder-yield').find('#survey-builder-home').show()
 
+    #This updates the tab on survey name change
     $(document).on 'keyup', '.survey-name', (event) ->
       newTabVal = $(this).find('input').val()
       if newTabVal != ''
         $('#survey-builder-nav').find('.active').find('a').text(newTabVal)
       else
         $('#survey-builder-nav').find('.active').find('a').text('...')
+
+    #For the survey-builder-home/welcome screen, show description of links on the home/welcome screen
+    $(document).on 'mouseenter', '.survey-builder-link', (event) ->
+      if !$(this).hasClass('active')
+        $($('.survey-builder-link.active').data('desc')).hide()
+        $('.survey-builder-link.active').removeClass('active')
+        $(this).addClass('active')
+        $($(this).data('desc')).show()
 
     $ ->
       loadGrid()
