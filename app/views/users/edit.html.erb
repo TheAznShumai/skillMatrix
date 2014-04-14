@@ -1,9 +1,9 @@
-<h1>Profile Edit</h1>
+<h3>Profile Edit</h3>
 
 <%= form_for @user do |f| %>
   <%= f.fields_for :profile do |profile_form| %>
 
-  <div class="form-group">
+  <div class="form-group voffset4">
   <%= profile_form.label :first_name %>
   <%= profile_form.text_field :first_name, :class => "form-control" %>
 </div>
