@@ -10,6 +10,7 @@ class Ability
       can :read, :static_pages
       can :manage, Profile, :user_id => user.id
       can :read, Survey
+      can :read, Project
       can :manage, Attempt, :user_id => user.id
       can [:create, :update], Rating do |rating|
         rating.user_skills.where(:user_id => user.id)
