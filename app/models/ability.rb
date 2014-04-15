@@ -7,8 +7,8 @@ class Ability
       can :manage, :all
     else
       cannot :manage, :all
-      can :read, :static_pages
       can :manage, Profile, :user_id => user.id
+      can :manage, User, :id => user.id
       can :read, Survey
       can :read, Project
       can :manage, Attempt, :user_id => user.id

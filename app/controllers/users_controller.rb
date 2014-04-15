@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource :param_method => :user_params
+
   def index
     @users = User.where.not(:id => current_user.id).includes(:profile)
   end
 
   def destroy
-    @user = User.where(:id => params[:id]).first
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_path }
@@ -13,11 +13,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.where(:id => params[:id]).first
   end
 
   def update
-    @user = User.where(:id => params[:id]).first
     if @user.update_attributes!(user_params)
       respond_to do |format|
         format.html {redirect_to @user.profile}

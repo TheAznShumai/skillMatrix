@@ -1,17 +1,15 @@
 class AttemptsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource :param_method => :new_attempt_params
   before_action :load_survey_data, :only => [:new, :edit]
 
   def new
-    @attempt = Attempt.new
     @attempt.answers.build
   end
 
   def create
-    @attempt = Attempt.new(new_attempt_params)
     Rating.update_user_skill_ratings!(current_user.id, all_params[:user_skill_ratings])
     if @attempt.save
-      redirect_to root_url
+      redirect_to surveys_path
     else
       flash[:error] = @attempt.errors.full_messages
     end
@@ -28,11 +26,9 @@ class AttemptsController < ApplicationController
   end
 
   def edit
-    @attempt = Attempt.where(:id => params[:id]).first
   end
 
   def update
-    @attempt = Attempt.where(:id => params[:id]).first
     if @attempt.update_attributes(new_attempt_params)
       Rating.update_user_skill_ratings!(current_user.id, all_params[:user_skill_ratings])
       redirect_to surveys_path

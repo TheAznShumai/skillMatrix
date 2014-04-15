@@ -1,15 +1,12 @@
 class SurveysController < ApplicationController
-  authorize_resource
-  before_action :load_index_data, :only => [:index, :admin]
+  load_and_authorize_resource :param_method => :new_survey_params
   #TODO - Use Respond_to/respond_with instead
 
   def new
-    @survey = Survey.new
     format_response
   end
 
   def create
-    @survey = Survey.new(new_survey_params)
     flash.clear
     if @survey.save
       flash[:success] = "Survey \"#{@survey.name}\" has been saved"
@@ -20,12 +17,10 @@ class SurveysController < ApplicationController
   end
 
   def edit
-    @survey = Survey.find(params[:id])
     format_response
   end
 
   def update
-    @survey = Survey.find(params[:id])
     if @survey.update_attributes(new_survey_params)
       format_response
     else
@@ -34,10 +29,9 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    survey = Survey.find(params[:id])
-    surveyTitle = survey.name
-    surveyId = survey.id
-    survey.destroy
+    surveyTitle = @survey.name
+    surveyId = @survey.id
+    @survey.destroy
     flash[:success] = "#{surveyTitle} was deleted"
     respond_to do |format|
       format.html
@@ -46,9 +40,12 @@ class SurveysController < ApplicationController
   end
 
   def index
+    @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck("DISTINCT name")
   end
 
   def admin
+    @surveys = Survey.where(true)
+    @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck("DISTINCT name")
   end
 
   def submissions
@@ -63,12 +60,6 @@ class SurveysController < ApplicationController
       :name, :tag_list, :icon,
       :survey_skills_attributes => [:id, :_destroy, :skill_attributes => [:id, :name, :tag_list, :_destroy]],
       :questions_attributes => [:id, :text, :_destroy])
-  end
-
-  def load_index_data
-    #TODO - optimize me please
-    @surveys = Survey.where(true)
-    @survey_tags = ActsAsTaggableOn::Tag.joins(:taggings).where("taggings.taggable_type = ?", "Survey").pluck("DISTINCT name")
   end
 
   def format_response
