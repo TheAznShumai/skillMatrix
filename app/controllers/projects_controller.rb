@@ -36,6 +36,11 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
+    flash.clear
+    project_name = @project.name
+    @project.destroy
+    flash[:error] = "Project \"#{project_name}\" has been removed."
+    redirect_to projects_path
   end
 
   def new_project_params
