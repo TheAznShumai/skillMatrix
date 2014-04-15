@@ -1,0 +1,37 @@
+<h3>New Project</h3>
+
+  <div class="row voffset3">
+    <div class="col-md-6">
+      <%= label_tag :name %>
+      <div class="form-control"><%= @project.name %></div>
+    </div>
+  </div>
+
+  <div class="row voffset3">
+    <div class="col-md-3">
+      <%= label_tag "Project Manager" %>
+      <div class="form-control"><%= @project.project_manager_full_name %></div>
+    </div>
+
+    <div class="col-md-2">
+      <%= label_tag "Status" %>
+      <div class="form-control"><%= @project.status %></div>
+    </div>
+  </div>
+
+    <div class="row voffset3">
+      <div class="col-md-7">
+        <%= label_tag :department %>
+        <div class="form-control"><%= @project.department %></div>
+      </div>
+    </div>
+
+    <div class="row voffset3">
+      <div class="col-md-12">
+        <%= label_tag :description %>
+        <div class="form-control" rows="10"><%= @project.description %></div>
+      </div>
+    </div>
+
+
+
