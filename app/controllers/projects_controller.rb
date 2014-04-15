@@ -7,10 +7,11 @@ class ProjectsController < ApplicationController
   def create
     flash.clear
     if @project.save
-      flash[:success] = "Project \"#{@project.name}\" has been saved"
+      flash[:success] = "Project \"#{@project.name}\" has been created."
       redirect_to projects_path
     else
       flash[:error] = @project.errors.full_messages.uniq.join("\n")
+      render 'new'
     end
   end
 
@@ -24,6 +25,14 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    flash.clear
+    if @project.update_attributes(new_project_params)
+      flash[:success] = "Project \"#{@project.name}\" has been updated."
+      redirect_to projects_path
+    else
+      flash[:error] = @project.errors.full_messages.uniq.join("\n")
+      render 'edit'
+    end
   end
 
   def destroy
