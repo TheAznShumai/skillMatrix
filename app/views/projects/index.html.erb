@@ -1,0 +1,50 @@
+<h3>Projects</h3>
+
+<div class="row voffset5">
+<div class="col-md-12">
+
+<%# set two different ids for the datatable js call %>
+<% if current_user.admin? %>
+<table class="table table-striped table-curved voffset3" id="projects_with_admin">
+<% else %>
+<table class="table table-striped table-curved voffset3" id="projects">
+<% end %>
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Project Manager</th>
+      <th>Department</th>
+      <th>Status</th>
+      <th>Created at</th>
+      <%= '<th></th>'.html_safe if current_user.admin? %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project_path(project) %></td>
+        <td><%= link_to project.project_manager_full_name, profile_path(project.project_manager_profile) %></td>
+        <td><%= project.department %></td>
+        <td><%= project.status %></td>
+        <td><%= project.created_at %></td>
+        <% if current_user.admin? %>
+          <td>
+            <%= link_to 'Edit', edit_project_path(project), :class => 'btn btn-xs btn-primary' %>
+            <%= link_to 'Destroy', project_path(project), :method => :delete,
+              :class => 'btn btn-xs btn-danger',
+              :data => {
+              :confirm => "Are you sure you want to delete #{project.name}?",
+              :title => 'Delete User'} %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+</div>
+</div>
+

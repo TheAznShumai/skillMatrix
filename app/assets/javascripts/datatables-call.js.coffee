@@ -5,6 +5,15 @@ $(document).ready ->
           "sPaginationType": "bootstrap")
 
   $ ->
+      $('#projects_with_admin').dataTable(
+          "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 5 ] }],
+          "sPaginationType": "bootstrap")
+
+  $ ->
+      $('#projects').dataTable(
+          "sPaginationType": "bootstrap")
+
+  $ ->
       $('#submissions').dataTable(
           "aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ 0,6 ] }],
           "sPaginationType": "bootstrap")
