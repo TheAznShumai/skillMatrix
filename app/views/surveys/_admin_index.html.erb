@@ -13,7 +13,7 @@
     <%= link_to "#{image_tag(survey.icon(:small), :class => "col-md-6")}".html_safe,
                 edit_survey_path(survey), :remote => true %>
     <div class="row col-md-6 admin-survey-wrap">
-      <%= link_to "#{survey.name}".html_safe, edit_survey_path(survey),
+      <%= link_to "#{truncate(survey.name, :length => 24)}".html_safe, edit_survey_path(survey),
         :class => "font-size-small", :remote => true %>
     </div>
     <div class="row admin-survey-buttons">
