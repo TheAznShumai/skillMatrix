@@ -12,5 +12,16 @@ class Project < ActiveRecord::Base
 
   STATUS = %w[Open Planning In-Progress Suspended Closed]
 
+  def project_manager_profile
+    Profile.where(:user_id => project_manager_id).first
+  end
+
+  def project_manager_full_name
+    project_manager_profile.full_name
+  end
+
+  def status
+    STATUS[status_id]
+  end
 end
 
