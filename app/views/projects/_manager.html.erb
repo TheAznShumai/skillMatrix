@@ -1,0 +1,17 @@
+<div class="panel panel-info">
+  <div class="panel-heading">Project Manager</div>
+  <div class="panel-body">
+    <%= image_tag @manager.profile.avatar(:xsmall), class: "img-thumbnail center-block" %>
+    <table class="table table-condensed table-curved table-striped table-hover voffset3">
+      <tbody>
+        <tr><td>Name: </td> <td><%= @manager.profile.full_name.titleize %></td></tr>
+        <tr><td>Title: </td> <td><%= @manager.profile.title.titleize if @manager.profile.title %></td></tr>
+        <tr><td>Email: </td> <td><%= link_to @manager.email, '#', :class => 'mailto', "data-email" => @manager.email %></td></tr>
+        <tr><td>Office Phone: </td> <td><%= @manager.profile.office_phone %></td></tr>
+        <tr><td>Cell Name: </td> <td><%= @manager.profile.cell_phone %></td></tr>
+        <tr><td>Department: </td> <td><%= @manager.profile.department %></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
