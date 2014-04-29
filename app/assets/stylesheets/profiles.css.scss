@@ -4,20 +4,22 @@
 
 #name
 {
-  position:absolute;
-  padding-left:180px;
-  font-size:30px;
+  position: relative;
+  padding-left: 180px;
+  font-size: 30px;
 }
 
 #title
 {
-  padding-left:10px;
-  font-size:18px;
+  position: relative;
+  padding-left: 200px;
+  font-size: 18px;
 }
 
 #edit-profile-button
 {
-  margin:10px;
+  position: relative;
+  margin-top: -55px;
 }
 
 .profile-back
@@ -27,9 +29,9 @@
 
 .profile-pic
 {
-  margin-top:50px;
-  width:120px;
-  margin-left:43px;
-  margin-bottom:-60px;
+  margin-top: 50px;
+  width: 120px;
+  margin-left: 43px;
+  margin-bottom: -60px;
 }
 

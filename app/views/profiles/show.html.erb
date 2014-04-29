@@ -1,34 +1,36 @@
 <div class="row well background-transparent">
   <div class="panel profile-back">
-    <%= image_tag @profile.avatar(:small), class: "profile-pic img-circle" %><br />
-    <div id="name"><small><%= @profile.full_name.titleize %><br/><div id="title"><%= @profile.title.titleize if @profile.title %></div></small></div>
-    <%= link_to '<i class="fa fa-wrench fa-fw"></i> Edit Profile'.html_safe, edit_user_path(@profile.user),
-      :class => "btn btn-xs btn-primary pull-right", :id => "edit-profile-button" %>
-  </div>
+    <%= image_tag @profile.avatar(:small), class: "profile-pic img-circle" %>
   </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <%= render 'profile' %>
-        </div>
+  <div id="name"><small><%= @profile.full_name.titleize %><br/></div>
+  <div id="title"><%= @profile.title.titleize if @profile.title %></small></div>
+  <%= link_to '<i class="fa fa-wrench fa-fw"></i> Edit Profile'.html_safe, edit_user_path(@profile.user),
+    :class => "btn btn-xs btn-primary pull-right", :id => "edit-profile-button" %>
+</div>
 
-    <% if @user.manager %>
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'profile' %>
+  </div>
+
+  <% if @user.manager %>
     <div class="col-md-6">
       <%= render 'manager' %>
     </div>
   <% end %>
+</div>
 
-      </div>
-      <% unless @user.skills.empty? %>
-        <div class="row">
-        <div class="col-md-10">
-          <%= render 'skills' %>
-        </div>
-      </div>
-    <% end %>
+<% unless @user.skills.empty? %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= render 'skills' %>
+    </div>
+  </div>
+<% end %>
 
-  <% unless @user.attempts.empty? %>
-    <div class="row">
+<% unless @user.attempts.empty? %>
+  <div class="row">
     <div class="col-md-9">
       <%= render 'surveys' %>
     </div>
