@@ -1,37 +1,28 @@
-<h3>New Project</h3>
+<h3><%= @project.name.titleize %></h3>
+
+<div class="container">
 
   <div class="row voffset3">
-    <div class="col-md-6">
-      <%= label_tag :name %>
-      <div class="form-control"><%= @project.name %></div>
+    <div class="col-md-12">
+      <%= label_tag "Status " %><div class="btn btn-primary" disabled="disabled"><%= @project.status %></div>
     </div>
   </div>
 
   <div class="row voffset3">
-    <div class="col-md-3">
-      <%= label_tag "Project Manager" %>
-      <div class="form-control"><%= @project.project_manager_full_name %></div>
-    </div>
-
-    <div class="col-md-2">
-      <%= label_tag "Status" %>
-      <div class="form-control"><%= @project.status %></div>
+    <div class="col-md-12">
+      <%= label_tag "Department - " %><%= @project.department.titleize %>
     </div>
   </div>
 
-    <div class="row voffset3">
-      <div class="col-md-7">
-        <%= label_tag :department %>
-        <div class="form-control"><%= @project.department %></div>
-      </div>
+  <div class="row voffset3">
+    <div class="col-md-4">
+      <%= render 'manager' %>
     </div>
-
-    <div class="row voffset3">
-      <div class="col-md-12">
-        <%= label_tag :description %>
-        <div class="form-control" rows="10"><%= @project.description %></div>
-      </div>
+    <div class="col-md-8">
+      <h4>Project Description</h4>
+      <%= @project.description %>
     </div>
+  </div>
 
-
+</div>
 
