@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @manager = User.where(:id => @project.project_manager_id).first
   end
 
   def edit
