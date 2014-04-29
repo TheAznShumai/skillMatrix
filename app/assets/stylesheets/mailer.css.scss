@@ -1,3 +1,5 @@
+//TODO - Use a better method to center the compose email button
+
 /* General styles for all menus */
 .cbp-spmenu {
 	background: #47a3da;
@@ -5,7 +7,6 @@
 	-webkit-transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	transition: all 0.3s ease;
-
   h3 {
     color: #afdefa;
     font-size: 1.9em;
@@ -14,23 +15,30 @@
     font-weight: 300;
     background: #0d77b6;
   }
-
   li {
     display: block;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 300;
-
+    color: white;
+    font-size: 0.7em;
+    font-weight: 400;
+    i {
+      display: none;
+    }
     &:hover {
       background: #258ecd;
       i {
-        display: block-inline;
-        position: absolute;
-        left: 90%;
+        display: block;
+        position: relative;
+        left: 95%;
+        bottom: 11px;
         text-shadow: 2px 2px 2px #ccc;
         color: #ff2d55;
       }
     }
+  }
+  #mailer-compose-button {
+    position: absolute;
+    bottom: 60px;
+    right: 40px;
   }
 }
 

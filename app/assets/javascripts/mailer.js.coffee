@@ -11,7 +11,7 @@ $(document).ready ->
   mailerButton = "#showRight"
   mailToClass = ".mailto"
   mailRemove = "mailto-remove"
-  mailComposeButton = "compose-email-link"
+  mailComposeButton = "mailer-compose-button"
   mailComposeModal = "composeEmailModal"
   mailComposeForm = "composeEmailForm"
   openSideBar = "cbp-spmenu-open"
