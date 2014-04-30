@@ -4,7 +4,7 @@
 
   <div class="row voffset3">
     <div class="col-md-12">
-      <%= label_tag "Status " %><div class="btn btn-primary" disabled="disabled"><%= @project.status %></div>
+      <%= label_tag "Status " %><div class="<%= bootstrap_btn_class_for(@project.status) %>" disabled="disabled"><%= @project.status %></div>
     </div>
   </div>
 
@@ -19,8 +19,8 @@
       <%= render 'manager' %>
     </div>
     <div class="col-md-8">
-      <h4>Project Description</h4>
-      <%= @project.description %>
+      <h3>Project Description</h3>
+      <p><%= @project.description %></p>
     </div>
   </div>
 
