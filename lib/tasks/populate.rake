@@ -19,7 +19,11 @@ namespace :db do
                               :password_confirmation => 'asdzxc123',
                               :profile_attributes => {
                                 :first_name => 'John',
-                                :last_name => 'Doe'})
+                                :last_name => 'Doe',
+                                :office_phone => Faker::PhoneNumber.phone_number,
+                                :cell_phone => Faker::PhoneNumber.cell_phone,
+                                :title => 'Administrator',
+                                :department => 'Super Hero'})
 
     # Create Surveys with some questions and skills
 
@@ -59,7 +63,6 @@ namespace :db do
                                   :department => Faker::Commerce.department})
 
       # Create attempts, answers on random surveys
-
       # get half or less of the survey ids randomly
       survey_ids = Survey.offset(rand(Survey.count)).limit(Survey.count/2).ids
 
@@ -84,7 +87,17 @@ namespace :db do
           end
         end
       end
-
     end
+
+    # Create some project with random managers
+    20.times do
+      user_id = User.where(true).limit(1).order("RANDOM()").pluck(:id).first
+      project = Project.create!(:name => Faker::Commerce.product_name,
+                                :description => Faker::Lorem.paragraphs.join,
+                                :project_manager_id => user_id,
+                                :department => Faker::Commerce.department,
+                                :status_id => rand(5))
+    end
+
   end
 end
