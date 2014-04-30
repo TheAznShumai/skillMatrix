@@ -37,6 +37,23 @@ module ApplicationHelper
     end
   end
 
+  def bootstrap_btn_class_for status_type
+    case status_type
+      when 'Open'
+        "btn btn-success"
+      when 'Planning'
+        "btn btn-info"
+      when 'In-Progress'
+        "btn btn-warning"
+      when 'Suspended'
+        "btn btn-danger"
+      when 'Closed'
+        "btn btn-default"
+      else
+        "btn btn-primary"
+    end
+ end
+
   def resource_name
     :user
   end
