@@ -7,25 +7,26 @@
 <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="wrap">
+  <div class="container-fluid nopadding">
   <%= render 'layouts/header' %>
-  <% if user_signed_in? %>
-    <% if current_user.admin? %>
-      <%= render 'layouts/nav_mailer_side_panel' %>
-      <%= render 'layouts/nav_side_admin' %>
-      <%= render 'static_pages/compose_email_modal' %>
+  <div class="row withFooterMargin nosidemargin">
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <div class="col-md-2"><%= render 'layouts/nav_side_admin' %></div>
+        <%= render 'layouts/nav_mailer_side_panel' %>
+        <%= render 'static_pages/compose_email_modal' %>
+      <% else %>
+        <div class="col-md-2"><%= render 'layouts/nav_side_default' %></div>
+      <% end %>
+      <div class="col-md-8"><%= yield %></div>
     <% else %>
-        <%= render 'layouts/nav_side_default' %>
+      <div class="col-md-12 nopadding"><%= yield %></div>
+      <%= render "static_pages/login_modal" %>
+      <%= render "static_pages/sign_up_modal" %>
     <% end %>
-      <div class="col-xs-12 col-sm-8">
-        <%= yield %>
-      </div>
-  <% else %>
-    <%= render "static_pages/login_modal" %>
-    <%= render "static_pages/sign_up_modal" %>
-      <%= yield %>
-  <% end %>
+  </div>
 </div>
-<%= render 'layouts/footer' %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>
+
