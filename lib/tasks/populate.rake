@@ -8,7 +8,8 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    Rake::Task['db:reset'].invoke
+    # Rake::Task['db:reset'].invoke
+    # Comment out for heroku since it doesn't like dropping dbs
 
     # Create admin_user account
 
