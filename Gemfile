@@ -77,6 +77,7 @@ group :development, :test do
 end
 
 group :production do
+  gem 'faker' #this is used for demoing the site
   gem 'rails_12factor'
 end
 
