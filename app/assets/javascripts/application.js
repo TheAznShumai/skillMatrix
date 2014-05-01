@@ -15,6 +15,7 @@
 //= require jquery.ui.all
 //= require jquery.shuffle.min
 //= require bootstrap
+//= require wow.min
 //= require chosen-jquery
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3

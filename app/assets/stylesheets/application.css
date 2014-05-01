@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.ui.all
+ *= require animate
  *= require font-awesome
  *= require chosen
  *= require dataTables/jquery.dataTables
