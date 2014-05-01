@@ -1,26 +1,29 @@
 <div id="attempts-flash-messages"></div>
 <h3 class="extra-bottom-padding"><%= @survey.name %></h3>
-<%= form_for [@survey, @attempt] do |f| %>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :survey_id, :value => @survey.id %>
-<% @survey_questions.each do |question| %>
-  <div class="row">
-  <%= render "question_form", :f => f, :question => question %>
-</div>
+<div class="container">
+  <%= form_for [@survey, @attempt] do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :survey_id, :value => @survey.id %>
+
+    <% @survey_questions.each do |question| %>
+      <div class="row">
+        <%= render "question_form", :f => f, :question => question %>
+      </div>
+      <% end %>
+
+    <% unless @survey_skills.empty? %>
+      <div class="row">
+        <%= render "skill_rating_form", :f => f,
+          :survey_skills => @survey_skills,
+          :user_skill_ratings => @user_skill_ratings,
+          :readonly => false %>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <%= f.submit "Submit Survey", :class => "btn btn-success btn-lg" %>
+    </div>
+
   <% end %>
-
-<% unless @survey_skills.empty? %>
-  <div class="row">
-  <%= render "skill_rating_form", :f => f,
-    :survey_skills => @survey_skills,
-    :user_skill_ratings => @user_skill_ratings,
-    :readonly => false %>
 </div>
-
-<% end %>
-  <div class="row">
-    <%= f.submit "Submit Survey", :class => "btn btn-primary" %>
-  </div>
-
-<% end %>
 
